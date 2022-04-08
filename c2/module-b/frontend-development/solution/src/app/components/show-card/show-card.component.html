@@ -1,0 +1,6 @@
+<a class="card" [routerLink]="!disableClick ? ['/booking', concert.id, 'shows', show.id] : ['.']">
+  <span class="date">{{show.start | date:'dd/MM/yyyy'}}</span>
+  <span class="artist">{{concert.artist}}</span>
+  <span class="location">{{concert.location.name}}</span>
+  <span class="time">{{show.start | date:'HH:mm'}} - {{show.end | date:'HH:mm'}}</span>
+</a>

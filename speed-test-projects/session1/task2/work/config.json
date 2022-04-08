@@ -1,0 +1,12 @@
+{
+    "id": "csv-converter",
+    "type": "php",
+    "localHistory": true,
+    "showPoints": false,
+    "groups": [
+        {
+            "match": ".+",
+            "displayName": "Converter"
+        }
+    ]
+}

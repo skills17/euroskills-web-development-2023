@@ -1,0 +1,151 @@
+/*
+
+You can modify this file to your liking.
+
+It is not necessary to modify the existing CSS to solve the task, but if you deem it necessary, you may do so.
+The task can be solved by strictly adding declarations to this file.
+
+ */
+
+
+/* ======================= */
+/* Basics                  */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef3f6;
+    color: #333;
+    margin: 0;
+    padding: 0 24px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+a[href] {
+    color: #1577d1;
+    text-decoration: none;
+}
+
+/* ======================= */
+/* Card                    */
+.card {
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 10%);
+    border-radius: 2px;
+    margin-bottom: 24px;
+    padding: 16px;
+}
+
+.card-header {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.card-content img {
+    max-width: 100%;
+    border-radius: 15px;
+    margin: 0 0 16px;
+}
+
+/* ======================= */
+/* Social                  */
+#new-post {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin: 0;
+    font-size: 16px;
+}
+
+.post-time {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 11px;
+    color: #757575;
+}
+
+.hashtag {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.hashtag-mentions,
+.person-posts {
+    font-size: 12px;
+    color: #757575;
+    margin-top: 2px;
+}
+
+.person {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.person img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 8px;
+}
+
+.person img + * {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ======================= */
+/* Utils                   */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+
+/* =========================== */
+/* This is the part the candidates have to write */
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 100px 1fr;
+    gap: 24px 24px;
+    grid-auto-flow: row;
+    justify-items: stretch;
+    grid-template-areas:
+    "header header"
+    "left right";
+}
+
+.right {
+    grid-area: right;
+}
+
+.left {
+    grid-area: left;
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}

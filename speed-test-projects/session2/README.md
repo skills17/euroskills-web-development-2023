@@ -1,0 +1,180 @@
+# Speed Test Project Session 2
+
+In the speed challenge you will prove various skills in a range of small independent tasks.
+
+This is the second session of two. You have exactly 60 minutes to complete as many tasks as possible.
+The points you score in the speed challenge sessions will be added to your total points of the whole competition.
+
+Your solutions will be automatically marked on a central server in real-time.
+
+> All tasks can be tested by automated tests. To run them, change into their folder (e.g. cd `c3-module-f-speed-challenge-2/task*/`) and execute the command stated in each task under _Expected Result_.
+
+> You can only change existing files in the `c3-module-f-speed-challenge-2/task*/src/` folders (where * is a number). All other files will be reverted for the review process.
+
+## Tasks
+
+The tasks do not have to be completed in the given order.
+Please note that the points awarded per task are relative to their difficulty, meaning hard tasks will give more points than easy tasks.
+
+| Task                                 | Difficulty |
+|--------------------------------------|:----------:|
+| Task 1 - Javascript: Array Unique    | easy       |
+| Task 2 - CSS Selectors               | easy       |
+| Task 3 - PHP: Validation             | easy       |
+| Task 4 - Accessibility               | medium     |
+| Task 5 - PHP: Image Thumbnail        | medium     |
+| Task 6 - Regex                       | medium     |
+| Task 7 - HTML / CSS                  | hard       |
+
+---
+### Task 1 - JavaScript: Array Unique
+
+Given some array, only return elements in an array that are unique by a given property name.
+
+The order of the elements returned is the same as the given input. The uniqueness should be checked with strict
+equality (no type coercion).
+
+__Working directory:__
+
+Implement the empty function in: `c3-module-f-speed-challenge-2/task1/src/uniqueBy.js`. You are not allowed to change any other file.
+
+__Expected result:__
+
+`npm test` runs successfully in the `c3-module-f-speed-challenge-2/task1/` folder.
+
+
+---
+### Task 2 - CSS Selectors
+
+Select the rainbow marbles. Use the file `c3-module-f-speed-challenge-2/task2/src/task.css` to write your
+selectors. In `src/task.html` you will see the actual marbles as HTML elements.
+
+`#task-0` is provided to you as an example.
+
+You are only allowed to use __1 selector per task:__
+
+- Allowed: `#task-1 .marble {...}`
+- Not Allowed: `#task-1 .blue, #task-1 .red {...}`
+
+__Rules:__
+
+- The selector must begin with the task ID e.g. `#task-1`
+- You are not allowed to edit the HTML.
+- You are not allowed to use the data-target attribute for your selector.
+- You are not allowed to use any of the following selectors:
+  - `:nth-child`
+  - `:nth-last-child`
+  - `:nth-of-type`
+  - `:nth-last-of-type`
+  - any use of `+` or `~`
+
+__Working directory:__
+
+Write the missing CSS selectors in: `c3-module-f-speed-challenge-2/task2/src/task.css`.
+You are not allowed to change any other files.
+
+To see the CSS selector targets visually, you can open `task.html` in your browser.
+
+__Expected result:__
+
+`npm test` runs successfully in the `c3-module-f-speed-challenge-2/task2/` folder.
+
+---
+### Task 3 - PHP: Validation
+
+Implement the validation methods in the provided validator class.
+The following validation rules have to be implemented:
+- `startsWith`
+- `between`
+- `dateAfter`
+
+
+__Working directory:__
+
+Implement the methods in: `c3-module-f-speed-challenge-2/task3/src/Validator.php`.
+You are not allowed to change any other files.
+
+__Expected result:__
+
+`composer test` runs successfully in the `c3-module-f-speed-challenge-2/task3/` folder.
+
+---
+### Task 4 - Accessibility
+
+You are provided with a web page that contains some accessibility problems. It is your task to fix them. You are allowed
+to change the HTML and CSS of the page. Your changes should not alter the visual appearance in any way.
+
+
+__Working directory:__
+
+Fix the violations in: `c3-module-f-speed-challenge-2/task4/src/`. You are only allowed to change the
+`index.html` and `style.css` files.
+
+__Expected result:__
+
+The Cypress tests started with `npm start` are fulfilled.
+
+---
+### Task 5 - PHP: Image Thumbnail
+
+Your task is to create a thumbnail for a given image. This includes resizing, cropping and adding a watermark.
+
+The following illustration shows how an image should be resized and cropped into a 300x300 thumbnail.
+![Cropping](task5/cropping.jpg)
+
+To run the task locally, execute `php -S localhost:8080` within the task folder and open `http://localhost:8080/src/demo.html`.
+On this page, you see the expected images and the ones your implementation generates as a comparison.
+
+__Working directory:__
+
+Implement the method in: `c3-module-f-speed-challenge-2/task5/src/ImageThumbnail.php`.
+You are not allowed to change any other files.
+
+__Expected result:__
+
+`composer test` runs successfully in the `c3-module-f-speed-challenge-2/task5/` folder.
+
+Thumbnails generated by tests are stored within the `tests/images/test-results/` directory.
+
+---
+### Task 6 - Regex
+
+Write regular expressions (Regex) that match a set of strings and skip a set of string. Your regex must not be longer than the given limit.
+
+
+__Working directory:__
+
+Write the expressions in: `c3-module-f-speed-challenge-2/task6/src/regex.js`. You are not allowed to change anything in the file except the Regex itself or any other file.
+
+__Expected result:__
+
+`npm test` runs successfully in the `c3-module-f-speed-challenge-2/task6/` folder.
+
+
+---
+### Task 7 - HTML / CSS
+
+Your task is to finish writing the CSS for a news site.
+
+Within the task folder you will find:
+
+- `index.html` Do not edit this file
+- `style.css` Modify this file until it passes the tests
+
+Your task is to modify the CSS to make the page have the following layout:
+
+![Layout](task7/layout.png)
+
+Additional requirements:
+
+- The webpage always uses exactly the **full window height & width** (scrollbars are never visible)
+- All margins/spacings are exactly **`12px`**
+
+__Working directory:__
+
+Write the missing CSS declarations in: `c3-module-f-speed-challenge-2/task7/src/style.css`.
+You are not allowed to change any other files.
+
+__Expected result:__
+
+The Cypress tests started with `npm start` are fulfilled.

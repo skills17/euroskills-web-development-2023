@@ -1,0 +1,21 @@
+{
+    "id": "yournews",
+    "type": "htmlcss",
+    "localHistory": true,
+    "serve": {
+        "enabled": true
+    },
+    "groups": [
+        {
+            "match": ".+",
+            "displayName": "News Site",
+            "tests": [
+                {"match": "header vertical alignment", "points": 0.2},
+                {"match": "header horizontal spacing", "points": 0.2},
+                {"match": "body has full height", "points": 0.1},
+                {"match": "news card positioning", "points": 0.2},
+                {"match": "news info text positioning", "points": 0.05}
+            ]
+        }
+    ]
+}

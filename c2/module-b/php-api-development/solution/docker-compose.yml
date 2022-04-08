@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - "8080:80"
+  db:
+    image: mysql:8.0.25
+    environment:
+      MYSQL_ROOT_PASSWORD: euroskills2021
+      MYSQL_DATABASE: concerts
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 8081:80
+    environment:
+      - PMA_ARBITRARY=1

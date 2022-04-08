@@ -1,0 +1,34 @@
+/**
+ * Task 2 - CSS Selectors
+ *
+ * Your task is to expand all CSS Selectors marked with @todo.
+ * You are not allowed to add additional selectors.
+ */
+
+#task-0 #rainbow {
+    box-shadow: 0 0 0 5px gold, 0 0 10px 5px orange;
+}
+
+#task-1 .marble.rainbow {
+    box-shadow: 0 0 0 5px gold, 0 0 10px 5px orange;
+}
+
+#task-2 :is(foo-bam, foo-baz) {
+    box-shadow: 0 0 0 5px gold, 0 0 10px 5px orange;
+}
+
+#task-3 [data-value^=foo] {
+    box-shadow: 0 0 0 5px gold, 0 0 10px 5px orange;
+}
+
+#task-4 .marble:only-child {
+    box-shadow: 0 0 0 5px gold, 0 0 10px 5px orange;
+}
+
+#task-5 > section > .marble {
+    box-shadow: 0 0 0 5px gold, 0 0 10px 5px orange;
+}
+
+#task-6 [class$="appendix"] .marble {
+    box-shadow: 0 0 0 5px gold, 0 0 10px 5px orange;
+}

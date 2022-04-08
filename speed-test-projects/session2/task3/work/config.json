@@ -1,0 +1,12 @@
+{
+    "id": "validator",
+    "type": "php",
+    "localHistory": true,
+    "showPoints": false,
+    "groups": [
+        {
+            "match": ".+",
+            "displayName": "Validator"
+        }
+    ]
+}

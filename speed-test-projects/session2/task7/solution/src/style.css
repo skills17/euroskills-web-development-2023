@@ -1,0 +1,164 @@
+/*
+
+You can modify this file to your liking.
+
+It is not necessary to modify the existing CSS to solve the task, but if you deem it necessary, you may do so.
+The task can be solved by strictly adding declarations to this file.
+
+ */
+
+
+/* ======================= */
+/* Basics                  */
+:root {
+    --yellow: #ffec02;
+    --black: #000000;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+/* ======================= */
+/* Header                  */
+header {
+    background-color: var(--yellow);
+}
+
+header h1 {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--black);
+    color: var(--yellow);
+    font-size: 3em;
+}
+
+/* ======================= */
+/* Navigation              */
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li a,
+nav ul li a:visited {
+    display: inline-block;
+    padding: 5px 8px;
+    background-color: var(--yellow);
+    color: var(--black);
+    text-decoration: none;
+    font-size: 2em;
+    transition: background .3s, color .3s;
+}
+
+nav ul li a:hover {
+    background-color: var(--black);
+    color: var(--yellow);
+}
+
+/* ======================= */
+/* News                    */
+.news {
+    padding: 0 12px 12px;
+    background-color: var(--yellow);
+}
+
+.news .card {
+    background-size: cover;
+    background-position: center;
+}
+
+.news .card .info {
+    padding: 12px;
+    background: linear-gradient(0deg, rgba(2, 0, 36, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+    color: var(--white);
+    font-size: 1.5em;
+}
+
+.news .card .info .tag {
+    display: inline-block;
+    background: var(--black);
+    padding: 6px;
+}
+
+.news .card .info h2 {
+    margin: 12px 0;
+}
+
+.news .card .info .date {
+    opacity: 0.8;
+}
+
+/* =========================== */
+/* This is the part the candidates have to write */
+
+header {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 12px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.news {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-template-areas:
+        "main side side"
+        "main small1 small2";
+    column-gap: 12px;
+    row-gap: 12px;
+}
+
+.news .card:nth-child(1) {
+    grid-area: main;
+}
+
+.news .card:nth-child(2) {
+    grid-area: side;
+}
+
+.news .card:nth-child(3) {
+    grid-area: small1;
+}
+
+.news .card:nth-child(4) {
+    grid-area: small2;
+}
+
+.news .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

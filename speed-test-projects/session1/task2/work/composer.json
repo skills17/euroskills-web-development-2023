@@ -1,0 +1,23 @@
+{
+    "name": "euroskills/trade17-session1-task2",
+    "scripts": {
+        "test": "phpunit --colors=always",
+        "test:json": "FORMAT=json phpunit | tail -n +3"
+    },
+    "authors": [
+        {
+            "name": "EuroSkills",
+            "email": "secretariat@worldskillseurope.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "EuroSkills\\Trade17\\Converter\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9",
+        "phpunit/php-invoker": "^3.1",
+        "skills17/phpunit-helpers": "^1.2"
+    }
+}

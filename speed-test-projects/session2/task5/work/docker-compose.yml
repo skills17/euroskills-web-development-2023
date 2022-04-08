@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  task:
+    build: .
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - "8080:80"

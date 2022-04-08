@@ -1,0 +1,22 @@
+{
+    "id": "stars-in-graz",
+    "type": "htmlcss",
+    "groups": [
+        {
+            "match": "Accessibility.+",
+            "displayName": "Accessibility",
+            "defaultPoints": 0.5,
+            "tests": [
+                {"match": ".*less than 1 violation", "points": 1}
+            ]
+        },
+        {
+            "match": "HTML & CSS.+",
+            "displayName": "HTML & CSS Validation",
+            "defaultPoints": 0.5,
+            "tests": [
+                {"match": ".*less than 1 violation", "points": 1}
+            ]
+        }
+    ]
+}

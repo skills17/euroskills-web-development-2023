@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+}
+
+body {
+  margin: 1rem auto;
+  max-width: 850px;
+}
+
+h1,
+h2 {
+  font-size: 18px;
+}
+
+h2 {
+  margin-top: 1rem;
+}
+
+p,
+ul,
+li {
+  font-size: 16px;
+}
+
+li {
+  margin: 10px 0;
+}
+
+code {
+  color: #c7254e;
+  background-color: #f9f2f4;
+  padding: 2px 4px;
+}
+
+section {
+  font-size: 1.5rem;
+}
+
+#task-5 > section {
+  font-size: 2rem;
+}
+
+article,
+section {
+  display: flex;
+  align-items: center;
+  min-height: 0;
+}
+
+article {
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+section,
+div {
+  flex: 0 0 auto;
+}
+
+section {
+  border: 3px solid #333333;
+  min-width: 1em;
+  height: 1em;
+  border-radius: 0.25em;
+  margin: 0 5px;
+  padding: 0 5px;
+}
+
+div,
+foo-bar,
+foo-baz,
+foo-bam {
+  background-color: #ffffff;
+  border: 3px solid #333333;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+[data-target] {
+  background: linear-gradient(red, orange, yellow, green, blue, purple);
+}
+
+.red,
+#red {
+  background-color: red;
+}
+
+.green,
+#green {
+  background-color: #00dd00;
+}
+
+.blue,
+#blue {
+  background-color: blue;
+}

@@ -1,0 +1,12 @@
+{
+    "id": "replaceStr",
+    "type": "js",
+    "localHistory": true,
+    "showPoints": false,
+    "groups": [
+        {
+            "match": "replaceStr.+",
+            "displayName": "Replace Strings"
+        }
+    ]
+}

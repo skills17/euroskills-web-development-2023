@@ -1,0 +1,12 @@
+{
+    "id": "image-thumbnail",
+    "type": "php",
+    "localHistory": true,
+    "showPoints": false,
+    "groups": [
+        {
+            "match": ".+",
+            "displayName": "ImageThumbnail"
+        }
+    ]
+}

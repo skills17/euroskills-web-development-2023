@@ -1,0 +1,46 @@
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.card {
+  display: block;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  width: 300px;
+  margin: 0 8px 16px;
+  padding: 16px;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+
+  &,
+  &:visited {
+    color: #333;
+  }
+}
+
+.card-container .card:not(:last-child) {
+  margin-right: 0;
+}
+
+.card-container .card:hover,
+.card-container .card:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+
+  .card-container > * {
+    width: 100%;
+  }
+
+  .card {
+    margin: 8px 0;
+  }
+}

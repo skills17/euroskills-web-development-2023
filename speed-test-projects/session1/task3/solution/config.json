@@ -1,0 +1,12 @@
+{
+    "id": "regex",
+    "type": "js",
+    "localHistory": true,
+    "groups": [
+        {
+            "match": ".+",
+            "displayName": "Regex",
+            "defaultPoints": 0.1
+        }
+    ]
+}

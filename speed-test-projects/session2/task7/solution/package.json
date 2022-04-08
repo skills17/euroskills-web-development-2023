@@ -1,0 +1,16 @@
+{
+    "name": "euroskills-trade17-session2-task7",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "start": "skills17-cypress open --browser electron",
+        "test": "node tee.js skills17-cypress run --browser electron",
+        "test:json": "node tee.js skills17-cypress run --quiet --json --browser electron"
+    },
+    "author": "EuroSkills",
+    "license": "UNLICENSED",
+    "devDependencies": {
+        "@skills17/cypress-helpers": "^3.1.1",
+        "cross-spawn": "^7.0.3"
+    }
+}

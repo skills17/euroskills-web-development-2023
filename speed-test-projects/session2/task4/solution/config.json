@@ -1,0 +1,23 @@
+{
+    "id": "accessibility",
+    "type": "js",
+    "localHistory": true,
+    "serve": {
+        "enabled": true
+    },
+    "groups": [
+        {
+            "match": "Task 4.+",
+            "displayName": "Task 4",
+            "strategy": "deduct",
+            "defaultPoints": 0.1,
+            "maxPoints": 0.5,
+            "tests": [
+                {
+                    "match": "Regression Testing.*",
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  tests:
+    build: ../solution
+    depends_on:
+      - db
+      - app
+    volumes:
+      - ./:/var/www/html/
+  app:
+    extends:
+      file: ../solution/docker-compose.yml
+      service: app
+  db:
+    extends:
+      file: ../solution/docker-compose.yml
+      service: db
+  phpmyadmin:
+    extends:
+      file: ../solution/docker-compose.yml
+      service: phpmyadmin

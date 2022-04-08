@@ -1,0 +1,19 @@
+{
+    "name": "euroskills-trade17-frontend-development-tests",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "start": "skills17-cypress open --browser electron --timezone Etc/UTC",
+        "test": "node tee.js skills17-cypress run --browser electron --timezone Etc/UTC",
+        "test:json": "node tee.js skills17-cypress run --quiet --json --browser electron --headless --timezone Etc/UTC"
+    },
+    "author": "EuroSkills",
+    "license": "UNLICENSED",
+    "devDependencies": {
+        "@skills17/cypress-helpers": "^3.1.1",
+        "axe-core": "^4.2.2",
+        "cross-spawn": "^7.0.3",
+        "cypress-axe": "^0.13.0",
+        "typescript": "^4.3.4"
+    }
+}

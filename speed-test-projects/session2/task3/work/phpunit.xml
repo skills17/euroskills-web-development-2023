@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+         cacheResultFile="vendor/phpunit/phpunit.cache"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         printerClass="Skills17\PHPUnit\ResultPrinter"
+         printerFile="vendor/skills17/phpunit-helpers/src/Printer.php"
+         colors="true"
+         enforceTimeLimit="true"
+>
+    <testsuites>
+        <testsuite name="Tests">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

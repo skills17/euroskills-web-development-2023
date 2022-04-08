@@ -1,0 +1,28 @@
+# os
+.DS_Store
+
+# tests
+.history/
+
+# editor
+.vscode
+.idea
+~$*.docx
+
+# node
+node_modules
+npm-debug.log*
+
+# cypress
+__diff_output__
+
+# php
+vendor
+
+# JupyterNotebook
+.ipynb_checkpoints/
+
+# Office
+~$*.xls*
+~$*.ppt*
+~$*.doc*

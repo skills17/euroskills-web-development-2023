@@ -1,0 +1,105 @@
+{
+    "id": "concerts-api",
+    "type": "php",
+    "database": {
+        "enabled": true,
+        "name": "concerts",
+        "user": "competitor",
+        "password": "competitor",
+        "host": "localhost"
+    },
+    "groups": [
+        {
+            "match": "ConcertListing.*",
+            "displayName": "Concert Listing",
+            "tests": [
+                {"match": "ConcertListingAll", "points": 0.5},
+                {"match": "ConcertListingAllSortingCorrect", "points": 0.25},
+                {"match": "ConcertListingAllStrictEquals", "points": 0.5}
+            ]
+        },
+        {
+            "match": "ConcertDetail.*",
+            "displayName": "Concert Detail",
+            "tests": [
+                {"match": "ConcertDetail", "points": 0.5},
+                {"match": "ConcertDetailSortingCorrect", "points": 0.25},
+                {"match": "ConcertDetailStrictEquals", "points": 0.25},
+                {"match": "ConcertDetailDoesNotExist", "points": 0.25}
+            ]
+        },
+        {
+            "match": "Seating.*",
+            "displayName": "Seating",
+            "tests": [
+                {"match": "Seating", "points": 1},
+                {"match": "SeatingSortingCorrect", "points": 0.25},
+                {"match": "SeatingStrictEquals", "points": 0.25},
+                {"match": "SeatingConcertDoesNotExist", "points": 0.1},
+                {"match": "SeatingShowDoesNotExist", "points": 0.1},
+                {"match": "SeatingShowDoesNotBelongToConcert", "points": 0.3}
+            ]
+        },
+        {
+            "match": "Reservation.*",
+            "displayName": "Reservation",
+            "tests": [
+                {"match": "ReservationCreation", "points": 0.75},
+                {"match": "ReservationUpdatesUnavailableSeats", "points": 0.5},
+                {"match": "ReservationExpiration", "points": 0.5},
+                {"match": "ReservationOfUnavailableSeats", "points": 0.2},
+                {"match": "ReservationReplacement", "points": 0.2},
+                {"match": "ReservationInvalidToken", "points": 0.1},
+                {"match": "ReservationDeletion", "points": 0.2},
+                {"match": "ReservationTokenOnOtherShow", "points": 0.1},
+                {"match": "ReservationValidationDurations", "points": 0.1},
+                {"match": "ReservationValidationReservations", "points": 0.2},
+                {"match": "ReservationValidationRowFromDifferentShow", "points": 0.1},
+                {"match": "ReservationConcertDoesNotExist", "points": 0.1},
+                {"match": "ReservationShowDoesNotExist", "points": 0.1},
+                {"match": "ReservationShowDoesNotBelongToConcert", "points": 0.1}
+            ]
+        },
+        {
+            "match": "Booking.*",
+            "displayName": "Booking",
+            "tests": [
+                {"match": "BookingOneSeat", "points": 0.5},
+                {"match": "BookingMultipleSeats", "points": 0.25},
+                {"match": "BookingMultipleSeatsCorrectSorting", "points": 0.1},
+                {"match": "BookingAddressData", "points": 0.1},
+                {"match": "BookingDifferentShows", "points": 0.2},
+                {"match": "BookingSeatGetsUnavailable", "points": 0.25},
+                {"match": "BookingInvalidToken", "points": 0.1},
+                {"match": "BookingValidationRequiredFields", "points": 0.1},
+                {"match": "BookingValidationStringFields", "points": 0.1},
+                {"match": "BookingConcertDoesNotExist", "points": 0.1},
+                {"match": "BookingShowDoesNotExist", "points": 0.1},
+                {"match": "BookingShowDoesNotBelongToConcert", "points": 0.1}
+            ]
+        },
+        {
+            "match": "Tickets.*",
+            "displayName": "Tickets",
+            "tests": [
+                {"match": "TicketsValidCode", "points": 0.5},
+                {"match": "TicketsValidCodeDifferentTicket", "points": 0.25},
+                {"match": "TicketsCorrectSorting", "points": 0.25},
+                {"match": "TicketsStrictEquals", "points": 0.25},
+                {"match": "TicketsInvalidCode", "points": 0.25},
+                {"match": "TicketsGetCreatedAfterBooking", "points": 0.25}
+            ]
+        },
+        {
+            "match": "TicketCancel.*",
+            "displayName": "Tickets Cancel",
+            "tests": [
+                {"match": "TicketCancel", "points": 0.5},
+                {"match": "TicketCancelUpdatesBooking", "points": 0.25},
+                {"match": "TicketCancelAllowsReservation", "points": 0.25},
+                {"match": "TicketCancelInvalidCode", "points": 0.25},
+                {"match": "TicketCancelInvalidId", "points": 0.25}
+            ]
+        }
+    ]
+}

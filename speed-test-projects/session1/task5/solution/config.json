@@ -1,0 +1,22 @@
+{
+    "id": "convolution",
+    "type": "js",
+    "localHistory": true,
+    "source": [
+        "./src/**.js"
+    ],
+    "groups": [
+        {
+            "match": "convolution.+",
+            "displayName": "Image Convolution",
+            "tests": [
+                {"match": "1d identity kernel, 2d image", "points": 0.05},
+                {"match": "1d identity kernel, non symmetric image", "points": 0.05},
+                {"match": "1d manipulation kernels", "points": 0.1},
+                {"match": "1d clamping 0-255", "points": 0.05},
+                {"match": "3d 2x kernel", "points": 0.2},
+                {"match": "3d manipulation kernels", "points": 0.3}
+            ]
+        }
+    ]
+}

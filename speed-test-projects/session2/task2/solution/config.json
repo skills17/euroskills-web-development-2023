@@ -1,0 +1,19 @@
+{
+    "id": "css-selectors",
+    "type": "htmlcss",
+    "localHistory": true,
+    "serve": {
+        "enabled": true
+    },
+    "groups": [
+        {
+            "match": "CSS Selectors.+",
+            "displayName": "CSS Selectors",
+            "tests": [
+                {"match": "Task 1", "points": 0.02},
+                {"match": "Task 5", "points": 0.03},
+                {"match": "Task \\d", "points": 0.05}
+            ]
+        }
+    ]
+}

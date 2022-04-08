@@ -1,0 +1,15 @@
+{
+    "id": "css-selectors",
+    "type": "htmlcss",
+    "localHistory": true,
+    "serve": {
+        "enabled": true
+    },
+    "showPoints": false,
+    "groups": [
+        {
+            "match": "CSS Selectors.+",
+            "displayName": "CSS Selectors"
+        }
+    ]
+}

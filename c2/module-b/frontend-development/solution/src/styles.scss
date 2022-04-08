@@ -1,0 +1,12 @@
+@import "styles/card";
+@import "styles/form";
+@import "styles/typography";
+
+.spacer {
+  flex: 1;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+}

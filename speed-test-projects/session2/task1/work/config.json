@@ -1,0 +1,12 @@
+{
+    "id": "uniqueBy",
+    "type": "js",
+    "localHistory": true,
+    "showPoints": false,
+    "groups": [
+        {
+            "match": "uniqueBy.+",
+            "displayName": "Array Unique"
+        }
+    ]
+}

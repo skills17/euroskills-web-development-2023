@@ -1,0 +1,48 @@
+.booking-container {
+  display: flex;
+  justify-content: center;
+}
+
+.col {
+  border: 1px solid #ccc;
+  padding: 32px;
+
+  &:first-child {
+    margin-right: 16px;
+  }
+}
+
+app-seating {
+  max-width: 60%;
+}
+
+.selected-seats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(40% - 32px);
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+}
+
+.booking-form {
+  width: calc(40% - 32px);
+
+  input,
+  select {
+    width: 400px;
+  }
+}
+
+.expiration-message {
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin: 24px 0;
+
+  &.expired {
+    border: 1px solid #ff8c2b;
+  }
+}

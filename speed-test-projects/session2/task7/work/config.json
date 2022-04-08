@@ -1,0 +1,15 @@
+{
+    "id": "yournews",
+    "type": "htmlcss",
+    "localHistory": true,
+    "serve": {
+        "enabled": true
+    },
+    "showPoints": false,
+    "groups": [
+        {
+            "match": ".+",
+            "displayName": "News Site"
+        }
+    ]
+}

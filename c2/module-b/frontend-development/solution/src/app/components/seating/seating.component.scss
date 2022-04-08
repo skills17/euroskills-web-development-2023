@@ -1,0 +1,38 @@
+.stage {
+  background: #6dea6e;
+  width: 300px;
+  padding: 8px;
+  text-align: center;
+  margin: 0 auto 16px;
+  transform: translateX(40px);
+}
+
+.show-row {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-left: 80px;
+}
+
+$seat-size: 16px;
+
+.seat {
+  margin: 2px;
+  border: 1px solid #555;
+  border-radius: $seat-size / 2;
+  width: $seat-size;
+  height: $seat-size;
+
+  &.seat-unavailable {
+    background: #ee7070;
+  }
+
+  &.seat-selected {
+    background: #16b2e7;
+  }
+}
+
+.seat-available,
+.seat-selected {
+  cursor: pointer;
+}

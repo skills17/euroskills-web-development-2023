@@ -1,0 +1,42 @@
+{
+    "id": "concerts-api",
+    "type": "php",
+    "database": {
+        "enabled": true,
+        "name": "concerts",
+        "user": "competitor",
+        "password": "competitor",
+        "host": "localhost"
+    },
+    "showPoints": false,
+    "groups": [
+        {
+            "match": "ConcertListing.*",
+            "displayName": "Concert Listing"
+        },
+        {
+            "match": "ConcertDetail.*",
+            "displayName": "Concert Detail"
+        },
+        {
+            "match": "Seating.*",
+            "displayName": "Seating"
+        },
+        {
+            "match": "Reservation.*",
+            "displayName": "Reservation"
+        },
+        {
+            "match": "Booking.*",
+            "displayName": "Booking"
+        },
+        {
+            "match": "Tickets.*",
+            "displayName": "Tickets"
+        },
+        {
+            "match": "TicketCancel.*",
+            "displayName": "Tickets Cancel"
+        }
+    ]
+}
