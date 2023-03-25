@@ -1,44 +1,71 @@
-# EuroSkills 2021 Web Development Test Project
+# EuroSkills 2023 Web Development Test Project
 
 This repository contains the original tasks presented to competitors at the EuroSkills (WorldSkills Europe) competition
-in 2021 in Graz (originally planned for 2020). 
+in 2023 in Gdansk. 
 
 ## Competition Week
 
-There were 3 competition days.
+There will be 3 competition days.
 
-1. C1: Sep 23rd (THU): Front-end development
-2. C2: Sep 24th (FRI): API Development & Consumption + Speed Challenge (0.5 hours)
-3. C3: Sep 25th (SAT): CMS & fun project + Speed Challenge (1 hour)
+1. C1: Sep 6rd (WED): Design & Implementation: Promo Website & Backend (server side rendering)
+2. C2: Sep 7th (THU): API Development & Frontend Development
+3. C3: Sep 8th (FRI): CI/CD & Fun Project
 
 
-## [C1 - Frontend development](./c1/README.md)
-
-* Morning
-  * 3.5h Browser API with JavaScript for rich-media control and client-side interactivity
-* Afternoon
-  * 3h Static Website Design (HTML/CSS)
-
-## [C2 - API Development & Consumption](./c2/README.md)
+## [C1 - Design & Dynamic Website](./c1/README.md)
 
 * Morning
-  * 3h Backend: PHP framework and API development
+  * 3.5h Static Website Design (HTML/CSS)
+    * Home page
+    * Product page
+    * Pricing page
+    * Who we are page
+    * Responsive
+    * WCAG compliance
+    * SEO friendly
 * Afternoon
-  * (0.25h Introduction if necessary)
-  * 0.5h Speed Challenge 1
-  * (0.25h Break)
-  * 2.5h Frontend: JavaScript application development (consuming an API, displaying data, ...)
+  * 3h Create dynamic website with server side rendering
+    * Login
+    * Create & update workspaces
+    * Create & revoke API tokens
+    * Import historical data from CSV file into database
+    * Show bills
+    * Set billing quotas
 
-## [C3 - CMS & fun project](./c3/README.md)
+## [C2 - API Development](./c2/README.md)
 
 * Morning
-  * 3h CMS web site design
+  * 3h Backend: Wrap ML endpoints (only demo model)
+    * access control (API token)
+    * billing (measure seconds)
+    * adhere to quotas
+    * Implement image classifier
+    * Implement conversational chat
+
 * Afternoon
-  * 1h Speed Challenge 2
-  * (0.25h Break)
+  * 3h Frontend: Provide AI model interfaces
+    * Model Discovery Page
+    * Conversational chat UI
+    * Image classifier UI
+    * Generatie Art Prompt UI
+
+## [C3 - CI/CD & Fun Project](./c3/README.md)
+
+* Morning
+  * 2h CI/CD
+    * Build
+    * Linting
+    * Tests
+    * Docker Build
+    * Push Image
+    * Deploy/Promote
+  * 1h Testing
+    * Mutation Testing Exercise
+* Afternoon
   * 2h Fun module
+    * "Invent/Fake" a new ML model and integrate it
   * Afterwards presentations
 
 ## License
 
-[MIT](https://github.com/skills17/euroskills-web-development-2021-public/blob/master/LICENSE)
+UNLICENSED
