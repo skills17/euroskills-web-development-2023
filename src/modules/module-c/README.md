@@ -12,11 +12,11 @@ Module C will focus on the implementation of a REST API.
 
 ## Description of project and Tasks
 
-The competitors will be asked to create a REST API that will be used to provide access to a commercial API. The API will
-have certain features which allow it to be commercialized and made available publicly and openly. The functionality
-created by competitors in this module, builds on top of the functionality created in module B. Competitors will be given
-a working solution of Module B at the start of Module C, which they must use. Competitors are not allowed to build on
-top of their own Module B solution.
+The competitors will be asked to create a REST API that will be used commercially. The API must be built with features
+which allow it to be commercialized and made available publicly and openly. The functionality created by competitors in
+this module, builds on top of the functionality created in module B. Competitors will be given a working solution of
+Module B at the start of Module C, which they must use. Competitors are not allowed to build on top of their own Module
+B solution.
 
 The functionality of the API will be to provide external access to a number of functions, which will be run as separate
 services. Those services will all expose a REST API themselves, which however should not be publicly accessible, as they
@@ -33,8 +33,8 @@ non-functional requirements of the API.
 
 ## Assessment
 
-Module C will assessed using tools which directly access the API created by competitors. The API will be tested for its
-functionality and its adherence to the specification. The API will also be tested for its security and reliability.
+Module C will be assessed using tools which directly access the API created by competitors. The API will be tested for
+its functionality and its adherence to the specification. The API will also be tested for its security and reliability.
 
 ## Competition time
 
