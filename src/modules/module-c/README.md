@@ -1,6 +1,6 @@
 # Test Project Outline – Module C — Commercial Open API
 
-This document outlines the description of Module A. It is circulated to the competitors and experts 3 months prior to
+This document outlines the description of Module C. It is circulated to the competitors and experts 3 months prior to
 the competition. This outline only describes the basic information of module A. The actual test project module will be
 created by external Test Project Developers using this outline as a guide. The module description will be presented on
 C-2 to all experts. The marking scheme will not be presented or supplied to competitors or experts during the
@@ -16,7 +16,7 @@ The competitors will be asked to create a REST API that will be used commerciall
 which allow it to be commercialized and made available publicly and openly. The functionality created by competitors in
 this module, builds on top of the functionality created in module B. Competitors will be given a working solution of
 Module B at the start of Module C, which they must use. Competitors are not allowed to build on top of their own Module
-B solution.
+B solution. This will include the database and the data that is stored in it.
 
 The functionality of the API will be to provide external access to a number of functions, which will be run as separate
 services. Those services will all expose a REST API themselves, which however should not be publicly accessible, as they
@@ -35,6 +35,9 @@ non-functional requirements of the API.
 
 Module C will be assessed using tools which directly access the API created by competitors. The API will be tested for
 its functionality and its adherence to the specification. The API will also be tested for its security and reliability.
+
+Any modifications in the provided backend of previous modules, including any changes to the database, will not be taken
+into account.
 
 ## Competition time
 
