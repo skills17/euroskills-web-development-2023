@@ -9,7 +9,7 @@ There will be 3 competition days.
 
 1. C1: Sep 6rd (WED): Design & Implementation: Promo Website & Backend (server side rendering)
 2. C2: Sep 7th (THU): API Development & Frontend Development
-3. C3: Sep 8th (FRI): TBD & Testing & Fun Project
+3. C3: Sep 8th (FRI): Testing & PWA & Web Components & Fun Project
 
 
 ## C1
@@ -52,9 +52,9 @@ There will be 3 competition days.
 ## C3
 
 * Morning - [Module E](src/modules/module-e/README.md)
-  * 3h TBD
   * 1h Testing
-    * Mutation Testing Exercise
+  * 1h Progressive Web App (PWA)
+  * 1h Web Components
 * Afternoon - [Module F](src/modules/module-f/README.md)
   * 2h Fun module
     * "Invent/Fake" a new ML model and integrate it
