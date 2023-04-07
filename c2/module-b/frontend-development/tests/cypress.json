@@ -1,8 +1,0 @@
-{
-    "fixturesFolder": false,
-    "screenshotOnRunFailure": false,
-    "video": false,
-    "baseUrl": "http://localhost:4200",
-    "viewportWidth": 1200,
-    "viewportHeight": 800
-}

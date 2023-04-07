@@ -9,13 +9,13 @@ There will be 3 competition days.
 
 1. C1: Sep 6rd (WED): Design & Implementation: Promo Website & Backend (server side rendering)
 2. C2: Sep 7th (THU): API Development & Frontend Development
-3. C3: Sep 8th (FRI): CI/CD & Fun Project
+3. C3: Sep 8th (FRI): TBD & Testing & Fun Project
 
 
-## [C1 - Design & Dynamic Website](./c1/README.md)
+## C1
 
-* Morning
-  * 3.5h Static Website Design (HTML/CSS)
+* Morning - [Module A](src/modules/module-a/README.md)
+  * 3h Static Website Design (HTML/CSS)
     * Home page
     * Product page
     * Pricing page
@@ -23,8 +23,8 @@ There will be 3 competition days.
     * Responsive
     * WCAG compliance
     * SEO friendly
-* Afternoon
-  * 3h Create dynamic website with server side rendering
+* Afternoon - [Module B](src/modules/module-b/README.md)
+  * 4h Dynamic website with server side rendering
     * Login
     * Create & update workspaces
     * Create & revoke API tokens
@@ -32,36 +32,30 @@ There will be 3 competition days.
     * Show bills
     * Set billing quotas
 
-## [C2 - API Development](./c2/README.md)
+## C2
 
-* Morning
-  * 3h Backend: Wrap ML endpoints (only demo model)
+* Morning - [Module C](src/modules/module-c/README.md)
+  * 3h Backend: Commercial Open API
     * access control (API token)
     * billing (measure seconds)
     * adhere to quotas
     * Implement image classifier
     * Implement conversational chat
 
-* Afternoon
-  * 3h Frontend: Provide AI model interfaces
+* Afternoon - [Module D](src/modules/module-d/README.md)
+  * 4h Frontend: Interactive Frontend using an API
     * Model Discovery Page
     * Conversational chat UI
     * Image classifier UI
-    * Generatie Art Prompt UI
+    * Generate Art Prompt UI
 
-## [C3 - CI/CD & Fun Project](./c3/README.md)
+## C3
 
-* Morning
-  * 2h CI/CD
-    * Build
-    * Linting
-    * Tests
-    * Docker Build
-    * Push Image
-    * Deploy/Promote
+* Morning - [Module E](src/modules/module-e/README.md)
+  * 3h TBD
   * 1h Testing
     * Mutation Testing Exercise
-* Afternoon
+* Afternoon - [Module F](src/modules/module-f/README.md)
   * 2h Fun module
     * "Invent/Fake" a new ML model and integrate it
   * Afterwards presentations
