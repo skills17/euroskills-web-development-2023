@@ -48,10 +48,10 @@ WorldSkills Occupation Standards.
 
 | WSOS SECTION | Description                            | Points |
 |--------------|----------------------------------------|--------|
-| 1            | Work organization and self-management  | 1      |
+| 1            | Work organization and self-management  | 0      |
 | 2            | Communication and interpersonal skills | 0      |
-| 3            | Design Implementation                  | 1      |
+| 3            | Design Implementation                  | 5      |
 | 4            | Front-End Development                  | 0      |
-| 5            | Back-End Development                   | 10     |
+| 5            | Back-End Development                   | 18     |
 |              |                                        |        |
-| **Total**    |                                        | 12     |
+| **Total**    |                                        | 23     |

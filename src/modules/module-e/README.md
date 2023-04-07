@@ -66,10 +66,10 @@ Please read the Technical Description for a full explanation of the WorldSkills 
 
 | WSOS SECTION | Description                            | Points |
 |--------------|----------------------------------------|--------|
-| 1            | Work organisation and self-management  | 0      |
-| 2            | Communication and interpersonal skills | 0      |
+| 1            | Work organisation and self-management  | 2      |
+| 2            | Communication and interpersonal skills | 1      |
 | 3            | Design Implementation                  | 0      |
-| 4            | Front-End Development                  | 5      |
+| 4            | Front-End Development                  | 8      |
 | 5            | Back-End Development                   | 5      |
 |              |                                        |        |
-| **Total**    |                                        | 10     |
+| **Total**    |                                        | 16     |
