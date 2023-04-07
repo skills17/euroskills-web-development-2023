@@ -1,7 +1,7 @@
 # Test Project Outline – Module D — Interactive Frontend using an API
 
 This document outlines the description of Module D. It is circulated to the competitors and experts 3 months prior to
-the competition. This outline only describes the basic information of module A. The actual test project module will be
+the competition. This outline only describes the basic information of module D. The actual test project module will be
 created by external Test Project Developers using this outline as a guide. The module description will be presented on
 C-2 to all experts. The marking scheme will not be presented or supplied to competitors or experts during the
 competition.
