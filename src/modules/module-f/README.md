@@ -19,8 +19,8 @@ The functionality itself can be implemented in any way, and it can also be faked
 and working, so the function can actually be integrated into the system.
 
 Competitors are then asked to present their function to the other competitors and the experts. The presentation should
-short, include the explanation of what they created and how they came up with that idea. The presentation should be
-rounded off with a demo of the function.
+be short, include the explanation of what they created and how they came up with that idea. Also, it should be rounded
+off with a demo of the function.
 
 ## Assessment
 
