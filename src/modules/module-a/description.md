@@ -14,7 +14,8 @@ The website should be responsive and support at least the following viewports:
 - Desktop: 1920x1080
 
 No server-side or client-side framework is allowed for module A.
-CSS preprocessors may be used, but the generated code must still pass the W3C validations.
+CSS preprocessors may be used.
+All HTML and CSS code must pass the W3C validations, even generated one.
 
 ## Competitor Information
 
@@ -53,12 +54,12 @@ On the pricing page, the pricing of the APIs should be explained.
 
 ### Team Page
 
-As the client is also looking to grow his team, a dedicated team page should show the current employees and also highlight some core values of the company.
+As the client is also looking to grow their team, a dedicated team page should show the current employees and also highlight some core values of the company.
 
 ### Global Elements
 
 The following elements should be available on all pages:
-- **Header**: has to at least include a product name
+- **Header**: has to at least include a product name in form of text or a logo
 - **Navigation**: contains easily accessible links to all pages
 - **Footer**: includes at least a copyright notice
 
