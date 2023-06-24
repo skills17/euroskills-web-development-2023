@@ -52,8 +52,8 @@ WorldSkills Occupation Standards.
 |--------------|----------------------------------------|--------|
 | 1            | Work organization and self-management  | 1      |
 | 2            | Communication and interpersonal skills | 1      |
-| 3            | Design Implementation                  | 20     |
+| 3            | Design Implementation                  | 15     |
 | 4            | Front-End Development                  | 0      |
 | 5            | Back-End Development                   | 0      |
 |              |                                        |        |
-| **Total**    |                                        | 22     |
+| **Total**    |                                        | 17     |

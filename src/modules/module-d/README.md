@@ -49,8 +49,8 @@ Please read the Technical Description for a full explanation of the WorldSkills 
 |--------------|----------------------------------------|--------|
 | 1            | Work organisation and self-management  | 0      |
 | 2            | Communication and interpersonal skills | 0      |
-| 3            | Design Implementation                  | 4      |
-| 4            | Front-End Development                  | 20     |
+| 3            | Design Implementation                  | 5      |
+| 4            | Front-End Development                  | 17     |
 | 5            | Back-End Development                   | 0      |
 |              |                                        |        |
-| **Total**    |                                        | 24     |
+| **Total**    |                                        | 22     |
