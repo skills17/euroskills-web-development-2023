@@ -19,16 +19,16 @@ project. The skills that will be tested in this module are:
 
 __1. Writing automated tests__
 
-The competitor will be given a project that has no automated tests. The competitor will have to write automated unit
-tests for the project. A complete test set is expected which covers 100% of the provided code. A JavaScript testing
-framework must be used. Library availability will be limited and will be decided by all experts using the EuroSkills
-forums.
+The competitor will be given a JavaScript project that has no automated tests. The competitor will have to write
+automated unit tests for the project. A complete test set is expected which covers 100% of the provided code. A
+JavaScript testing framework must be used. Library availability will be limited and will be decided by all experts using
+the EuroSkills forums.
 
 __2. Creating a Progressive Web App (PWA)__
 
 The competitor will have to create a simple Progressive Web App (PWA), that can work offline, push notifications, and
 that is installable on the user's device. The competitor is not allowed to use any frameworks or libraries for this
-task. A simple backend along with a documentation will be provided to competitors. 
+task. A simple backend along with a documentation will be provided to competitors.
 
 __3. Creating a Web Component__
 
