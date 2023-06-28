@@ -22,7 +22,16 @@ These are the assessment criteria for this task:
 
 ## Task 2: Creating a Progressive Web App (PWA)
 
-TODO
+Your task is to create a progressive web app for an AI news site.
+The backend is already provided to you with an OpenAPI spec explaining the available endpoints.
+The frontend has to be created from scratch. However, functionality is more important than design in the first version.
+
+The app has the following requirements:
+
+- It can be installed to the users device
+- There is one view, showing all recent news articles in a list
+- It has to work offline, meaning the last successfully loaded news articles are shown if the user does not have an internet connection
+- Push notifications about new articles can be received and open the app to the list view when clicked
 
 ## Task 3: Creating a Web Component
 
