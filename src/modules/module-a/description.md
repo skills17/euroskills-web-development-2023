@@ -23,8 +23,6 @@ Module A will be assessed using Google Chrome and Firefox.
 
 The axe browser extension is installed in Google Chrome and allows competitors to validate the website according to the accessibility standards WCAG.
 
-TODO: Any possibility to check W3C validation?
-
 ## Website Requirements
 
 The goal of the website is to promote a suite of AI driven APIs.
