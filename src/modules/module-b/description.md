@@ -1,6 +1,6 @@
 # Module B — Dynamic website with server-side rendering
 
-The goal of Module B is to create a server-side rendered websites which customers can use to manage
+The goal of Module B is to create a server-side rendered website which customers can use to manage
 their API usage and billing.
 It is possible to use additional libraries in the frontend for interactivity, but rendering must be
 performed by the server-side framework, and _not_ by a client-side framework calling an API.
@@ -15,7 +15,7 @@ As this website will be publicly exposed, it must implement the OWASP guidelines
 Module B will be assessed using the latest stable version of Google Chrome.
 Different security aspects will be tested.
 
-The design of the website is not important in this first iteraction.
+The design of the website is not important in this first iteration.
 The client will mostly focus on the functionality but some basic styling is expected to make
 it readable and usable.
 
@@ -27,13 +27,13 @@ The website should provide the following functionality.
 
 All other pages are protected and not accessible to non authenticated users.
 Login should be possible by providing a username and a password.
-As the first version is invitation only, it is not necessary to be able to register accounts.
+As the first version of the website will only allow users to sign up by invitation only, it is not necessary to be able to register accounts.
 
 However, please create the following accounts:
 - Username: `demo1`<br>Password: `skills2023d1`
 - Username: `demo2`<br>Password: `skills2023d2`
 
-The password has to be stored in a way that it is not reproducible in case someone gets access to the database.
+The password has to be stored in a secure way (hashed) in case someone gets access to the database.
 
 ### Workspaces
 
@@ -45,10 +45,10 @@ After login, the user is redirected to their list of workspaces.
 On that page, they can create or update workspaces.
 Users can only access and modify their own namespaces.
 
-For each workspace, they have the possibility to manage the API tokens, billing quotas, and bills. This additional functionality can also be provided in separate pages through links and does not have to be on the same page.
+For each workspace, they have the possibility to manage the API tokens, billing quotas, and bills. This additional functionality can also be provided on separate pages through links and does not have to be on the same page.
 
 A workspace has the following attributes:
-- A required **title** (max 100 characters)
+- A required **title** (max 100 characters, unique within the account)
 - An optional **description** of any length
 
 ### API Tokens
@@ -56,7 +56,7 @@ A workspace has the following attributes:
 For each workspace, it is possible to create one or more API tokens.
 All available tokens of a workspace are listed with their name and the creation date.
 
-The actual token is only shown once when it is created. It is not possible to view the token again after creation.
+The actual token is only revealed once when it is created. It is not possible to view the token again after creation.
 
 Each token can be revoked. If it is revoked, it cannot be used anymore.
 It is also not possible to activate a revoked token again.
@@ -70,7 +70,7 @@ A token has the following attributes:
 
 ### Billing Quotas
 
-It is possible to set and remove a billing quota per workspace.
+It is possible to set and remove a user-defined billing quota per workspace.
 Each call to the provided API costs a certain amount of money.
 If a billing quota is set, it defines the maximum amount that can be spent on API calls within the assigned workspace per calendar month.
 If the quota is exceeded, usage of the API is not possible anymore for all API tokens of this workspace.
@@ -85,14 +85,19 @@ A billing quota has the following attributes:
 ### Bills
 
 For each passed calendar month, a bill is generated and visible to the users.
-The bill contains the following data per API token and per accessed API:
-- Usage of the API for a specific API token in seconds
-- Cost of the API per second (static value per API)
-- Usage cost of the specific token and API
-- If a token did not access an API, that API should not be listed
+
+Each API token can access services that are exposed through an API.
+The user pays for using those services based on the time it takes to compute the result.
+Each service can cost a different amount of money per second.
+
+The bill contains the following data per API token and per accessed service which is exposed through an API:
+- Usage of the service for a specific API token in seconds
+- Cost of the service per second (static value per service)
+- Usage cost of the specific token and service
+- If a token did not access a service, that service should not be listed
 - If a token was not used at all, that token should not be listed
 
-A total row will also show the total cost over all API tokens and APIs.
+A total row will also show the total cost over all API tokens and services.
 The total costs are rounded to two decimal points for displaying purpose only.
 
 The client has provided the following example mockup to show their idea of a bill.
