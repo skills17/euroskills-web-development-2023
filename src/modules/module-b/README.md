@@ -21,13 +21,13 @@ As this website will be publicly exposed, it must implement the OWASP guidelines
 
 The client will provide a detailed description of all the required functionalities of this website.
 From that, competitors must come up with a database design and implement the website based on it.
-Some example data will be provided in the form of CSV files which competitors are free to use.
+Some example data will be provided in the form of CSV files which competitors must use.
 However, this CSV data might not be normalized and it is up to the competitors to import it
 into their database schema.
 
 Module B has to be implemented using a server-side framework.
-It is possible to use additional libraries in the frontend, but rendering must be performed
-by the server-side framework, and _not_ by a client-side framework calling an API.
+It is possible to use additional libraries in the frontend for interactivity, but rendering must be
+performed by the server-side framework, and _not_ by a client-side framework calling an API.
 Framework and library availability will be limited and will be decided by all experts using
 the EuroSkills forums.
 
