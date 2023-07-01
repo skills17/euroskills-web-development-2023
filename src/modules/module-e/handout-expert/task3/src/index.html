@@ -40,7 +40,7 @@
         document.querySelector('limited-textarea').addEventListener('change', (event) => {
             console.log('LimitedTextarea change:', event.detail);
         });
-        document.querySelector('confirmation-modal').addEventListener('confirmed', () => {
+        document.querySelector('confirmation-modal').addEventListener('confirm', () => {
             console.log('Modal closed');
         });
         document.querySelector('.fifteen-sec-countdown').setAttribute('date', new Date(new Date().getTime() + 15 * 1000).toISOString());

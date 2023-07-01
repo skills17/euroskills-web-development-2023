@@ -44,14 +44,14 @@ Therefore, they have to be implemented a bit differently and for this to work, t
 ## Task 3: Creating a Web Component
 
 For this task, you are expected to create three web components and emebed them in a simple website.
-You are not allowed to use any framework for this task.
+You are not allowed to use any framework or library for this task.
 
 ### `<limited-textarea>`
 
 This component renders a textarea that has a character limit.
 However, this limit is not strictly enforced, meaning the user can still enter more characters but the field is not considered valid anymore.
 It is displayed to the user how many characters they have left.
-The color of the remaining character number changes to orange if there are 10% or less of the characters left, and to red once the limit is reached.
+The color of the remaining character number changes to orange if there are 10% or less of the characters left, and to red once the limit is exceeded.
 
 Attributes:
 - `maxchars`: Maximum number of characters (default: 500)
@@ -59,16 +59,17 @@ Attributes:
 Events:
 - `change`: Triggered immediately each time the content of the textarea changed.
   Event attributes:
-    - `value: string` Value of the textarea (if limit is reached, only contains the allowed number of characters)
-    - `valid: boolean` If the content is valid (limit not reached)
+    - `value: string` Value of the textarea (if limit is exceeded, only contains the allowed number of characters)
+    - `valid: boolean` If the content is valid (limit not exceeded)
 
 Other requirements:
 - The component should not inherit any other styles that might be globally set on the page (except for fonts)
 - The attributes of the component can change at any time and the component is updated automatically in this case
 - The textarea should take the full available width and is not resizable
-- The example website adds an event lister for the `change` event that logs the event data to the browsers console
+- The example website adds an event listener for the `change` event that logs the event data to the browser's console
 - The `x characters left` text is located below the textarea and has the color `#666`
-- The number of characters has the color `#000` by default, `#f0620d` if below 10%, or `#ea1010` when the limit is reached
+- When the limit is exceeded, a negative value is shown for the `x characters left` label indicating how many characters the user has to delete
+- The number of characters has the color `#000` by default, `#f0620d` if below 10%, or `#ea1010` when the limit is exceeded
 
 Example:
 
@@ -88,13 +89,13 @@ Attributes:
 - children: Any valid HTML element which will be rendered inside the modal
 
 Events:
-- `confirmed`: Triggered when the modal is closed. There are no event attributes.
+- `confirm`: Triggered when the modal is closed. There are no event attributes.
 
 Other requirements:
 - The attributes of the component can change at any time and the component is updated automatically in this case
 - While the modal is open, the rest of the website has an overlay of color `rgba(0, 0, 0, 0.3)`
 - The button is aligned to the right and has a margin of at least 10px to the rest of the content
-- The example website adds an event lister for the `confirmed` event that logs when the modal is closed
+- The example website adds an event lister for the `confirm` event that logs when the modal is closed
 
 Example:
 
@@ -113,7 +114,7 @@ Example:
 The countdown component counts down to the given time and date and displays a message once that is reached.
 
 Attributes:
-- `date`: Target date in ISO 8601
+- `date`: Target date as an ISO 8601 string
 - `message`: Message which will be displayed once the date is reached
 
 Other requirements:

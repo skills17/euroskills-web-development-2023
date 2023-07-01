@@ -47,7 +47,7 @@ class ConfirmationModal extends HTMLElement {
   }
 
   onClose() {
-    this.dispatchEvent(new CustomEvent('confirmed', {
+    this.dispatchEvent(new CustomEvent('confirm', {
       bubbles: true,
       cancelable: false,
       composed: true,
