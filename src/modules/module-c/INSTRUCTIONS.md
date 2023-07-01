@@ -50,7 +50,7 @@ user using the solution of module B. The token shall be used to identify the use
 ### Quotas
 
 The API endpoints must enforce the user-defined quotas. The quotas are defined by the user in the solution of module B.
-The quotas define the maximum that the user wants to spend on an AI service in total. It is not known at the start
+The quotas define the maximum that the user wants to spend per workspace in total. It is not known at the start
 of the API call if the quota will be exceeded. The API must therefore allow the user to make the call if the quota is
 not exceeded, but must also enforce the quota if it is exceeded. The last API call may lead to exceeding the quota, but
 that is accepted. The API must return an error if the quota is already exceeded.
@@ -77,9 +77,10 @@ The AI services are
 
 This service can be used to chat with. Its API accepts a JSON object with a text prompt field and a conversation ID.
 Another endpoint can then be used to fetch a partial conversation response in plain text. An indicator `<EOF>` is
-printed at the end once the answer is final. The consumer you build needs to poll the endpoint and provide the partial
-answer to the user until it is final. Then the user can submit another prompt to continue the conversation. It should
-not be possible to submit a prompt while the service is still processing the previous one.
+printed at the end once the answer is final. The service you build needs to fetch the endpoint and provide the partial
+answer to the user until it is final. The frontend will be polling for the answer. After the response is complete, the
+user can submit another prompt to continue the conversation. It should not be possible to submit a prompt while the
+service is still processing the previous conversation input.
 
 You can find the specification of the API in the file `chatterblast.yaml` and the generated documentation in the
 file `chatterblast.html`.
