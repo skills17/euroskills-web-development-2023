@@ -1,7 +1,7 @@
 # Module D – Interactive Frontend using an API
 
 You are asked to create a frontend for the REST API from module C. Since the functionality created by you in this
-module, builds on top of the functionality created in module B and C, you will be given a working solution of Module C.
+module builds on top of the functionality created in module B and C, you will be given a working solution of Module C.
 You must use the provided solution and are not allowed to build on top of your own Module C solution.
 
 The users of the frontend will be able to discover the available AI services that the API provides. Each service is then
@@ -20,7 +20,7 @@ the same content to the user as previously visible, except unsaved user driven i
 
 ## Assessment
 
-Module D will be assessed using the latest stable version of Google Chrome. The assessment will include functional
+Module D will be assessed using the provided version of Google Chrome. The assessment will include functional
 tests, as well as user experience. Accessibility will be tested using axe.
 
 Any modifications in the provided backend of previous modules, including any changes to the database, will not be taken
@@ -55,7 +55,8 @@ The page must contain the following elements:
 
 - A text input field for the user to enter a message.
 - A button to clear the text input.
-- A button to send the message to the chatbot.
+- A button to send the message to the chatbot for the current conversation or create a new conversation if it's the
+  first one.
 - An area to display the response from the chatbot.
 - A button to start a new conversation with the chatbot.
 
@@ -76,10 +77,11 @@ The page must contain the following elements:
 - A button to generate a new image.
 - An area to display the generated image.
 - A button to save the image to the local file system.
+- A button to upscale the image.
+- A button to zoom in and out of the image.
 
-The image must be displayed as soon as it becomes available, even if it's not the final one. There must be a loading
-indicator while the image is being generated and the preliminary images must be animated in a fade-in style when it
-becomes available.
+A loading indicator should be displayed while the image is being generated, and the preliminary images should be
+animated with a fade-in effect until the final image is available.
 
 While the image is being generated, the button to generate a new image must be disabled.
 
@@ -92,7 +94,10 @@ The page must contain the following elements:
 
 - A file input field for the user to upload an image.
 - A button to upload the image to the service.
-- An area to display the recognized objects.
+- Once objects are recognized:
+    - A message that indicates how many objects have been recognized.
+    - The recognized objects are shown with a transparent rectangle with a red border on top of the image alongside a
+      label in the upper left corner of the rectangle.
 
 While the image is being uploaded and the objects recognized, the button to upload a new image must be disabled and a
 loading indicator must be shown.
