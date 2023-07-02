@@ -5,14 +5,14 @@ their API usage and billing.
 It is possible to use additional libraries in the frontend for interactivity, but rendering must be
 performed by the server-side framework, and _not_ by a client-side framework calling an API.
 
-The project does not have a database yet and it is therefore also in the scope of this task
+The project does not have a database yet, and it is therefore also in the scope of this task
 to come up with a new database design and import a provided CSV file with partial example data.
 
 As this website will be publicly exposed, it must implement the OWASP guidelines.
 
 ## Competitor Information
 
-Module B will be assessed using the latest stable version of Google Chrome.
+Module B will be assessed using the provided version of Google Chrome.
 Different security aspects will be tested.
 
 The design of the website is not important in this first iteration.
@@ -25,7 +25,7 @@ The website should provide the following functionality.
 
 ### Login
 
-All other pages are protected and not accessible to non authenticated users.
+All other pages are protected and not accessible to non-authenticated users.
 Login should be possible by providing a username and a password.
 As the first version of the website will only allow users to sign up by invitation only, it is not necessary to be able to register accounts.
 
@@ -76,7 +76,7 @@ If a billing quota is set, it defines the maximum amount that can be spent on AP
 If the quota is exceeded, usage of the API is not possible anymore for all API tokens of this workspace.
 
 Quotas are displayed in the following way:
-- If no quota is set, the costs of the current calendar month is shown but it should also be clear that there is no maximum.
+- If no quota is set, the costs of the current calendar month is shown, but it should also be clear that there is no maximum.
 - If a quota is set, the costs and the maximum of the current calendar month are shown. Also, the number of remaining days in the current billing cycle is shown so users know when it will reset.
 
 A billing quota has the following attributes:
