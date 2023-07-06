@@ -24,7 +24,8 @@ the AI services are also provided in a separate document.
 
 There is a specification for the open API that you are tasked to create. This specification is in the form of an
 OpenAPI specification and a generated documentation based on it. The specification describes the endpoints that you are
-supposed to implement.
+supposed to implement. You can find the specification of the API in the file `ai-api/api.yml` and the generated
+documentation in the file `ai-api/api-docs.html`.
 
 The API shall be implemented using one of the provided frameworks.
 
@@ -82,8 +83,8 @@ answer to the user until it is final. The frontend will be polling for the answe
 user can submit another prompt to continue the conversation. It should not be possible to submit a prompt while the
 service is still processing the previous conversation input.
 
-You can find the specification of the API in the file `chatterblast.yaml` and the generated documentation in the
-file `chatterblast.html`.
+You can find the specification of the API in the file `provided-ai-services/chatterblast.yml` and the generated
+documentation in the file `provided-ai-services/chatterblast.html`.
 
 #### AI Service 2: DreamWeaver: Image Generation
 
@@ -94,8 +95,11 @@ finished, the result contains a resource ID and an image URL that can be used to
 has further actions to choose from: Upscale, zoom in or zoom out. These actions require the generated image resource ID
 and also return a job ID.
 
-You can find the specification of the API in the file `dreamweaver.yaml` and the generated documentation in the file
-`dreamweaver.html`.
+The image URLs will point to an image that is stored on the AI service server. Your server application needs to download
+the image and store it locally and generate a new URL for the frontend to access the image, also the preliminary images.
+
+You can find the specification of the API in the file `provided-ai-services/dreamweaver.yml` and the generated
+documentation in the file `provided-ai-services/dreamweaver.html`.
 
 #### AI Service 3: MindReader: Image Recognition
 
@@ -103,5 +107,5 @@ This service is used to recognize objects in images. Its API accepts a `multipar
 a JSON object with the recognized objects and their probabilities. The endpoint is synchronous and returns the result
 within a few seconds.
 
-You can find the specification of the API in the file `mindreader.yaml` and the generated documentation in the
-file `mindreader.html`.
+You can find the specification of the API in the file `provided-ai-services/mindreader.yml` and the generated
+documentation in the file `provided-ai-services/mindreader.html`.

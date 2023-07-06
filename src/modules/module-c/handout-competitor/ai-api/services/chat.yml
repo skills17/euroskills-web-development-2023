@@ -1,0 +1,83 @@
+paths:
+  /conversation:
+    post:
+      summary: Start or continue a conversation
+      operationId: chat_startConversation
+      tags:
+        - Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '400': # Bad request
+          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '401': # Unauthorized
+          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '403': # Quota exceeded
+          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '500': # Internal server error
+          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '503': # Service unavailable
+          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+
+  /conversation/{conversation_id}:
+    get:
+      summary: Get partial conversation response
+      operationId: chat_getResponse
+      tags:
+        - Chat
+      parameters:
+        - name: conversation_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '400': # Bad request
+          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '401': # Unauthorized
+          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '403': # Quota exceeded
+          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '404': # Not found
+          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '500': # Internal server error
+          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '503': # Service unavailable
+          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+
+components:
+  schemas:
+    ConversationInput:
+      type: object
+      properties:
+        prompt:
+          type: string
+        conversationId:
+          type: string
+      required:
+        - prompt
+    ConversationResponse:
+      type: object
+      properties:
+        conversation_id:
+          type: string
+        response:
+          type: string
+        is_final:
+          type: boolean
