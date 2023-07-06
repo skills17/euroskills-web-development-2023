@@ -187,3 +187,6 @@ components:
               image_url:
                 type: string
                 description: URL of the final generated image
+              duration_ms:
+                type: integer
+                description: Duration of the job in milliseconds

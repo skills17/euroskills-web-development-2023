@@ -77,8 +77,11 @@ The AI services are
 #### AI Service 1: ChatterBlast: Chat Bot
 
 This service can be used to chat with. Its API accepts a JSON object with a text prompt field and a conversation ID.
-Another endpoint can then be used to fetch a partial conversation response in plain text. An indicator `<EOF>` is
-printed at the end once the answer is final. The service you build needs to fetch the endpoint and provide the partial
+Another endpoint can then be used to fetch a partial conversation response in plain text. An
+indicator `<EOF>Took {duration in millis}ms` is printed at the end once the answer is final.
+Example: `<EOF>Took 4254ms`. The duration signifies how long the service took to generate the response. This is the time
+that should be used to determine how long it took and consequently update the billing. That indicator should not be part
+of the response forwarded to the frontend. The service you build needs to fetch the endpoint and provide the partial
 answer to the user until it is final. The frontend will be polling for the answer. After the response is complete, the
 user can submit another prompt to continue the conversation. It should not be possible to submit a prompt while the
 service is still processing the previous conversation input.
