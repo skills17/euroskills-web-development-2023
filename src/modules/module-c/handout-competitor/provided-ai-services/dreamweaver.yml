@@ -158,6 +158,11 @@ components:
             properties:
               job_id:
                 type: string
+              started_at:
+                type: string
+                format: date-time
+                description: Started date
+                example: "2023-09-03TT08:30:00Z"
     ImageGenerationStatusResponse:
       description: Response containing status, progress, and image URL
       content:
@@ -187,6 +192,8 @@ components:
               image_url:
                 type: string
                 description: URL of the final generated image
-              duration_ms:
-                type: integer
-                description: Duration of the job in milliseconds
+              finished_at:
+                type: string
+                format: date-time
+                description: Finished date
+                example: "2023-09-03TT08:35:00Z"
