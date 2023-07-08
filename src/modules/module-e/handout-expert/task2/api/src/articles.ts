@@ -15,9 +15,13 @@ export const getArticles = (fromIndex: number, imageBaseUrl: string) => {
         recentArticles = [...articles.slice(fromIndexResolved), ...articles.slice(0, toIndexResolved)];
     }
 
-    return recentArticles.reverse().map((article, i) => ({
-        ...article,
-        publicationDate: new Date(baseDate.getTime() + articleTimeOffset * (fromIndex + pageSize - i)),
-        imageUrl: `${imageBaseUrl}/images/${(fromIndex + pageSize - i) % articles.length}.jpg`,
-    }));
+    return recentArticles.reverse().map((article, i) => {
+        const id = fromIndex + pageSize - i;
+        return {
+            id: id,
+            ...article,
+            publicationDate: new Date(baseDate.getTime() + articleTimeOffset * (id)),
+            imageUrl: `${imageBaseUrl}/images/${(id) % articles.length}.jpg`,
+        }
+    });
 }

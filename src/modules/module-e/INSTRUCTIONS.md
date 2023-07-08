@@ -31,7 +31,11 @@ The app has the following requirements:
 - It can be installed on the user's device
 - There is one view, showing all recent news articles in a list
 - It has to work offline, meaning the last successfully loaded news articles are shown if the user does not have an Internet connection
+- If the user is online, articles are always loaded from the API and not returned from cache
 - Notifications about new articles can be received as explained below and open the app to the list view when clicked
+
+Because PWAs do not work with file URLs, a simple HTTP server is provided to you.
+It can be started by running `npm start` and serves the content of the whole directory.
 
 ### Notifications
 
@@ -40,6 +44,7 @@ Therefore, they have to be implemented a bit differently and for this to work, t
 
 - The app polls the provided endpoint every 10 seconds in the background
 - If there is a new article, a notification should be shown, but only if the app is not visible at the moment (open in the background or in another tab)
+- The notification contains the title of the new article and an application icon
 
 ## Task 3: Creating a Web Component
 

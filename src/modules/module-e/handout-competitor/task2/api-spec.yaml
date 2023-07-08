@@ -45,6 +45,10 @@ components:
       - author
       - imageUrl
       properties:
+        id:
+          type: integer
+          description: Article Id
+          example: 10
         title:
           type: string
           description: Title of the news article
