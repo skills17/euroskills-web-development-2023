@@ -44,8 +44,6 @@ paths:
           $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
         '401':
           $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
-        '403':
-          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
         '503':
           $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
   /result/{job_id}:
@@ -67,8 +65,6 @@ paths:
           $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
         '401':
           $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
-        '403':
-          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
         '404':
           $ref: '../api.yml#/components/responses/ProblemResponse_404_NotFound'
         '503':
