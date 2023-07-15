@@ -15,6 +15,7 @@ paths:
                 image:
                   type: string
                   format: binary
+                  description: Image file uploaded as multipart/form-data
       responses:
         '200':
           description: OK
@@ -22,16 +23,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImageRecognitionSuccessResponse'
-        '400': # Bad request
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '401': # Unauthorized
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '403': # Quota exceeded
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '500': # Internal server error
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '503': # Service unavailable
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
 
 components:
   schemas:

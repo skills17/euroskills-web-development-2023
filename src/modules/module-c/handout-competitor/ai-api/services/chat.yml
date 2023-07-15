@@ -1,7 +1,7 @@
 paths:
   /conversation:
     post:
-      summary: Start or continue a conversation
+      summary: Start conversation
       operationId: chat_startConversation
       tags:
         - Chat
@@ -18,18 +18,48 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConversationResponse'
-        '400': # Bad request
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '401': # Unauthorized
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '403': # Quota exceeded
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '500': # Internal server error
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '503': # Service unavailable
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
 
   /conversation/{conversation_id}:
+    put:
+      summary: Continue a conversation
+      operationId: chat_continueConversation
+      tags:
+        - Chat
+      parameters:
+        - name: conversation_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
     get:
       summary: Get partial conversation response
       operationId: chat_getResponse
@@ -48,18 +78,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConversationResponse'
-        '400': # Bad request
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '401': # Unauthorized
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '403': # Quota exceeded
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '404': # Not found
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '500': # Internal server error
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '503': # Service unavailable
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '404':
+          $ref: '../api.yml#/components/responses/ProblemResponse_404_NotFound'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
 
 components:
   schemas:
@@ -67,8 +95,6 @@ components:
       type: object
       properties:
         prompt:
-          type: string
-        conversationId:
           type: string
       required:
         - prompt

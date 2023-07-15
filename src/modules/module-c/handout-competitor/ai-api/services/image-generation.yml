@@ -17,16 +17,14 @@ paths:
       responses:
         '201':
           $ref: '#/components/responses/ImageGenerationSuccessResponse'
-        '400': # Bad request
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '401': # Unauthorized
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '403': # Quota exceeded
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '500': # Internal server error
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '503': # Service unavailable
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
   /status/{job_id}:
     get:
       summary: Get the status and progress of a job
@@ -42,16 +40,14 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ImageGenerationStatusResponse'
-        '400': # Bad request
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '401': # Unauthorized
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '403': # Quota exceeded
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '500': # Internal server error
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '503': # Service unavailable
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
   /result/{job_id}:
     get:
       summary: Get the result of a finished job
@@ -67,19 +63,19 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ImageGenerationResultResponse'
-        '400': # Bad request
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '401': # Unauthorized
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '403': # Quota exceeded
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '500': # Internal server error
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '503': # Service unavailable
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '404':
+          $ref: '../api.yml#/components/responses/ProblemResponse_404_NotFound'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
   /upscale:
     post:
-      summary: Upscale a generated image
+      summary: Upscale a generated image with a fixed factor of 2.
       operationId: generateImage_upscale
       tags:
         - Image Generation
@@ -95,19 +91,19 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ImageGenerationSuccessResponse'
-        '400': # Bad request
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '401': # Unauthorized
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '403': # Quota exceeded
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '500': # Internal server error
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '503': # Service unavailable
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '404':
+          $ref: '../api.yml#/components/responses/ProblemResponse_404_NotFound'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
   /zoom/in:
     post:
-      summary: Zoom in on a generated image
+      summary: Zoom in on a generated image with a fixed factor of 2.
       operationId: generateImage_zoomIn
       tags:
         - Image Generation
@@ -123,19 +119,19 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ImageGenerationSuccessResponse'
-        '400': # Bad request
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '401': # Unauthorized
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '403': # Quota exceeded
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '500': # Internal server error
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '503': # Service unavailable
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '404':
+          $ref: '../api.yml#/components/responses/ProblemResponse_404_NotFound'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
   /zoom/out:
     post:
-      summary: Zoom out on a generated image
+      summary: Zoom out on a generated image with a fixed factor of 2.
       operationId: generateImage_zoomOut
       tags:
         - Image Generation
@@ -151,16 +147,16 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ImageGenerationSuccessResponse'
-        '400': # Bad request
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '401': # Unauthorized
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '403': # Quota exceeded
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '500': # Internal server error
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
-        '503': # Service unavailable
-          $ref: '../api.openapi.yml#/components/responses/ProblemResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '404':
+          $ref: '../api.yml#/components/responses/ProblemResponse_404_NotFound'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
 
 components:
   responses:
@@ -174,7 +170,7 @@ components:
               job_id:
                 type: string
     ImageGenerationStatusResponse:
-      description: Response containing status, progress, and image URL
+      description: Response containing status, progress, and image URL.
       content:
         application/json:
           schema:
@@ -189,7 +185,7 @@ components:
                 description: Progress in percent points 0-100
               image_url:
                 type: string
-                description: URL of a preliminarily generated image
+                description: URL of a preliminarily generated image in low resolution.
     ImageGenerationResultResponse:
       description: Response containing resource ID and image URL
       content:
@@ -201,4 +197,4 @@ components:
                 type: string
               image_url:
                 type: string
-                description: URL of the final generated image
+                description: URL of the final generated image in high resolution.

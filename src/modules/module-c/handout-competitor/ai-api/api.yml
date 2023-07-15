@@ -60,28 +60,113 @@ components:
         type:
           type: string
           description: 'A type URI of the problem that uniquely identifies it'
-          example: '/problem/types/400'
         title:
           type: string
           description: 'A short, human-readable summary of the problem type'
-          example: 'Bad Request'
         status:
           type: integer
           format: int32
           description: 'The HTTP status code for this occurrence of the problem'
-          example: 400
         detail:
           type: string
           description: 'A human-readable explanation specific to this occurrence of the problem'
-          example: 'The request is invalid.'
+    ProblemDetailsModel400:
+      allOf:
+        - $ref: '#/components/schemas/ProblemDetailsModel'
+        - type: object
+          properties:
+            type:
+              example: '/problem/types/400'
+            title:
+              example: 'Bad Request'
+            status:
+              example: 400
+            detail:
+              example: 'The request is invalid.'
+    ProblemDetailsModel401:
+      allOf:
+        - $ref: '#/components/schemas/ProblemDetailsModel'
+        - type: object
+          properties:
+            type:
+              example: '/problem/types/401'
+            title:
+              example: 'Unauthorized'
+            status:
+              example: 401
+            detail:
+              example: 'The header X-API-TOKEN is missing or invalid.'
+    ProblemDetailsModel403:
+      allOf:
+        - $ref: '#/components/schemas/ProblemDetailsModel'
+        - type: object
+          properties:
+            type:
+              example: '/problem/types/403'
+            title:
+              example: 'Quota Exceeded'
+            status:
+              example: 403
+            detail:
+              example: 'You have exceeded your quota.'
+    ProblemDetailsModel404:
+      allOf:
+        - $ref: '#/components/schemas/ProblemDetailsModel'
+        - type: object
+          properties:
+            type:
+              example: '/problem/types/404'
+            title:
+              example: 'Not Found'
+            status:
+              example: 404
+            detail:
+              example: 'The requested resource was not found.'
+    ProblemDetailsModel503:
+      allOf:
+        - $ref: '#/components/schemas/ProblemDetailsModel'
+        - type: object
+          properties:
+            type:
+              example: '/problem/types/503'
+            title:
+              example: 'Service Unavailable'
+            status:
+              example: 503
+            detail:
+              example: 'The service is currently unavailable.'
 
   responses:
-    ProblemResponse:
-      description: A problem occurred.
+    ProblemResponse_400_BadRequest:
+      description: Bad Request
       content:
         application/problem+json:
           schema:
-            $ref: '#/components/schemas/ProblemDetailsModel'
+            $ref: '#/components/schemas/ProblemDetailsModel400'
+    ProblemResponse_401_Unauthorized:
+      description: Unauthorized
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsModel401'
+    ProblemResponse_403_QuotaExceeded:
+      description: Quota exceeded
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsModel403'
+    ProblemResponse_404_NotFound:
+      description: Not found
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsModel404'
+    ProblemResponse_503_ServiceUnavailable:
+      description: Service unavailable
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsModel503'
 
   securitySchemes:
     ApiKeyAuth:
