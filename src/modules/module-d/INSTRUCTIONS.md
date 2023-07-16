@@ -21,7 +21,7 @@ the same content to the user as previously visible, except unsaved user driven i
 ## Assessment
 
 Module D will be assessed using the provided version of Google Chrome. The assessment will include functional
-tests, as well as user experience. Accessibility will be tested using axe.
+tests, as well as user experience.
 
 Any modifications in the provided backend of previous modules, including any changes to the database, will not be taken
 into account.
