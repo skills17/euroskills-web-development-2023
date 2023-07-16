@@ -1,0 +1,21 @@
+{
+  "name": "euroskills-2023-module-c",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build-docs": "concurrently npm:build-docs:*",
+    "build-docs:api": "redocly build-docs ai-api/api.yml -o ai-api/api-docs.html",
+    "build-docs:chatterblast": "redocly build-docs provided-ai-services/chatterblast.yml -o provided-ai-services/chatterblast.html",
+    "build-docs:dreamweaver": "redocly build-docs provided-ai-services/dreamweaver.yml -o provided-ai-services/dreamweaver.html",
+    "build-docs:mindreader": "redocly build-docs provided-ai-services/mindreader.yml -o provided-ai-services/mindreader.html",
+    "lint": "concurrently npm:lint:*",
+    "lint:api": "redocly lint ai-api/api.yml",
+    "lint:chatterblast": "redocly lint provided-ai-services/chatterblast.yml",
+    "lint:dreamweaver": "redocly lint provided-ai-services/dreamweaver.yml",
+    "lint:mindreader": "redocly lint provided-ai-services/mindreader.yml"
+  },
+  "devDependencies": {
+    "@redocly/cli": "^1.0.0-beta.131",
+    "concurrently": "^8.2.0"
+  }
+}

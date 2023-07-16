@@ -1,0 +1,65 @@
+paths:
+  /recognize:
+    post:
+      summary: Recognize objects in an image
+      operationId: recognizeImage_recognize
+      tags:
+        - Image Recognition
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: Image file uploaded as multipart/form-data
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageRecognitionSuccessResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
+
+components:
+  schemas:
+    ImageRecognitionSuccessResponse:
+      type: object
+      properties:
+        objects:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              probability:
+                type: number
+                format: float
+                description: Probability of the object being in the image 0-1
+              bounding_box:
+                type: object
+                properties:
+                  x:
+                    type: number
+                    format: integer
+                  y:
+                    type: number
+                    format: integer
+                  width:
+                    type: number
+                    format: integer
+                  height:
+                    type: number
+                    format: integer
