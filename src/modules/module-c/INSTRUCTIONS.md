@@ -108,14 +108,14 @@ plain text.
 
 The service you build needs to fetch the `GET` endpoint and provide the partial answer to the user until it is final.
 The frontend will be polling for the answer. After the response is complete, the user can submit another prompt to
-continue the conversation. It should not be possible to submit a prompt while the service is still processing the
+continue the conversation. It must not be possible to submit a prompt while the service is still processing the
 previous conversation input. This means you need to store the state of the conversation on your database.
 
 **Billing:**
 
 An indicator `<EOF>Took {duration in millis}ms` is printed at the end once the answer is final.
 Example: `<EOF>Took 4254ms`. The duration signifies how long the service took to generate the response. This is the time
-that should be used to determine how long it took and consequently update the billing. That indicator should not be part
+that must be used to determine how long it took and consequently update the billing. That indicator must not be part
 of the response forwarded to the frontend.
 
 **Specification:**
@@ -158,12 +158,12 @@ This service is used to recognize objects in images.
 The MindReader API accepts a `multipart/form-data` field `image` and returns a JSON object with the recognized objects
 and their probabilities. The endpoint is synchronous and returns the result within a few seconds.
 
-The API requires a mapping of fields: The unified API you build should return `x`, `y` and `width`, `height` while the
+The API requires a mapping of fields: The unified API you build must return `x`, `y` and `width`, `height` while the
 provided API returns `top`, `left`, `bottom`, and `right` for the bounding box.
 
 **Billing:**
 
-The duration of the request should be used to determine how long it took and consequently update the billing.
+The duration of the request must be used to determine how long it took and consequently update the billing.
 
 **Specification:**
 

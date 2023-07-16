@@ -39,11 +39,11 @@ As the competition takes place in an offline environment, it is not possible to 
 Therefore, they have to be implemented a bit differently and for this to work, the app needs to be always open.
 
 - The app polls the provided endpoint every 10 seconds in the background
-- If there is a new article, a notification should be shown, but only if the app is not visible at the moment (open in the background or in another tab)
+- If there is a new article, a notification must be shown, but only if the app is not visible at the moment (open in the background or in another tab)
 
 ## Task 3: Creating a Web Component
 
-For this task, you are expected to create three web components and emebed them in a simple website.
+For this task, you are expected to create three web components and embed them in a simple website.
 You are not allowed to use any framework or library for this task.
 
 ### `<limited-textarea>`
@@ -63,9 +63,9 @@ Events:
     - `valid: boolean` If the content is valid (limit not exceeded)
 
 Other requirements:
-- The component should not inherit any other styles that might be globally set on the page (except for fonts)
+- The component must not inherit any other styles that might be globally set on the page (except for fonts)
 - The attributes of the component can change at any time and the component is updated automatically in this case
-- The textarea should take the full available width and is not resizable
+- The textarea must take the full available width and is not resizable
 - The example website adds an event listener for the `change` event that logs the event data to the browser's console
 - The `x characters left` text is located below the textarea and has the color `#666`
 - When the limit is exceeded, a negative value is shown for the `x characters left` label indicating how many characters the user has to delete

@@ -6,7 +6,7 @@ You must use the provided solution and are not allowed to build on top of your o
 
 The users of the frontend will be able to discover the available AI services that the API provides. Each service is then
 represented on a separate page which exhibits several interactive elements, each custom to the service. There will be
-complex data inputs and outputs, some of them potentially asynchronous. The goal of the frontend is to hide this
+complex data inputs and outputs, some of them are asynchronous. The goal of the frontend is to hide this
 complexity from the user. The frontend must also handle errors and display them to the user in a comprehensible way.
 
 Initially the input elements are disabled. When a user wants to start using the service, they are prompted to enter an
@@ -15,7 +15,7 @@ every request. The API token shall also be stored in the current browser instanc
 enter it again, even if they reload the page or navigate to another AI service.
 
 You must implement the frontend using a framework. It is possible to use additional libraries. The application
-must be a Single Page Application (SPA). The routing must be handled by the framework. Page reloads should present
+must be a Single Page Application (SPA). The routing must be handled by the framework. Page reloads must present
 the same content to the user as previously visible, except unsaved user driven inputs or temporary outputs.
 
 ## Assessment
@@ -33,9 +33,9 @@ display them to the user in a comprehensible way. The following errors must be h
 
 - `400 Bad Request` – The request was malformed. The user must be notified that they have entered invalid data.
 - `401 Unauthorized` – The API token is invalid. The user must be prompted to enter a new API token.
-- `402 Payment Required` – The billing quota has been used up. The user must be notified that they have to wait until
+- `403 Forbidden` – The billing quota has been used up. The user must be notified that they have to wait until
   the next month to use the service again or increase their quota.
-- `500 Internal Server Error` – The server encountered an unexpected error. The user must be notified that the service
+- `503 Service Unavailable` – The service is temporarily unavailable. The user must be notified that the service
   is currently unavailable and to try again later.
 
 ## Pages
@@ -61,8 +61,9 @@ The page must contain the following elements:
 - A button to start a new conversation with the chatbot.
 
 The responses from the chatbot must be shown as they become available, even if they are only partially complete.
-The response text must be animated in a typewriter style. The animation should contain a blinking cursor and each
-character should be rendered individually with a random delay between 2ms and 20ms.
+The response text must be animated in a typewriter style. The animation must contain a blinking cursor and each
+character must be rendered individually with a random delay between 2ms and 20ms. You have to poll the backend to
+get the current response. The polling interval must be 1 second.
 
 While the response is incomplete, the button to send a new message must be disabled.
 
@@ -80,8 +81,9 @@ The page must contain the following elements:
 - A button to upscale the image.
 - A button to zoom in and out of the image.
 
-A loading indicator should be displayed while the image is being generated, and the preliminary images should be
-animated with a fade-in effect until the final image is available.
+A loading indicator with progress in percentage must be displayed while the image is being generated, and the
+preliminary images must be animated with a fade-in effect until the final image is available. You have to poll the
+backend to check if the job progress and to retrieve the preliminary image. The polling interval must be 2 seconds.
 
 While the image is being generated, the button to generate a new image must be disabled.
 

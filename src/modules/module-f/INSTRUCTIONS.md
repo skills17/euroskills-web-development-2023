@@ -7,7 +7,7 @@ the limited time, your only option likely is to fake it. Imagine writing a simpl
 The focus is on the creativity and the presentation of your idea.
 
 However, the service must be implemented and working, so the function could actually be integrated into the system. You
-don't have to integrate it into the frontend nor backend you built in previous modules, but you should be able to demo
+don't have to integrate it into the frontend nor backend you built in previous modules, but you must be able to demo
 it in some way or form.
 
 You are then asked to present your service to the other competitors and the experts.
@@ -23,7 +23,7 @@ The middle part must contain a demo. Additionally, you could include any of thes
 - Ambition: Details of the goal you set yourself.
 - Approach: Illustrate how you worked to achieve your goal.
 - Impact: What impact would your service have on the world?
-- Journey: Refer to your journey during the module. Show how you worked, what you learned on the way, where you
+- Journey: Refer to your journey during this module. Show how you worked, what you learned on the way, where you
   succeeded or failed, or what discoveries you made.
 
 ## Assessment
