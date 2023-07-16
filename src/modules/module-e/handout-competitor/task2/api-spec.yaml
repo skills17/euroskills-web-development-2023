@@ -1,3 +1,4 @@
+# Generate HTML with `npx @redocly/cli build-docs api-spec.yaml -o api-spec.html`
 openapi: 3.0.0
 info:
   title: AI News API
@@ -6,6 +7,11 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
+
+servers:
+  - url: http://localhost:3000
+
+security: []
 
 paths:
   /api/news:
@@ -20,9 +26,14 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/NewsArticle'
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NewsArticle'
+                required:
+                  - items
   /api/news/publish:
     post:
       summary: Publish a new article
@@ -65,4 +76,4 @@ components:
         imageUrl:
           type: string
           description: Full URL to the cover image of the news article
-          example: https://cdn.news-ai.com/images/19471904.jpg
+          example: http://localhost:3000/images/10.jpg

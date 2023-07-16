@@ -10,7 +10,7 @@ const fetchArticles = async () => {
     const articles = await res.json();
     document.querySelector('.articles').innerHTML = `
             <ul>
-                ${articles.map((article) => `
+                ${articles.items.map((article) => `
                     <li class="article">
                         <img src="${article.imageUrl}" alt="${article.title}" />
                         <div class="text">
@@ -22,7 +22,7 @@ const fetchArticles = async () => {
                 `).join('')}
             </ul>
         `;
-    return articles;
+    return articles.items;
 };
 
 const pollArticles = () => {
@@ -31,7 +31,7 @@ const pollArticles = () => {
         const newestId = articles[0].id;
         const prevId = parseInt(localStorage.getItem(localStorageKey), 10);
 
-        if (newestId !== prevId && prevId !== NaN) {
+        if (newestId !== prevId && !isNaN(prevId)) {
             if (document.hidden) {
                 const notification = new Notification(articles[0].title, {
                     icon: '/icon/ai-news.png',

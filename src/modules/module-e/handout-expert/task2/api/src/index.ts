@@ -10,7 +10,7 @@ const port = parseInt(process.env.PORT || '3000', 10);
 app.use(cors());
 
 app.get('/api/news', (req, res) => {
-    return res.json(getArticles(currentId, `http://${req.headers.host}`));
+    return res.json({ items: getArticles(currentId, `http://${req.headers.host}`) });
 });
 
 app.post('/api/news/publish', (req, res) => {

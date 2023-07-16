@@ -25,17 +25,18 @@ These are the assessment criteria for this task:
 Your task is to create a progressive web app for an AI news site.
 The backend is already provided to you with an OpenAPI specification explaining the available endpoints.
 The frontend has to be created from scratch. However, functionality is more important than look and feel.
+A simple icon for the app is provided to you already.
 
 The app has the following requirements:
 
-- It can be installed on the user's device
-- There is one view, showing all recent news articles in a list
-- It has to work offline, meaning the last successfully loaded news articles are shown if the user does not have an Internet connection
-- If the user is online, articles are always loaded from the API and not returned from cache
-- Notifications about new articles can be received as explained below and open the app to the list view when clicked
+- It can be installed on the user's device.
+- There is one view, showing all recent news articles in a list. The API returns only the 10 most recent articles and only those 10 articles have to be shown.
+- It has to work offline, meaning the last successfully loaded news articles are shown if the user does not have an Internet connection.
+- If the user is online, articles are always loaded from the API and not returned from cache.
+- Notifications about new articles can be received as explained below and open the app to the list view when clicked.
 
 Because PWAs do not work with file URLs, a simple HTTP server is provided to you.
-It can be started by running `npm start` and serves the content of the whole directory.
+It can be started by running `npm start` inside the `task2/src` folder and serves the content of the whole directory on [localhost:8080](http://localhost:8080).
 
 ### Notifications
 
@@ -43,7 +44,7 @@ As the competition takes place in an offline environment, it is not possible to 
 Therefore, they have to be implemented a bit differently and for this to work, the app needs to be always open.
 
 - The app polls the provided endpoint every 10 seconds in the background
-- If there is a new article, a notification should be shown, but only if the app is not visible at the moment (open in the background or in another tab)
+- If there is a new article, a notification should be shown, but only if the app is not visible at the moment (app window open in the background)
 - The notification contains the title of the new article and an application icon
 
 ## Task 3: Creating a Web Component
