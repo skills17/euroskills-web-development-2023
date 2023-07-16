@@ -83,7 +83,7 @@ Example:
 <limited-textarea maxchars="250"></limited-textarea>
 ```
 
-![limited-textarea example](./task3/limited-textarea.png)
+![limited-textarea example](./handout-competitor/task3/limited-textarea.png)
 
 ### `<confirmation-modal>`
 
@@ -113,7 +113,7 @@ Example:
 </confirmation-modal>
 ```
 
-![confirmation-modal example](./task3/confirmation-modal.png)
+![confirmation-modal example](./handout-competitor/task3/confirmation-modal.png)
 
 ### `<count-down>`
 
@@ -134,4 +134,4 @@ Other requirements:
 
 Example:
 
-![count-down example](./task3/count-down.png)
+![count-down example](./handout-competitor/task3/count-down.png)
