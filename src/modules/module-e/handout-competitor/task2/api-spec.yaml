@@ -1,0 +1,79 @@
+# Generate HTML with `npx @redocly/cli build-docs api-spec.yaml -o api-spec.html`
+openapi: 3.0.0
+info:
+  title: AI News API
+  description: This API provides access to an AI News service.
+  version: 1.0.0
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+
+servers:
+  - url: http://localhost:3000
+
+security: []
+
+paths:
+  /api/news:
+    get:
+      summary: List of all recent news articles
+      description: >
+        Returns a list of all recent news articles.
+        List is ordered by the publication date with the most recent article first.
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NewsArticle'
+                required:
+                  - items
+  /api/news/publish:
+    post:
+      summary: Publish a new article
+      description: >
+        Publishes a new article.
+        It does not take any parameters as an AI will be used to create a brand new article with unique content.
+        After the request has completed, the new article will be returned by the list endpoint of all news articles.
+      responses:
+        201:
+          description: A new article has been generated and published successfully
+
+components:
+  schemas:
+    NewsArticle:
+      description: 'News article'
+      type: object
+      required:
+      - title
+      - publicationDate
+      - author
+      - imageUrl
+      properties:
+        id:
+          type: integer
+          description: Article Id
+          example: 10
+        title:
+          type: string
+          description: Title of the news article
+          example: A Look at the Latest Innovations in AI Technology
+        publicationDate:
+          type: string
+          format: date-time
+          description: Date and time when the news article was published
+          example: 2023-08-01T12:58:04Z
+        author:
+          type: string
+          description: Author of the news article
+          example: Celine Gordon
+        imageUrl:
+          type: string
+          description: Full URL to the cover image of the news article
+          example: http://localhost:3000/images/10.jpg
