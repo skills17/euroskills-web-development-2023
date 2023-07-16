@@ -1,0 +1,175 @@
+# AI Services API
+# --------------------------------------------------------------------------------
+# Commands:
+# - Lint: npx @redocly/cli lint api.yml
+# - Generate HTML: npx @redocly/cli build-docs api.yml -o api-docs.html
+
+openapi: 3.0.0
+info:
+  title: AI Services API
+  description: This API wraps several AI services to provide a unified interface. As a competitor, you must implement this API in your server application.
+  version: 1.0.0
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+
+servers:
+  - url: 'http://localhost:3000'
+    description: Your local development server
+
+security:
+  - ApiKeyAuth: [ ]
+
+paths:
+  # Chat
+  /api/chat/conversation:
+    $ref: 'services/chat.yml#/paths/~1conversation'
+  /api/chat/conversation/{conversation_id}:
+    $ref: 'services/chat.yml#/paths/~1conversation~1{conversation_id}'
+
+  # Image Generation
+  /api/imagegeneration/generate:
+    $ref: 'services/image-generation.yml#/paths/~1generate'
+  /api/imagegeneration/status/{job_id}:
+    $ref: 'services/image-generation.yml#/paths/~1status~1{job_id}'
+  /api/imagegeneration/result/{job_id}:
+    $ref: 'services/image-generation.yml#/paths/~1result~1{job_id}'
+  /api/imagegeneration/upscale:
+    $ref: 'services/image-generation.yml#/paths/~1upscale'
+  /api/imagegeneration/zoom/in:
+    $ref: 'services/image-generation.yml#/paths/~1zoom~1in'
+  /api/imagegeneration/zoom/out:
+    $ref: 'services/image-generation.yml#/paths/~1zoom~1out'
+
+  # Image Recognition
+  /api/imagerecognition/recognize:
+    $ref: 'services/image-recognition.yml#/paths/~1recognize'
+
+components:
+
+  schemas:
+    ProblemDetailsModel:
+      description: 'Implementation of RFC7807 Problem Details object. Content type should always be application/problem+json.'
+      type: object
+      required:
+        - type
+        - title
+        - status
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+          description: 'A type URI of the problem that uniquely identifies it'
+        title:
+          type: string
+          description: 'A short, human-readable summary of the problem type'
+        status:
+          type: integer
+          format: int32
+          description: 'The HTTP status code for this occurrence of the problem'
+        detail:
+          type: string
+          description: 'A human-readable explanation specific to this occurrence of the problem'
+    ProblemDetailsModel400:
+      allOf:
+        - $ref: '#/components/schemas/ProblemDetailsModel'
+        - type: object
+          properties:
+            type:
+              example: '/problem/types/400'
+            title:
+              example: 'Bad Request'
+            status:
+              example: 400
+            detail:
+              example: 'The request is invalid.'
+    ProblemDetailsModel401:
+      allOf:
+        - $ref: '#/components/schemas/ProblemDetailsModel'
+        - type: object
+          properties:
+            type:
+              example: '/problem/types/401'
+            title:
+              example: 'Unauthorized'
+            status:
+              example: 401
+            detail:
+              example: 'The header X-API-TOKEN is missing or invalid.'
+    ProblemDetailsModel403:
+      allOf:
+        - $ref: '#/components/schemas/ProblemDetailsModel'
+        - type: object
+          properties:
+            type:
+              example: '/problem/types/403'
+            title:
+              example: 'Quota Exceeded'
+            status:
+              example: 403
+            detail:
+              example: 'You have exceeded your quota.'
+    ProblemDetailsModel404:
+      allOf:
+        - $ref: '#/components/schemas/ProblemDetailsModel'
+        - type: object
+          properties:
+            type:
+              example: '/problem/types/404'
+            title:
+              example: 'Not Found'
+            status:
+              example: 404
+            detail:
+              example: 'The requested resource was not found.'
+    ProblemDetailsModel503:
+      allOf:
+        - $ref: '#/components/schemas/ProblemDetailsModel'
+        - type: object
+          properties:
+            type:
+              example: '/problem/types/503'
+            title:
+              example: 'Service Unavailable'
+            status:
+              example: 503
+            detail:
+              example: 'The service is currently unavailable.'
+
+  responses:
+    ProblemResponse_400_BadRequest:
+      description: Bad Request
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsModel400'
+    ProblemResponse_401_Unauthorized:
+      description: Unauthorized
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsModel401'
+    ProblemResponse_403_QuotaExceeded:
+      description: Quota exceeded
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsModel403'
+    ProblemResponse_404_NotFound:
+      description: Not found
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsModel404'
+    ProblemResponse_503_ServiceUnavailable:
+      description: Service unavailable
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetailsModel503'
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-TOKEN

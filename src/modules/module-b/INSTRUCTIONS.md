@@ -21,19 +21,19 @@ it readable and usable.
 
 ## Website Requirements
 
-The website should provide the following functionality.
+The website must provide the following functionality.
 
 ### Login
 
 All other pages are protected and not accessible to non-authenticated users.
-Login should be possible by providing a username and a password.
+Login must be possible by providing a username and a password.
 As the first version of the website will only allow users to sign up by invitation only, it is not necessary to be able to register accounts.
 
 However, please create the following accounts:
 - Username: `demo1`<br>Password: `skills2023d1`
 - Username: `demo2`<br>Password: `skills2023d2`
 
-The password has to be stored in a secure way (hashed) in case someone gets access to the database.
+The password must be stored in a secure way (hashed) in case someone gets access to the database.
 
 ### Workspaces
 
@@ -76,7 +76,7 @@ If a billing quota is set, it defines the maximum amount that can be spent on AP
 If the quota is exceeded, usage of the API is not possible anymore for all API tokens of this workspace.
 
 Quotas are displayed in the following way:
-- If no quota is set, the costs of the current calendar month is shown, but it should also be clear that there is no maximum.
+- If no quota is set, the costs of the current calendar month is shown, but it must also be clear that there is no maximum.
 - If a quota is set, the costs and the maximum of the current calendar month are shown. Also, the number of remaining days in the current billing cycle is shown so users know when it will reset.
 
 A billing quota has the following attributes:
@@ -94,8 +94,8 @@ The bill contains the following data per API token and per accessed service whic
 - Usage of the service for a specific API token in seconds
 - Cost of the service per second (static value per service)
 - Usage cost of the specific token and service
-- If a token did not access a service, that service should not be listed
-- If a token was not used at all, that token should not be listed
+- If a token did not access a service, that service must not be listed
+- If a token was not used at all, that token must not be listed
 
 A total row will also show the total cost over all API tokens and services.
 The total costs are rounded to two decimal points for displaying purpose only.
@@ -110,4 +110,4 @@ However, it is possible to change it or come up with a completely different layo
 To already have some example data to generate bills and check if calculations are correct, the client provided a CSV file with some billing related example data.
 
 Import the data of this file into your own database schema.
-The imported data should be normalized.
+The imported data must be normalized.

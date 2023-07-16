@@ -1,0 +1,107 @@
+paths:
+  /conversation:
+    post:
+      summary: Start conversation
+      operationId: chat_startConversation
+      tags:
+        - Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
+
+  /conversation/{conversation_id}:
+    put:
+      summary: Continue a conversation
+      operationId: chat_continueConversation
+      tags:
+        - Chat
+      parameters:
+        - name: conversation_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '403':
+          $ref: '../api.yml#/components/responses/ProblemResponse_403_QuotaExceeded'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
+    get:
+      summary: Get partial conversation response
+      operationId: chat_getResponse
+      tags:
+        - Chat
+      parameters:
+        - name: conversation_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationResponse'
+        '400':
+          $ref: '../api.yml#/components/responses/ProblemResponse_400_BadRequest'
+        '401':
+          $ref: '../api.yml#/components/responses/ProblemResponse_401_Unauthorized'
+        '404':
+          $ref: '../api.yml#/components/responses/ProblemResponse_404_NotFound'
+        '503':
+          $ref: '../api.yml#/components/responses/ProblemResponse_503_ServiceUnavailable'
+
+components:
+  schemas:
+    ConversationInput:
+      type: object
+      properties:
+        prompt:
+          type: string
+      required:
+        - prompt
+    ConversationResponse:
+      type: object
+      properties:
+        conversation_id:
+          type: string
+        response:
+          type: string
+        is_final:
+          type: boolean

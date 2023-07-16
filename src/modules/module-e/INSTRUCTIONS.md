@@ -8,7 +8,7 @@ testing framework for task 1.
 
 ## Task 1: Writing automated tests
 
-You are given a JavaScript project that has no automated tests. You have to write automated unit tests for the project.
+You are given a JavaScript project that has no automated tests. You must write automated unit tests for the project.
 A complete test set is expected which covers 100% of the provided code lines and conditionals. A JavaScript testing
 framework must be used.
 
@@ -24,14 +24,14 @@ These are the assessment criteria for this task:
 
 Your task is to create a progressive web app for an AI news site.
 The backend is already provided to you with an OpenAPI specification explaining the available endpoints.
-The frontend has to be created from scratch. However, functionality is more important than look and feel.
+The frontend must be created from scratch. However, functionality is more important than look and feel.
 A simple icon for the app is provided to you already.
 
 The app has the following requirements:
 
 - It can be installed on the user's device.
 - There is one view, showing all recent news articles in a list. The API returns only the 10 most recent articles and only those 10 articles have to be shown.
-- It has to work offline, meaning the last successfully loaded news articles are shown if the user does not have an Internet connection.
+- It must work offline, meaning the last successfully loaded news articles are shown if the user does not have an Internet connection.
 - If the user is online, articles are always loaded from the API and not returned from cache.
 - Notifications about new articles can be received as explained below and open the app to the list view when clicked.
 
@@ -41,15 +41,15 @@ It can be started by running `npm start` inside the `task2/src` folder and serve
 ### Notifications
 
 As the competition takes place in an offline environment, it is not possible to implement real push notifications.
-Therefore, they have to be implemented a bit differently and for this to work, the app needs to be always open.
+Therefore, they must be implemented a bit differently and for this to work, the app needs to be always open.
 
 - The app polls the provided endpoint every 10 seconds in the background
-- If there is a new article, a notification should be shown, but only if the app is not visible at the moment (app window open in the background)
+- If there is a new article, a notification must be shown, but only if the app is not visible at the moment (app window open in the background)
 - The notification contains the title of the new article and an application icon
 
 ## Task 3: Creating a Web Component
 
-For this task, you are expected to create three web components and emebed them in a simple website.
+For this task, you are expected to create three web components and embed them in a simple website.
 You are not allowed to use any framework or library for this task.
 
 ### `<limited-textarea>`
@@ -69,9 +69,9 @@ Events:
     - `valid: boolean` If the content is valid (limit not exceeded)
 
 Other requirements:
-- The component should not inherit any other styles that might be globally set on the page (except for fonts)
+- The component must not inherit any other styles that might be globally set on the page (except for fonts)
 - The attributes of the component can change at any time and the component is updated automatically in this case
-- The textarea should take the full available width and is not resizable
+- The textarea must take the full available width and is not resizable
 - The example website adds an event listener for the `change` event that logs the event data to the browser's console
 - The `x characters left` text is located below the textarea and has the color `#666`
 - When the limit is exceeded, a negative value is shown for the `x characters left` label indicating how many characters the user has to delete
