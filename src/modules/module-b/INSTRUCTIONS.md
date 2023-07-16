@@ -33,7 +33,7 @@ However, please create the following accounts:
 - Username: `demo1`<br>Password: `skills2023d1`
 - Username: `demo2`<br>Password: `skills2023d2`
 
-The password has to be stored in a secure way (hashed) in case someone gets access to the database.
+The password must be stored in a secure way (hashed) in case someone gets access to the database.
 
 ### Workspaces
 

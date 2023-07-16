@@ -7,7 +7,7 @@
 openapi: 3.0.0
 info:
   title: AI Services API
-  description: This API wraps several AI services to provide a unified interface. As a competitor, you have to implement this API in your server application.
+  description: This API wraps several AI services to provide a unified interface. As a competitor, you must implement this API in your server application.
   version: 1.0.0
   license:
     name: MIT

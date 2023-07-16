@@ -8,7 +8,7 @@ testing framework for task 1.
 
 ## Task 1: Writing automated tests
 
-You are given a JavaScript project that has no automated tests. You have to write automated unit tests for the project.
+You are given a JavaScript project that has no automated tests. You must write automated unit tests for the project.
 A complete test set is expected which covers 100% of the provided code lines and conditionals. A JavaScript testing
 framework must be used.
 
@@ -24,19 +24,19 @@ These are the assessment criteria for this task:
 
 Your task is to create a progressive web app for an AI news site.
 The backend is already provided to you with an OpenAPI specification explaining the available endpoints.
-The frontend has to be created from scratch. However, functionality is more important than look and feel.
+The frontend must be created from scratch. However, functionality is more important than look and feel.
 
 The app has the following requirements:
 
 - It can be installed on the user's device
 - There is one view, showing all recent news articles in a list
-- It has to work offline, meaning the last successfully loaded news articles are shown if the user does not have an Internet connection
+- It must work offline, meaning the last successfully loaded news articles are shown if the user does not have an Internet connection
 - Notifications about new articles can be received as explained below and open the app to the list view when clicked
 
 ### Notifications
 
 As the competition takes place in an offline environment, it is not possible to implement real push notifications.
-Therefore, they have to be implemented a bit differently and for this to work, the app needs to be always open.
+Therefore, they must be implemented a bit differently and for this to work, the app needs to be always open.
 
 - The app polls the provided endpoint every 10 seconds in the background
 - If there is a new article, a notification must be shown, but only if the app is not visible at the moment (open in the background or in another tab)

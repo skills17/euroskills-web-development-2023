@@ -34,7 +34,7 @@ It's also possible to add links that point towards pages that do not exist yet (
 For each page, some example text and more are provided in the media files.
 However, not all the provided material has to be used.
 
-The following pages have to be implemented.
+The following pages must be implemented.
 
 ### Home Page
 
@@ -57,7 +57,7 @@ As the client is also looking to grow their team, a dedicated team page must sho
 ### Global Elements
 
 The following elements must be available on all pages:
-- **Header**: has to at least include a product name in form of text or a logo
+- **Header**: must at least include a product name in form of text or a logo
 - **Navigation**: contains easily accessible links to all pages
 - **Footer**: includes at least a copyright notice
 

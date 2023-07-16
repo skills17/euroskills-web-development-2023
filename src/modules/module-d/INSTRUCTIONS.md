@@ -62,7 +62,7 @@ The page must contain the following elements:
 
 The responses from the chatbot must be shown as they become available, even if they are only partially complete.
 The response text must be animated in a typewriter style. The animation must contain a blinking cursor and each
-character must be rendered individually with a random delay between 2ms and 20ms. You have to poll the backend to
+character must be rendered individually with a random delay between 2ms and 20ms. You must poll the backend to
 get the current response. The polling interval must be 1 second.
 
 While the response is incomplete, the button to send a new message must be disabled.
@@ -82,7 +82,7 @@ The page must contain the following elements:
 - A button to zoom in and out of the image.
 
 A loading indicator with progress in percentage must be displayed while the image is being generated, and the
-preliminary images must be animated with a fade-in effect until the final image is available. You have to poll the
+preliminary images must be animated with a fade-in effect until the final image is available. You must poll the
 backend to check if the job progress and to retrieve the preliminary image. The polling interval must be 2 seconds.
 
 While the image is being generated, the button to generate a new image must be disabled.
