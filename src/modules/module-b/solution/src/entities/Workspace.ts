@@ -11,7 +11,7 @@ export class Workspace extends BaseEntity {
   @Column({ length: 100 })
   title: string;
 
-  @Column('text')
+  @Column('text', { nullable: true })
   description?: string;
 
   @ManyToOne(() => User, (user) => user.workspaces, { onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: false })

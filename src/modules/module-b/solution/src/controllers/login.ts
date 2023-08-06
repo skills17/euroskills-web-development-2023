@@ -6,7 +6,7 @@ import { verifyHash } from '../utils/hashing';
 import { signToken } from '../utils/jwt';
 
 const get = async (req: Request, res: Response) => {
-  res.render('login.njk', {
+  return res.render('auth/login.njk', {
     title: 'Login',
   });
 };
@@ -19,7 +19,7 @@ const post = async (req: Request, res: Response) => {
   const errors = validate(schema, req.body);
 
   if (errors) {
-    return res.render('login.njk', {
+    return res.render('auth/login.njk', {
       title: 'Login',
       errors,
     });
@@ -28,7 +28,7 @@ const post = async (req: Request, res: Response) => {
   const user = await getUser(req.body.username);
 
   if (!user || !(await verifyHash(req.body.password, user.password))) {
-    return res.render('login.njk', {
+    return res.render('auth/login.njk', {
       title: 'Login',
       loginFailed: true,
     });
@@ -39,7 +39,7 @@ const post = async (req: Request, res: Response) => {
     httpOnly: true,
     maxAge: 3 * 24 * 60 * 60 * 1000,
   }).redirect('/');
-}
+};
 
 export default {
   get,
