@@ -27,7 +27,7 @@ const post = async (req: Request, res: Response) => {
 
   const user = await getUser(req.body.username);
 
-  if (!user || !verifyHash(req.body.password, user.password)) {
+  if (!user || !(await verifyHash(req.body.password, user.password))) {
     return res.render('login.njk', {
       title: 'Login',
       loginFailed: true,
@@ -35,7 +35,10 @@ const post = async (req: Request, res: Response) => {
   }
 
   const token = signToken({ username: req.body.username }, `${user.id}`);
-  return res.cookie('access_token', token, { httpOnly: true }).redirect('/');
+  return res.cookie('access_token', token, {
+    httpOnly: true,
+    maxAge: 3 * 24 * 60 * 60 * 1000,
+  }).redirect('/');
 }
 
 export default {
