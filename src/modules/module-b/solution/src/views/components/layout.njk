@@ -1,0 +1,21 @@
+<!doctype html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {{ title }}
+      {{ ' - ' if title }}
+      API Dashboard
+    </title>
+    <link rel="stylesheet" href="/assets/css/styles.min.css" />
+  </head>
+  <body>
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+      {% block  content %}
+      {% endblock %}
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+import { Request, Response } from 'express';
+import { z } from 'zod';
+import { getUser } from '../services/user';
+import { validate } from '../utils/validation';
+import { verifyHash } from '../utils/hashing';
+import { signToken } from '../utils/jwt';
+
+const get = async (req: Request, res: Response) => {
+  res.render('login.njk', {
+    title: 'Login',
+  });
+};
+
+const post = async (req: Request, res: Response) => {
+  const schema = z.object({
+    username: z.string().nonempty({ message: 'Username is required' }),
+    password: z.string().nonempty({ message: 'Password is required' }),
+  });
+  const errors = validate(schema, req.body);
+
+  if (errors) {
+    return res.render('login.njk', {
+      title: 'Login',
+      errors,
+    });
+  }
+
+  const user = await getUser(req.body.username);
+
+  if (!user || !verifyHash(req.body.password, user.password)) {
+    return res.render('login.njk', {
+      title: 'Login',
+      loginFailed: true,
+    });
+  }
+
+  const token = signToken({ username: req.body.username }, `${user.id}`);
+  return res.cookie('access_token', token, { httpOnly: true }).redirect('/');
+}
+
+export default {
+  get,
+  post,
+};

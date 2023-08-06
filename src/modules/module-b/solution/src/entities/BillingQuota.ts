@@ -1,8 +1,8 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Workspace } from './Workspace';
 
 @Entity()
-export class BillingQuota {
+export class BillingQuota extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

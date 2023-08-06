@@ -1,10 +1,10 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './User';
 import { ApiToken } from './ApiToken';
 import { BillingQuota } from './BillingQuota';
 
 @Entity({ name: 'workspaces' })
-export class Workspace {
+export class Workspace extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

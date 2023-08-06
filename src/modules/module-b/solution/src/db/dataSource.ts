@@ -7,12 +7,13 @@ import { ApiToken } from '../entities/ApiToken';
 import { BillingQuota } from '../entities/BillingQuota';
 import { Service } from '../entities/Service';
 import { ServiceUsage } from '../entities/ServiceUsage';
-import { CreateUsersTable1691091534692 } from '../migration/1691091534692-create_users_table';
-import { CreateWorkspacesTable1691091567274 } from '../migration/1691091567274-create_workspaces_table';
-import { CreateApiTokensTable1691091830668 } from '../migration/1691091830668-create_api_tokens_table';
-import { CreateBillingQuotasTable1691092241007 } from '../migration/1691092241007-create_billing_quotas_table';
-import { CreateServicesTable1691092484427 } from '../migration/1691092484427-create_services_table';
-import { CreateServiceUsagesTable1691092707370 } from '../migration/1691092707370-create_service_usages_table';
+import { CreateUsersTable1691091534692 } from './migrations/1691091534692-create_users_table';
+import { CreateWorkspacesTable1691091567274 } from './migrations/1691091567274-create_workspaces_table';
+import { CreateApiTokensTable1691091830668 } from './migrations/1691091830668-create_api_tokens_table';
+import { CreateBillingQuotasTable1691092241007 } from './migrations/1691092241007-create_billing_quotas_table';
+import { CreateServicesTable1691092484427 } from './migrations/1691092484427-create_services_table';
+import { CreateServiceUsagesTable1691092707370 } from './migrations/1691092707370-create_service_usages_table';
+import { InsertSampleData1691315514778 } from './migrations/1691315514778-insert_sample_data';
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
@@ -38,6 +39,7 @@ export const AppDataSource = new DataSource({
     CreateBillingQuotasTable1691092241007,
     CreateServicesTable1691092484427,
     CreateServiceUsagesTable1691092707370,
+    InsertSampleData1691315514778,
   ],
   subscribers: [],
 });

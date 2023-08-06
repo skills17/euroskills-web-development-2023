@@ -25,6 +25,8 @@ services:
       - DB_NAME=euroskills2023
     volumes:
       - ./:/app
+    ports:
+      - 3000:3000
     command: npm --prefix /app run dev
     user: '${UID:-1}:${GID:-1}'
 volumes:

@@ -1,9 +1,9 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiToken } from './ApiToken';
 import { Service } from './Service';
 
 @Entity()
-export class ServiceUsage {
+export class ServiceUsage extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

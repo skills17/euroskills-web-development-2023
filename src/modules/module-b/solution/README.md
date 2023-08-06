@@ -22,6 +22,6 @@ docker compose exec --workdir /app app npm run typeorm migration:run -- -d src/d
 
 To generate new DB migrations, update your models and then run:
 ```bash
-docker compose exec --workdir /app app npm run typeorm migration:generate -- -d src/db/dataSource.ts src/migration/create_x_table
+docker compose exec --workdir /app app npm run typeorm migration:generate -- -d src/db/dataSource.ts src/db/migrations/create_x_table
 ```
 Then, add the new migration class in the `src/db/dataSource.ts` file.

@@ -1,8 +1,8 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Workspace } from './Workspace';
 
 @Entity({ name: 'api_tokens' })
-export class ApiToken {
+export class ApiToken extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
