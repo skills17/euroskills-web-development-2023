@@ -4,7 +4,7 @@ import { verifyToken } from '../utils/jwt';
 
 export const getUser = async (username: string) => {
   return User.findOneBy({ username });
-}
+};
 
 export const getUserFromRequest = async (req: Request) => {
   const token = verifyToken<{ username: string }>(req.cookies.access_token);

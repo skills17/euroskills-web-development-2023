@@ -12,7 +12,7 @@ export class ApiToken extends BaseEntity {
   @Column({ length: 100 })
   token: string;
 
-  @ManyToOne(() => Workspace, (workspace) => workspace.apiTokens, { onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: false })
+  @ManyToOne(() => Workspace, (workspace) => workspace.apiTokens)
   workspace: Workspace;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})

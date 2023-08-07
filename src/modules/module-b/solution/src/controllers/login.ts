@@ -6,9 +6,7 @@ import { verifyHash } from '../utils/hashing';
 import { signToken } from '../utils/jwt';
 
 const get = async (req: Request, res: Response) => {
-  return res.render('auth/login.njk', {
-    title: 'Login',
-  });
+  return res.render('auth/login.njk');
 };
 
 const post = async (req: Request, res: Response) => {
@@ -20,7 +18,6 @@ const post = async (req: Request, res: Response) => {
 
   if (errors) {
     return res.render('auth/login.njk', {
-      title: 'Login',
       errors,
     });
   }
@@ -29,7 +26,6 @@ const post = async (req: Request, res: Response) => {
 
   if (!user || !(await verifyHash(req.body.password, user.password))) {
     return res.render('auth/login.njk', {
-      title: 'Login',
       loginFailed: true,
     });
   }

@@ -14,13 +14,13 @@ export class Workspace extends BaseEntity {
   @Column('text', { nullable: true })
   description?: string;
 
-  @ManyToOne(() => User, (user) => user.workspaces, { onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: false })
+  @ManyToOne(() => User, (user) => user.workspaces, { nullable: false })
   user: User;
 
   @OneToMany(() => ApiToken, (apiToken) => apiToken.workspace)
   apiTokens: ApiToken[];
 
-  @OneToOne(() => BillingQuota, (billingQuota) => billingQuota.workspace, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+  @OneToOne(() => BillingQuota, (billingQuota) => billingQuota.workspace)
   @JoinColumn()
   billingQuota?: BillingQuota;
 

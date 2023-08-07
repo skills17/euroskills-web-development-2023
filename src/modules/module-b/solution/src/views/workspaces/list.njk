@@ -1,11 +1,13 @@
 {% extends 'components/sidebarLayout.njk' %}
 
+{% set title = 'Workspaces' %}
+
 {% block main %}
 <div class="card">
   <div class="card-body">
     <h4 class="card-title fw-semibold mb-4 d-flex justify-content-between align-items-center">
       Workspaces
-      <a href="/workspaces/create" class="btn btn-outline-primary btn-sm">Create new Workspace</a>
+      <a href="/workspaces/create" class="btn btn-outline-primary btn-sm">Create new Workspace <i class="ti ti-plus ms-1"></i></a>
     </h4>
     {% if not workspaces or workspaces.length === 0 %}
       You do not have any workspaces yet.

@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import { AppDataSource } from './db/dataSource';
 import { setupRoutes } from './routes';
-import authentication from './middlewares/authentication';
+import { dateFilter, dateTimeFilter } from './views/filters/date';
 
 AppDataSource.initialize().then(async () => {
   console.log('Database connection established');
@@ -15,16 +15,17 @@ AppDataSource.initialize().then(async () => {
 
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
+  app.use(express.static(path.join(__dirname, 'static')));
+
   setupRoutes(app);
-  nunjucks.configure(path.join(__dirname, 'views'), {
+
+  const nunEnv = nunjucks.configure(path.join(__dirname, 'views'), {
     autoescape: true,
     express: app,
     noCache: true,
   });
-
-  app.use(express.static(path.join(__dirname, 'static')));
-
-  app.use(authentication);
+  nunEnv.addFilter('date', dateFilter);
+  nunEnv.addFilter('dateTime', dateTimeFilter);
 
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`);

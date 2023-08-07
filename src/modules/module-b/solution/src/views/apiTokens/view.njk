@@ -1,0 +1,25 @@
+{% extends 'components/sidebarLayout.njk' %}
+
+{% set title = 'View API Token' %}
+
+{% block main %}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title fw-semibold mb-4  d-flex justify-content-between align-items-center">
+      API Token '{{ apiToken.name }}'
+    </h5>
+    <p>
+      A new secret token has been generated:
+    </p>
+    <p class="font-monospace bg-light rounded p-4">
+      {{ apiToken.token }}
+    </p>
+    <p>
+      Make sure to note it down as this will be the only time that it can be viewed.
+    </p>
+    <p>
+      <a href="/workspaces/{{ workspace.id }}"><i class="ti ti-arrow-left me-1"></i> Back to workspace</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

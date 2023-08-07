@@ -7,10 +7,10 @@ export class ServiceUsage extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => ApiToken, { onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: false })
+  @ManyToOne(() => ApiToken, { nullable: false })
   apiToken: ApiToken;
 
-  @ManyToOne(() => Service, { onDelete: 'CASCADE', onUpdate: 'CASCADE', nullable: false })
+  @ManyToOne(() => Service, { nullable: false })
   service: Service;
 
   @Column()
