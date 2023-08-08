@@ -15,4 +15,7 @@ export class ServiceUsage extends BaseEntity {
 
   @Column()
   durationInMs: number;
+
+  @Column()
+  usageStartedAt: Date;
 }

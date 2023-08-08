@@ -4,6 +4,7 @@ import logoutController from './controllers/logout';
 import workspaceController from './controllers/workspace';
 import apiTokensController from './controllers/apiTokens';
 import billingQuotasController from './controllers/billingQuotas';
+import billsController from './controllers/bills';
 import authentication from './middlewares/authentication';
 import validWorkspace from './middlewares/validWorkspace';
 import { notFound } from './utils/views';
@@ -32,6 +33,8 @@ export const setupRoutes = (app: Express) => {
 
   app.get('/workspaces/:workspaceId/quota', billingQuotasController.edit);
   app.post('/workspaces/:workspaceId/quota', billingQuotasController.update);
+
+  app.get('/workspaces/:workspaceId/bills/:year/:month', billsController.show);
 
   app.get('/', (req: Request, res: Response) => res.redirect('/workspaces'));
 

@@ -30,30 +30,34 @@
         </div>
       {% endif %}
       <table class="table table-striped">
-        <tr>
-          <th>Name</th>
-          <th class="text-end">Revocation status</th>
-          <th></th>
-        </tr>
-        {% for apiToken in workspace.apiTokens %}
+        <thead>
           <tr>
-            <td class="align-middle">{{ apiToken.name }}</td>
-            <td class="align-middle text-end">
-              {% if apiToken.revokedAt %}
-                <span class="badge rounded-pill text-bg-danger">Revoked at {{ apiToken.revokedAt | dateTime }}</span>
-              {% else %}
-                <span class="badge rounded-pill text-bg-success">Active</span>
-              {% endif %}
-            </td>
-            <td class="align-middle text-end">
-              {% if not apiToken.revokedAt %}
-                <form action="/workspaces/{{ workspace.id }}/tokens/{{ apiToken.id }}/revoke" method="post">
-                  <button type="submit" class="btn btn-outline-primary">Revoke <i class="ti ti-circle-minus ms-1"></i></button>
-                </form>
-              {% endif %}
-            </td>
+            <th>Name</th>
+            <th class="text-end">Revocation status</th>
+            <th></th>
           </tr>
-        {% endfor %}
+        </thead>
+        <tbody>
+          {% for apiToken in workspace.apiTokens %}
+            <tr>
+              <td class="align-middle">{{ apiToken.name }}</td>
+              <td class="align-middle text-end">
+                {% if apiToken.revokedAt %}
+                  <span class="badge rounded-pill text-bg-danger">Revoked at {{ apiToken.revokedAt | dateTime }}</span>
+                {% else %}
+                  <span class="badge rounded-pill text-bg-success">Active</span>
+                {% endif %}
+              </td>
+              <td class="align-middle text-end">
+                {% if not apiToken.revokedAt %}
+                  <form action="/workspaces/{{ workspace.id }}/tokens/{{ apiToken.id }}/revoke" method="post">
+                    <button type="submit" class="btn btn-outline-primary">Revoke <i class="ti ti-circle-minus ms-1"></i></button>
+                  </form>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
       </table>
     {% endif %}
   </div>
@@ -73,16 +77,16 @@
     <table class="table">
       <tr>
         <th>Costs in current month</th>
-        <td>123</td>
+        <td>$ {{ costsCurrentMonth | round(2) }}</td>
       </tr>
       {% if workspace.billingQuota %}
         <tr>
           <th>Remaining amount available</th>
-          <td>123</td>
+          <td>$ {{ (workspace.billingQuota.limit - costsCurrentMonth) | round(2) }}</td>
         </tr>
         <tr>
           <th>Days left until reset</th>
-          <td>12</td>
+          <td>{{ daysLeftCurrentMonth }}</td>
         </tr>
       {% endif %}
       <tr>
@@ -97,6 +101,35 @@
           {% endif %}
         </td>
       </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Bills -->
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title fw-semibold mb-4 d-flex justify-content-between align-items-center">
+      Bills
+    </h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for bill in bills %}
+          <tr>
+            <td class="align-middle">{{ bill | date('MMMM yyyy') }}</td>
+            <td class="align-middle text-end">
+              <a href="/workspaces/{{ workspace.id }}/bills/{{ bill.getFullYear() }}/{{ bill.getMonth() + 1 }}" class="btn btn-outline-primary">
+                Show <i class="ti ti-arrow-right ms-1"></i>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
     </table>
   </div>
 </div>

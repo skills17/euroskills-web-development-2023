@@ -4,6 +4,8 @@ import { validate } from '../utils/validation';
 import { Workspace } from '../entities/Workspace';
 import { getUserFromRequest } from '../services/user';
 import { getWorkspace } from '../services/workspace';
+import { addMonths, differenceInMonths, formatDuration, intervalToDuration, startOfMonth } from 'date-fns';
+import { getBill } from '../services/bills';
 
 const schema = z.object({
   title: z.string().max(100, 'Title must be at most 100 characters').nonempty({ message: 'Title is required' }),
@@ -53,10 +55,21 @@ const store = async (req: Request, res: Response) => {
 
 const show = async (req: Request, res: Response) => {
   const workspace = await getWorkspace(req.params.workspaceId);
+  const { total: costsCurrentMonth } = await getBill(workspace, new Date().getFullYear(), new Date().getMonth() + 1);
+  const daysLeftCurrentMonth = formatDuration(
+    intervalToDuration({ start: new Date(), end: startOfMonth(addMonths(new Date(), 1)) }),
+    { format: ['days'] },
+  );
+  const firstMonth = startOfMonth(workspace.createdAt);
+  const numBills = Math.abs(differenceInMonths(firstMonth, startOfMonth(new Date()))) + 1;
+  const bills = [...Array(numBills).keys()].map((i) => addMonths(firstMonth, i)).reverse();
 
   return res.render('workspaces/view.njk', {
     workspace,
     action: req.query.action,
+    costsCurrentMonth,
+    daysLeftCurrentMonth,
+    bills,
   });
 };
 
