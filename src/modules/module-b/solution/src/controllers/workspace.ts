@@ -50,7 +50,7 @@ const store = async (req: Request, res: Response) => {
   workspace.user = user;
   await workspace.save();
 
-  return res.redirect('/workspaces');
+  return res.redirect(`/workspaces/${workspace.id}`);
 };
 
 const show = async (req: Request, res: Response) => {

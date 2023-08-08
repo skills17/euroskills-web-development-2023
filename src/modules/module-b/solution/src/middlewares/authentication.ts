@@ -10,6 +10,8 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
     } catch (e) {
       res.redirect('/login');
     }
+  } else {
+    next();
   }
 };
 

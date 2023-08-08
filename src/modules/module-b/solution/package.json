@@ -6,7 +6,9 @@
   "scripts": {
     "predev": "npm install",
     "dev": "nodemon src/index.ts",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "build": "tsc --build",
+    "start": "node build"
   },
   "author": "",
   "license": "MIT",

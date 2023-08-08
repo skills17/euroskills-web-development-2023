@@ -25,3 +25,15 @@ To generate new DB migrations, update your models and then run:
 docker compose exec --workdir /app app npm run typeorm migration:generate -- -d src/db/dataSource.ts src/db/migrations/create_x_table
 ```
 Then, add the new migration class in the `src/db/dataSource.ts` file.
+
+## Production
+
+To build a production ready docker image, run:
+```bash
+docker build -t euroskills2023/module-b .
+```
+
+Afterwards, it can be started with the required environment variables provided:
+```bash
+docker run --rm -it -e DB_HOST=host.docker.internal -e DB_USER=skill17 -e DB_PASSWORD=password -e DB_NAME=euroskills2023 euroskills2023/module-b
+```
