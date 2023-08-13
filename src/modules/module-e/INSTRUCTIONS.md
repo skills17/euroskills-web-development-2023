@@ -36,7 +36,7 @@ The app has the following requirements:
 - Notifications about new articles can be received as explained below and open the app to the list view when clicked.
 
 Because PWAs do not work with file URLs, a simple HTTP server is provided to you.
-It can be started by running `npm start` inside the `task2/src` folder and serves the content of the whole directory on [localhost:8080](http://localhost:8080).
+See the handout for instructions on how to start it and where the API can be acecssed.
 
 ### Notifications
 
