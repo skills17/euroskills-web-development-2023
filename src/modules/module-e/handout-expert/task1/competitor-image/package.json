@@ -5,7 +5,7 @@
         "start": "node src/index.js",
         "test": "jest",
         "test:coverage": "jest --coverage",
-        "test:watch": "jest --watch --coverage"
+        "test:watch": "jest --watchAll --coverage"
     },
     "private": true,
     "license": "UNLICENSED",
