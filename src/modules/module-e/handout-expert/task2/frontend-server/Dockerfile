@@ -1,4 +1,4 @@
-FROM node:20.3.1-alpine3.17 AS builder
+FROM node:20.3.1-alpine3.17
 WORKDIR /app
 COPY . /app
 RUN npm install
