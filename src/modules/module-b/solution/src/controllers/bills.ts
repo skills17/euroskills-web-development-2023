@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { getWorkspace } from '../services/workspace';
 import { notFound } from '../utils/views';
 import { getBill } from '../services/bills';
+import { format } from 'date-fns';
 
 const show = async (req: Request, res: Response) => {
   const workspace = await getWorkspace(req.params.workspaceId);
@@ -20,6 +21,7 @@ const show = async (req: Request, res: Response) => {
     services,
     year,
     month,
+    monthName: format(new Date(`${year}-${month}-01`), 'MMMM'),
     total,
   });
 };

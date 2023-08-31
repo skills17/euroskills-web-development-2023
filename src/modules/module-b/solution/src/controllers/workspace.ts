@@ -59,7 +59,7 @@ const show = async (req: Request, res: Response) => {
   const daysLeftCurrentMonth = formatDuration(
     intervalToDuration({ start: new Date(), end: startOfMonth(addMonths(new Date(), 1)) }),
     { format: ['days'] },
-  );
+  ) || '1 day';
   const firstMonth = startOfMonth(workspace.createdAt);
   const numBills = Math.abs(differenceInMonths(firstMonth, startOfMonth(new Date()))) + 1;
   const bills = [...Array(numBills).keys()].map((i) => addMonths(firstMonth, i)).reverse();
