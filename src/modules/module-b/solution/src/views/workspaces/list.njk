@@ -1,0 +1,36 @@
+{% extends 'components/sidebarLayout.njk' %}
+
+{% set title = 'Workspaces' %}
+
+{% block main %}
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title fw-semibold mb-4 d-flex justify-content-between align-items-center">
+      Workspaces
+      <a href="/workspaces/create" class="btn btn-outline-primary btn-sm">Create new Workspace <i class="ti ti-plus ms-1"></i></a>
+    </h4>
+    {% if not workspaces or workspaces.length === 0 %}
+      You do not have any workspaces yet.
+    {% else %}
+      {% for workspace in workspaces %}
+        <div class="card d-flex flex-row justify-content-between align-items-center">
+          <div class="card-body">
+            <h5 class="card-title fw-semibold {{ 'mb-0' if not workspace.description }}">{{ workspace.title }}</h5>
+            {{ workspace.description }}
+          </div>
+          <div style="margin-right: var(--bs-card-spacer-x)">
+            <a href="/workspaces/{{ workspace.id }}/edit" class="btn btn-outline-primary me-2">
+              Edit
+              <i class="ti ti-edit ms-1"></i>
+            </a>
+            <a href="/workspaces/{{ workspace.id }}" class="btn btn-primary">
+              Open
+              <i class="ti ti-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
