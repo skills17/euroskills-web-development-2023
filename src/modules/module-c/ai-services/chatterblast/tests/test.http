@@ -1,0 +1,14 @@
+### create conversation
+POST http://localhost:3000/conversation
+Content-Type: application/json
+
+{"conversationId": "test_error"}
+
+### post prompt
+POST http://localhost:3000/conversation/test
+Content-Type: text/plain
+
+lorem ipsum
+
+### get response
+GET http://localhost:3000/conversation/test
