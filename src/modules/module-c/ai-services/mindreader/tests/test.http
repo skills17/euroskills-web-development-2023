@@ -1,0 +1,8 @@
+### recognize
+POST http://localhost:3000/recognize
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="image"; filename="construction.png"
+
+< ../images/construction.png

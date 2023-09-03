@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+
+construction:
+<div id="construction" style="position: relative; width: 1024px; height: 1024px"><img src="../images/construction.png"
+                                                                                      alt=""></div>
+convention:
+<div id="convention" style="position: relative; width: 1024px; height: 1024px"><img src="../images/convention.png"
+                                                                                    alt=""></div>
+countryside:
+<div id="countryside" style="position: relative; width: 1024px; height: 1024px"><img src="../images/countryside.png"
+                                                                                     alt=""></div>
+electronics:
+<div id="electronics" style="position: relative; width: 1024px; height: 1024px"><img src="../images/electronics.png"
+                                                                                     alt=""></div>
+street:
+<div id="street" style="position: relative; width: 1024px; height: 1024px"><img src="../images/street.png" alt=""></div>
+default:
+<div id="default">nope</div>
+
+<script>
+    const images = [
+        'construction',
+        'convention',
+        'countryside',
+        'electronics',
+        'street',
+        'default'
+    ];
+
+    images.forEach(async image => {
+        const formData = new FormData();
+        formData.append('image', new Blob(["foo"], {type: "image/png"}), `${image}.png`);
+        const response = await (await fetch('http://localhost:3000/recognize', {
+            method: 'POST',
+            body: formData
+        })).json();
+
+        response.objects.forEach(obj => {
+            const objDiv = document.createElement('div');
+            objDiv.style.position = `absolute`;
+            objDiv.style.top = `${obj.bounding_box.top}px`;
+            objDiv.style.left = `${obj.bounding_box.left}px`;
+            objDiv.style.bottom = `${obj.bounding_box.bottom}px`;
+            objDiv.style.width = `${obj.bounding_box.right - obj.bounding_box.left}px`;
+            objDiv.style.background = `#ff000066`;
+            objDiv.innerHTML = `${obj.label}<br>Probability: ${obj.probability * 100}%`
+
+            document.getElementById(image).appendChild(objDiv);
+        })
+
+        console.log(image, response);
+
+
+    })
+</script>
+</body>
+</html>
