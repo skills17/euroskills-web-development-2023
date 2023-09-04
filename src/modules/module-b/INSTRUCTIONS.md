@@ -43,7 +43,7 @@ All of the following functionality (API tokens, billing quotas, bills) are scope
 
 After login, the user is redirected to their list of workspaces.
 On that page, they can create or update workspaces.
-Users can only access and modify their own namespaces.
+Users can only access and modify their own workspaces.
 
 For each workspace, they have the possibility to manage the API tokens, billing quotas, and bills. This additional functionality can also be provided on separate pages through links and does not have to be on the same page.
 
