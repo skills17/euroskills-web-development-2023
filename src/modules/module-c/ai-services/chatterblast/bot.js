@@ -64,7 +64,7 @@ function generateLongResponse() {
 }
 
 function generateResponse(userInput) {
-    for (const { pattern, responses } of specificWords) {
+    for (const {pattern, responses} of specificWords) {
         if (pattern.test(userInput)) {
             return getRandomResponse(responses);
         }
@@ -77,7 +77,7 @@ function generateResponse(userInput) {
 }
 
 function fakeSlowResponse(conversation) {
-    const { start, response } = conversation;
+    const {start, response} = conversation;
 
     const timeElapsed = new Date() - start;
     const charactersPerSecond = 50;
@@ -87,11 +87,11 @@ function fakeSlowResponse(conversation) {
 
     if (isResponseFinal) {
         return `${response}<EOF>Took ${
-            response.length / charactersPerSecond
+            Math.round((response.length / charactersPerSecond) * 100000) / 100
         }ms`;
     }
 
     return response.substring(0, charactersToReturn);
 }
 
-module.exports = { generateResponse, fakeSlowResponse };
+module.exports = {generateResponse, fakeSlowResponse};
