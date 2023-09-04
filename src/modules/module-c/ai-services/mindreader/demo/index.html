@@ -49,15 +49,11 @@ default:
             objDiv.style.bottom = `${obj.bounding_box.bottom}px`;
             objDiv.style.width = `${obj.bounding_box.right - obj.bounding_box.left}px`;
             objDiv.style.background = `#ff000066`;
-            objDiv.innerHTML = `${obj.label}<br>Probability: ${obj.probability * 100}%`
+            objDiv.innerHTML = `${obj.label}<br>Probability: ${obj.probability * 100}%`;
 
             document.getElementById(image).appendChild(objDiv);
-        })
-
-        console.log(image, response);
-
-
-    })
+        });
+    });
 </script>
 </body>
 </html>
