@@ -1,0 +1,25 @@
+{% extends 'components/sidebarLayout.njk' %}
+
+{% set title = 'Create API Token' %}
+
+{% block main %}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title fw-semibold mb-4  d-flex justify-content-between align-items-center">
+      Create API Token
+    </h5>
+    <form method="post">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control {{ 'is-invalid' if errors.name }}" id="name" name="name" required value="{{ values.name }}">
+        {% if errors.name %}
+          <div class="invalid-feedback">
+            {{ errors.name }}
+          </div>
+        {% endif %}
+      </div>
+      <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Create</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

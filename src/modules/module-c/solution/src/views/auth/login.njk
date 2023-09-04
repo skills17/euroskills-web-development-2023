@@ -1,0 +1,47 @@
+{% extends 'components/layout.njk' %}
+
+{% set title = 'Login' %}
+
+{% block content %}
+<div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="d-flex align-items-center justify-content-center w-100">
+    <div class="row justify-content-center w-100">
+      <div class="col-md-8 col-lg-6 col-xxl-3">
+        <div class="card mb-0">
+          <div class="card-body">
+            <p class="text-center py-3">
+              <img src="/assets/icons/api-dashboard.svg" width="221" alt="" />
+            </p>
+            {% if loginFailed %}
+              <div class="alert alert-danger">
+                Username and/or password invalid
+              </div>
+            {% endif %}
+            <form method="post">
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control {{ 'is-invalid' if errors.username }}" id="username" name="username" required>
+                {% if errors.username %}
+                  <div class="invalid-feedback">
+                    {{ errors.username }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="mb-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control {{ 'is-invalid' if errors.password }}" id="password" name="password" required>
+                {% if errors.password %}
+                  <div class="invalid-feedback">
+                    {{ errors.password }}
+                  </div>
+                {% endif %}
+              </div>
+              <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'components/sidebarLayout.njk' %}
+
+{% set title = 'Edit Billing Quota' %}
+
+{% block main %}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title fw-semibold mb-4  d-flex justify-content-between align-items-center">
+      Edit Billing Quota
+    </h5>
+    <form method="post">
+      <div class="mb-3">
+        <label for="limit" class="form-label">Limit</label>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          <input type="text" class="form-control {{ 'is-invalid' if errors.limit }}" id="limit" name="limit" value="{{ values.limit }}">
+          {% if errors.limit %}
+            <div class="invalid-feedback">
+              {{ errors.limit }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="helper-feedback">
+          Leave empty for no limit
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Update</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

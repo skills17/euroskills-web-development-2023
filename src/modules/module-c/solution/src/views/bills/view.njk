@@ -1,0 +1,55 @@
+{% extends 'components/layout.njk' %}
+
+{% block content %}
+<div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="d-flex align-items-center justify-content-center w-100">
+    <div class="row justify-content-center w-100">
+      <div class="col-md-12 col-lg-8">
+        <div class="card mb-0">
+          <div class="card-body">
+            <h5 class="card-title fw-semibold mb-4  d-flex justify-content-between align-items-center">
+              {{ monthName }} {{ year }}
+            </h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Time</th>
+                  <th>Per sec.</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for token in apiTokens %}
+                  {% if token.usages.length > 0 %}
+                    <tr>
+                      <td>{{ token.token.name }} token</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    {% for usage in token.usages %}
+                      <tr>
+                        <td class="ps-5">{{ services[usage.serviceId].name }}</td>
+                        <td>{{ usage.durationInMs / 1000 }} s</td>
+                        <td>$ {{ services[usage.serviceId].costPerMs }}</td>
+                        <td>$ {{ (usage.durationInMs * services[usage.serviceId].costPerMs) | round(2) }}</td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+                <tr>
+                  <td class="fw-bolder">Total</td>
+                  <td></td>
+                  <td></td>
+                  <td class="fw-bolder">$ {{ total | round(2) }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
