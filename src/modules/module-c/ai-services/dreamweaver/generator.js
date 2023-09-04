@@ -9,7 +9,7 @@ const {
 } = require("./image-util");
 
 const PROGRESS_VALUES = [0, 15, 30, 45, 60, 75, 100];
-const PROGRESS_INTERVAL_MS = 500;
+const PROGRESS_INTERVAL_MS = 2000;
 
 function getCommandImageUrl(baseUrl, prompt, progress, commandType) {
     if (commandType === 'zoom-in') {
