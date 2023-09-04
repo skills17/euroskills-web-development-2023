@@ -1,5 +1,5 @@
 ### generate
-POST http://localhost:3000/generate
+POST {{BASE_URL}}/generate
 Content-Type: application/json
 
 {
@@ -11,17 +11,17 @@ Content-Type: application/json
 %}
 
 ### get job status
-GET http://localhost:3000/status/{{job_id}}
+GET {{BASE_URL}}/status/{{job_id}}
 
 ### get result
-GET http://localhost:3000/result/{{job_id}}
+GET {{BASE_URL}}/result/{{job_id}}
 
 > {%
     client.global.set("resource_id", response.body.resource_id);
 %}
 
 ### upscale
-POST http://localhost:3000/upscale
+POST {{BASE_URL}}/upscale
 Content-Type: application/json
 
 {
@@ -33,7 +33,7 @@ Content-Type: application/json
 %}
 
 ### zoom-in
-POST http://localhost:3000/zoom/in
+POST {{BASE_URL}}/zoom/in
 Content-Type: application/json
 
 {
@@ -45,7 +45,7 @@ Content-Type: application/json
 %}
 
 ### zoom-out
-POST http://localhost:3000/zoom/out
+POST {{BASE_URL}}/zoom/out
 Content-Type: application/json
 
 {

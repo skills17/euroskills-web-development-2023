@@ -1,14 +1,16 @@
+
+
 ### create conversation
-POST http://localhost:3000/conversation
+POST {{BASE_URL}}/conversation
 Content-Type: application/json
 
-{"conversationId": "test_error"}
+{"conversationId": "foobar"}
 
 ### post prompt
-POST http://localhost:3000/conversation/test
+POST {{BASE_URL}}/conversation/foobar
 Content-Type: text/plain
 
 lorem ipsum
 
 ### get response
-GET http://localhost:3000/conversation/test
+GET {{BASE_URL}}/conversation/foobar

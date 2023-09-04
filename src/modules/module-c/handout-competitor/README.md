@@ -4,11 +4,9 @@
 
 To solve this task, you are provided with a solution of module B.
 
-You can access it via the following URL:
+You can access the files at the following URL:
 
-```
-http://TODO
-```
+https://gitlab.skill17.com/test-project/handout
 
 ## AI Services
 
@@ -34,3 +32,16 @@ Here are the respective instructions for each service:
 | Chatterblast | Submit `test_error` as conversation ID       |
 | Dreamweaver  | Submit `test_error` as a prompt              |
 | Mindreader   | Submit a file with filename `test_error.png` |
+
+### Inputs
+
+The provided services are not actually implementing any AI. Instead, they are just running some simple algorithms on
+the input data. To trigger the services to return a specific response, you can submit magic strings.
+
+Here are the respective instructions for each service:
+
+| Service      | Inputs                                                                                                            |
+|--------------|-------------------------------------------------------------------------------------------------------------------|
+| Chatterblast | Try `lorem ipsum` for a long response. There are a lot of other prompts which will give you a half-decent answer. |
+| Dreamweaver  | Try `applause`, `cat`, `gdansk`, `opening`, `podium`                                                              |
+| Mindreader   | Try uploading any of the images in `mindreader-images/` (the file name matters)                                   |

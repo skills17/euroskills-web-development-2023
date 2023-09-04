@@ -1,5 +1,5 @@
 ### recognize
-POST http://localhost:3000/recognize
+POST {{BASE_URL}}/recognize
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
