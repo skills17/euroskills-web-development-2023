@@ -5,4 +5,13 @@ Content-Type: multipart/form-data; boundary=boundary
 --boundary
 Content-Disposition: form-data; name="image"; filename="construction.jpg"
 
-< ../images/construction.jpg
+< ../demo/images/construction.jpg
+
+### recognize error
+POST {{BASE_URL}}/recognize
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="image"; filename="test_error.jpg"
+
+< ../demo/images/test_error.jpg

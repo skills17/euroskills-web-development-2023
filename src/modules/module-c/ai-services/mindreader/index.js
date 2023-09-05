@@ -91,23 +91,23 @@ app.use(express.json());
 app.use(express.text());
 app.use(cors())
 
-function getResponseMock(filename) {
-    if (!filename) {
+function getResponseMock(imageDescription) {
+    if (!imageDescription) {
         return "default";
     }
-    if (filename.includes('construction')) {
+    if (imageDescription.includes('construction')) {
         return "construction";
     }
-    if (filename.includes('convention')) {
+    if (imageDescription.includes('convention')) {
         return "convention";
     }
-    if (filename.includes('countryside')) {
+    if (imageDescription.includes('countryside')) {
         return "countryside";
     }
-    if (filename.includes('electronics')) {
+    if (imageDescription.includes('electronics')) {
         return "electronics";
     }
-    if (filename.includes('street')) {
+    if (imageDescription.includes('street')) {
         return "street";
     }
     return "default";
@@ -120,10 +120,6 @@ app.post("/recognize", (req, res) => {
     let receivedData = false;
     let buffers = [];
     bb.on('file', (name, file, info) => {
-        if (info.filename.includes('test_error')) {
-            res.status(500).json({error: "Test error. You just entered something which provokes a test error."});
-            return;
-        }
         file.on('data', (data) => {
             receivedData = receivedData || data.length > 0;
             buffers.push(data);
@@ -131,8 +127,16 @@ app.post("/recognize", (req, res) => {
             if (receivedData) {
                 const parser = exif.create(Buffer.concat(buffers));
                 const metadata = parser.parse();
-                responseMock = metadata && metadata.tags && getResponseMock(metadata.tags.ImageDescription);
-                res.json(FILENAME_RESPONSE_MOCKS[responseMock] || FILENAME_RESPONSE_MOCKS.default);
+                if (metadata && metadata.tags && metadata.tags.ImageDescription) {
+                    if (metadata.tags.ImageDescription === 'test_error') {
+                        res.status(500).json({error: "Test error. You just entered something which provokes a test error."});
+                        return;
+                    }
+                    responseMock = metadata && metadata.tags && getResponseMock(metadata.tags.ImageDescription);
+                    res.json(FILENAME_RESPONSE_MOCKS[responseMock] || FILENAME_RESPONSE_MOCKS.default);
+                    return;
+                }
+                res.json(FILENAME_RESPONSE_MOCKS.default);
             }
         });
     });

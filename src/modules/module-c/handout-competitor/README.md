@@ -33,11 +33,11 @@ response with status code `500`.
 
 Here are the respective instructions for each service:
 
-| Service      | Base URL                                     |
-|--------------|----------------------------------------------|
-| Chatterblast | Submit `test_error` as conversation ID       |
-| Dreamweaver  | Submit `test_error` as a prompt              |
-| Mindreader   | Submit a file with filename `test_error.png` |
+| Service      | Base URL                                         |
+|--------------|--------------------------------------------------|
+| Chatterblast | Submit `test_error` as conversation ID or prompt |
+| Dreamweaver  | Submit `test_error` as a prompt                  |
+| Mindreader   | Submit a file with filename `test_error.png`     |
 
 ### Inputs
 
