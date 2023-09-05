@@ -44,4 +44,4 @@ Here are the respective instructions for each service:
 |--------------|-------------------------------------------------------------------------------------------------------------------|
 | Chatterblast | Try `lorem ipsum` for a long response. There are a lot of other prompts which will give you a half-decent answer. |
 | Dreamweaver  | Try `applause`, `cat`, `gdansk`, `opening`, `podium`                                                              |
-| Mindreader   | Try uploading any of the images in `mindreader-images/` (the file name matters)                                   |
+| Mindreader   | Try uploading any of the images in `mindreader-images/`                                                           |

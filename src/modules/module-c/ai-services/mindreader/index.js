@@ -1,6 +1,7 @@
 const express = require("express");
 const busboy = require('busboy');
 const cors = require('cors');
+const exif = require('exif-parser');
 
 const FILENAME_RESPONSE_MOCKS = {
     construction: {
@@ -220,16 +221,20 @@ app.post("/recognize", (req, res) => {
     const bb = busboy({headers: req.headers});
     let responseMock = 'default';
     let receivedData = false;
+    let buffers = [];
     bb.on('file', (name, file, info) => {
         if (info.filename.includes('test_error')) {
             res.status(500).json({error: "Test error. You just entered something which provokes a test error."});
             return;
         }
-        responseMock = getResponseMock(info.filename);
         file.on('data', (data) => {
             receivedData = receivedData || data.length > 0;
+            buffers.push(data);
         }).on('close', () => {
             if (receivedData) {
+                const parser = exif.create(Buffer.concat(buffers));
+                const metadata = parser.parse();
+                responseMock = metadata && metadata.tags && getResponseMock(metadata.tags.ImageDescription);
                 res.json(FILENAME_RESPONSE_MOCKS[responseMock] || FILENAME_RESPONSE_MOCKS.default);
             }
         });
