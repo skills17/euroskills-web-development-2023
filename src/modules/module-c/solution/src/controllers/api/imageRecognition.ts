@@ -6,6 +6,8 @@ import {ServiceUsage} from "../../entities/ServiceUsage";
 import {Service} from "../../entities/Service";
 import {ApiToken} from "../../entities/ApiToken";
 
+const MINDREADER_BASE_URL = process.env.MINDREADER_BASE_URL || 'http://127.0.0.1:9003'
+
 async function recognize(req: Request, res: Response) {
 
     try {
@@ -16,7 +18,7 @@ async function recognize(req: Request, res: Response) {
         const start = new Date();
 
         // Forward the FormData to the external endpoint using node-fetch
-        const response = await fetch('http://127.0.0.1:9003/recognize', {
+        const response = await fetch(`${MINDREADER_BASE_URL}/recognize`, {
             method: 'POST',
             body: formData,
             headers: {
@@ -37,13 +39,14 @@ async function recognize(req: Request, res: Response) {
         res.send({
             objects: parsedData.objects.map(obj => ({
                 name: obj.label,
-                probability : obj.probability,
+                probability: obj.probability,
                 bounding_box: {
                     x: obj.bounding_box.left,
                     y: obj.bounding_box.top,
                     width: obj.bounding_box.right - obj.bounding_box.left,
                     height: obj.bounding_box.bottom - obj.bounding_box.top,
-                }}))
+                }
+            }))
         });
     } catch (error) {
         console.error('Error:', error);
