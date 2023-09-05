@@ -1,4 +1,5 @@
 import {Express, Request, Response} from 'express';
+import cors from "cors";
 import loginController from './controllers/frontend/login';
 import logoutController from './controllers/frontend/logout';
 import workspaceController from './controllers/frontend/workspace';
@@ -14,8 +15,10 @@ import {notFound} from './utils/views';
 import {unless} from "./utils/route";
 import quotaCheck from "./middlewares/quota";
 
+
 export const setupRoutes = (app: Express) => {
     // api
+    app.use('/api', cors());
     app.use('/api', tokenAuth);
     app.use('/api', quotaCheck);
     app.post('/api/chat/conversation', apiChatController.startConversation);
