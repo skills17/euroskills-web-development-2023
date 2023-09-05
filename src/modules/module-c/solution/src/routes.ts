@@ -1,4 +1,4 @@
-import {Express, Request, Response} from 'express';
+import {Express, json, Request, Response} from 'express';
 import cors from "cors";
 import multer from "multer";
 import loginController from './controllers/frontend/login';
@@ -22,6 +22,7 @@ export const setupRoutes = (app: Express) => {
 
     // api
     app.use('/api', cors());
+    app.use('/api', json());
     app.use('/api', tokenAuth);
     app.use('/api', quotaCheck);
     app.post('/api/chat/conversation', apiChatController.startConversation);

@@ -21,7 +21,6 @@ const conversations: {
 function parseResponse(textResponse: string): { isFinal: boolean, durationInMs: number, text: string } {
     const match = textResponse.match(regex);
     if (match) {
-        console.log(match[2])
         return {
             isFinal: true,
             durationInMs: parseInt(match[2]),
@@ -65,6 +64,16 @@ async function readResponse(token: string, conversationId: string) {
 
 async function startConversation(req: Request, res: Response) {
     try {
+        if (!req.body.prompt) {
+            res.status(400).json({
+                "type": "/problem/types/400",
+                "title": "Bad Request",
+                "status": 400,
+                "detail": "Invalid request body",
+            });
+            return;
+        }
+
         const conversationId = crypto.randomUUID();
 
         const creationResponse = await fetch(`${CHATTERBLAST_BASE_URL}/conversation`, {
@@ -96,7 +105,7 @@ async function startConversation(req: Request, res: Response) {
 
         await fetch(`${CHATTERBLAST_BASE_URL}/conversation/${conversationId}`, {
             method: 'POST',
-            body: req.body.prompt
+            body: req.body.prompt || ''
         });
 
         res.json(await readResponse(req.header('X-API-TOKEN'), conversationId));
