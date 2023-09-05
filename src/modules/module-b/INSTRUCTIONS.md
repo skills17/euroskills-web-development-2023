@@ -48,7 +48,7 @@ Users can only access and modify their own workspaces.
 For each workspace, they have the possibility to manage the API tokens, billing quotas, and bills. This additional functionality can also be provided on separate pages through links and does not have to be on the same page.
 
 A workspace has the following attributes:
-- A required **title** (max 100 characters, unique within the account)
+- A required **title** (max 100 characters, unique per user)
 - An optional **description** of any length
 
 ### API Tokens
