@@ -1,0 +1,11 @@
+Pricing is based on usage per second.
+Same price for everyone, no different tiers or hidden costs.
+
+ChatterBlast - Chat API
+$ 0.0015 per second
+
+DreamWeaver - Image Generation API
+$ 0.0500 per second
+
+MindReader - Image Recognition API
+$ 0.0350 per second

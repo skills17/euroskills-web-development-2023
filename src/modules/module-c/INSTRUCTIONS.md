@@ -67,7 +67,7 @@ uses an asynchronous API, the timer starts to count when the job was started unt
 
 ### Error Handling
 
-There several types of errors that can occur. The API endpoints must handle these errors and return the appropriate
+There are several types of errors that can occur. The API endpoints must handle these errors and return the appropriate
 HTTP status code. The API endpoints must also return a JSON object with an error message.
 
 Errors:
