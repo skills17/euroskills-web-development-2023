@@ -33,6 +33,16 @@ async function recognize(req: Request, res: Response) {
         serviceUsage.usageStartedAt = start;
         await serviceUsage.save();
 
+        if (response.status !== 200) {
+            res.status(503).send({
+                "type": "/problem/types/503",
+                "title": "Service Unavailable",
+                "status": 503,
+                "detail": "The service is currently unavailable."
+            });
+            return;
+        }
+
         // Parse the response from the external endpoint
         const parsedData = await response.json();
 

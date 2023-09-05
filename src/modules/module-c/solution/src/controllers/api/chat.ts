@@ -103,10 +103,20 @@ async function startConversation(req: Request, res: Response) {
             savedUsageCount: 0,
         }
 
-        await fetch(`${CHATTERBLAST_BASE_URL}/conversation/${conversationId}`, {
+        const postPromptResponse = await fetch(`${CHATTERBLAST_BASE_URL}/conversation/${conversationId}`, {
             method: 'POST',
             body: req.body.prompt || ''
         });
+
+        if (postPromptResponse.status !== 200) {
+            res.status(503).send({
+                "type": "/problem/types/503",
+                "title": "Service Unavailable",
+                "status": 503,
+                "detail": "The service is currently unavailable."
+            });
+            return;
+        }
 
         res.json(await readResponse(req.header('X-API-TOKEN'), conversationId));
     } catch (error) {
@@ -146,10 +156,20 @@ async function continueConversation(req: Request, res: Response) {
     conversations[conversationId].lastPromptTimestamp = new Date();
     conversations[conversationId].promptCount++;
 
-    await fetch(`${CHATTERBLAST_BASE_URL}/conversation/${conversationId}`, {
+    const postPromptResponse = await fetch(`${CHATTERBLAST_BASE_URL}/conversation/${conversationId}`, {
         method: 'POST',
-        body: req.body.prompt
+        body: req.body.prompt || ''
     });
+
+    if (postPromptResponse.status !== 200) {
+        res.status(503).send({
+            "type": "/problem/types/503",
+            "title": "Service Unavailable",
+            "status": 503,
+            "detail": "The service is currently unavailable."
+        });
+        return;
+    }
 
     res.json(await readResponse(req.header('X-API-TOKEN'), conversationId));
 }
