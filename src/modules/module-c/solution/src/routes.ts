@@ -1,5 +1,6 @@
 import {Express, Request, Response} from 'express';
 import cors from "cors";
+import multer from "multer";
 import loginController from './controllers/frontend/login';
 import logoutController from './controllers/frontend/logout';
 import workspaceController from './controllers/frontend/workspace';
@@ -9,7 +10,7 @@ import billsController from './controllers/frontend/bills';
 import apiChatController from './controllers/api/chat';
 import apiImageGenerationController from './controllers/api/imageGeneration';
 import apiImageRecognitionController from './controllers/api/imageRecognition';
-import {userAuth, tokenAuth} from './middlewares/authentication';
+import {tokenAuth, userAuth} from './middlewares/authentication';
 import validWorkspace from './middlewares/validWorkspace';
 import {notFound} from './utils/views';
 import {unless} from "./utils/route";
@@ -17,6 +18,8 @@ import quotaCheck from "./middlewares/quota";
 
 
 export const setupRoutes = (app: Express) => {
+    const upload = multer({dest: 'uploads/'});
+
     // api
     app.use('/api', cors());
     app.use('/api', tokenAuth);
@@ -32,7 +35,7 @@ export const setupRoutes = (app: Express) => {
     app.post('/api/imagegeneration/zoom/in', apiImageGenerationController.zoomIn);
     app.post('/api/imagegeneration/zoom/out', apiImageGenerationController.zoomOut);
 
-    app.post('/api/imagerecognition/recognize', apiImageRecognitionController.recognize);
+    app.post('/api/imagerecognition/recognize', upload.single('image'), apiImageRecognitionController.recognize);
 
     // views
     app.use(unless('/api', userAuth));
