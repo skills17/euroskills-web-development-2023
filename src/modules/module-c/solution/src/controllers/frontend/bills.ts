@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { getWorkspace } from '../services/workspace';
-import { notFound } from '../utils/views';
-import { getBill } from '../services/bills';
+import { getWorkspace } from '../../services/workspace';
+import { notFound } from '../../utils/views';
+import { getBill } from '../../services/bills';
 import { format } from 'date-fns';
 
 const show = async (req: Request, res: Response) => {

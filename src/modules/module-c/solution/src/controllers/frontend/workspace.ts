@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
-import { validate } from '../utils/validation';
-import { Workspace } from '../entities/Workspace';
-import { getUserFromRequest } from '../services/user';
-import { getWorkspace } from '../services/workspace';
+import { validate } from '../../utils/validation';
+import { Workspace } from '../../entities/Workspace';
+import { getUserFromRequest } from '../../services/user';
+import { getWorkspace } from '../../services/workspace';
 import { addMonths, differenceInMonths, formatDuration, intervalToDuration, startOfMonth } from 'date-fns';
-import { getBill } from '../services/bills';
+import { getBill } from '../../services/bills';
 
 const schema = z.object({
   title: z.string().max(100, 'Title must be at most 100 characters').nonempty({ message: 'Title is required' }),

@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
-import { validate } from '../utils/validation';
-import { getWorkspace } from '../services/workspace';
-import { BillingQuota } from '../entities/BillingQuota';
+import { validate } from '../../utils/validation';
+import { getWorkspace } from '../../services/workspace';
+import { BillingQuota } from '../../entities/BillingQuota';
 
 const edit = async (req: Request, res: Response) => {
   const workspace = await getWorkspace(req.params.workspaceId);

@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
-import { getUser } from '../services/user';
-import { validate } from '../utils/validation';
-import { verifyHash } from '../utils/hashing';
-import { signToken } from '../utils/jwt';
+import { getUser } from '../../services/user';
+import { validate } from '../../utils/validation';
+import { verifyHash } from '../../utils/hashing';
+import { signToken } from '../../utils/jwt';
 
 const get = async (req: Request, res: Response) => {
   return res.render('auth/login.njk');

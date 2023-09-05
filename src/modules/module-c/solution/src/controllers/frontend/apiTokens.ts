@@ -1,10 +1,10 @@
 import crypto from 'crypto';
 import { Request, Response } from 'express';
 import { z } from 'zod';
-import { validate } from '../utils/validation';
-import { ApiToken } from '../entities/ApiToken';
-import { getWorkspace } from '../services/workspace';
-import { getApiToken } from '../services/apiTokens';
+import { validate } from '../../utils/validation';
+import { ApiToken } from '../../entities/ApiToken';
+import { getWorkspace } from '../../services/workspace';
+import { getApiToken } from '../../services/apiTokens';
 
 const create = async (req: Request, res: Response) => {
   return res.render('apiTokens/create.njk');

@@ -1,43 +1,63 @@
-import { Express, Request, Response } from 'express';
-import loginController from './controllers/login';
-import logoutController from './controllers/logout';
-import workspaceController from './controllers/workspace';
-import apiTokensController from './controllers/apiTokens';
-import billingQuotasController from './controllers/billingQuotas';
-import billsController from './controllers/bills';
-import authentication from './middlewares/authentication';
+import {Express, Request, Response} from 'express';
+import loginController from './controllers/frontend/login';
+import logoutController from './controllers/frontend/logout';
+import workspaceController from './controllers/frontend/workspace';
+import apiTokensController from './controllers/frontend/apiTokens';
+import billingQuotasController from './controllers/frontend/billingQuotas';
+import billsController from './controllers/frontend/bills';
+import apiChatController from './controllers/api/chat';
+import apiImageGenerationController from './controllers/api/imageGeneration';
+import apiImageRecognitionController from './controllers/api/imageRecognition';
+import {userAuth, tokenAuth} from './middlewares/authentication';
 import validWorkspace from './middlewares/validWorkspace';
-import { notFound } from './utils/views';
+import {notFound} from './utils/views';
+import {unless} from "./utils/route";
+import quotaCheck from "./middlewares/quota";
 
 export const setupRoutes = (app: Express) => {
-  // middlewares
-  app.use(authentication);
-  app.use('/workspaces/:workspaceId', validWorkspace)
+    // api
+    app.use('/api', tokenAuth);
+    app.use('/api', quotaCheck);
+    app.post('/api/chat/conversation', apiChatController.startConversation);
+    app.put('/api/chat/conversation/:conversationId', apiChatController.continueConversation);
+    app.get('/api/chat/conversation/:conversationId', apiChatController.getResponse);
 
-  // routes
-  app.get('/login', loginController.get);
-  app.post('/login', loginController.post);
+    app.post('/api/imagegeneration/generate', apiImageGenerationController.generate);
+    app.get('/api/imagegeneration/status/:jobID', apiImageGenerationController.getJobStatus);
+    app.get('/api/imagegeneration/result/:jobID', apiImageGenerationController.getResult);
+    app.post('/api/imagegeneration/upscale', apiImageGenerationController.upscale);
+    app.post('/api/imagegeneration/zoom/in', apiImageGenerationController.zoomIn);
+    app.post('/api/imagegeneration/zoom/out', apiImageGenerationController.zoomOut);
 
-  app.get('/logout', logoutController.get);
+    app.post('/api/imagerecognition/recognize', apiImageRecognitionController.recognize);
 
-  app.get('/workspaces', workspaceController.index);
-  app.get('/workspaces/create', workspaceController.create);
-  app.post('/workspaces/create', workspaceController.store);
-  app.get('/workspaces/:workspaceId', workspaceController.show);
-  app.get('/workspaces/:workspaceId/edit', workspaceController.edit);
-  app.post('/workspaces/:workspaceId/edit', workspaceController.update);
+    // views
+    app.use(unless('/api', userAuth));
 
-  app.get('/workspaces/:workspaceId/tokens/create', apiTokensController.create);
-  app.post('/workspaces/:workspaceId/tokens/create', apiTokensController.store);
-  app.post('/workspaces/:workspaceId/tokens/:tokenId/revoke', apiTokensController.destroy);
+    app.get('/login', loginController.get);
+    app.post('/login', loginController.post);
 
-  app.get('/workspaces/:workspaceId/quota', billingQuotasController.edit);
-  app.post('/workspaces/:workspaceId/quota', billingQuotasController.update);
+    app.use('/logout', userAuth);
+    app.get('/logout', logoutController.get);
 
-  app.get('/workspaces/:workspaceId/bills/:year/:month', billsController.show);
+    app.get('/workspaces', workspaceController.index);
+    app.get('/workspaces/create', workspaceController.create);
+    app.post('/workspaces/create', workspaceController.store);
 
-  app.get('/', (req: Request, res: Response) => res.redirect('/workspaces'));
+    app.use('/workspaces/:workspaceId', validWorkspace);
 
-  // 404
-  app.get('*', (req: Request, res: Response) => notFound(res));
+    app.get('/workspaces/:workspaceId', workspaceController.show);
+    app.get('/workspaces/:workspaceId/edit', workspaceController.edit);
+    app.post('/workspaces/:workspaceId/edit', workspaceController.update);
+    app.get('/workspaces/:workspaceId/tokens/create', apiTokensController.create);
+    app.post('/workspaces/:workspaceId/tokens/create', apiTokensController.store);
+    app.post('/workspaces/:workspaceId/tokens/:tokenId/revoke', apiTokensController.destroy);
+    app.get('/workspaces/:workspaceId/quota', billingQuotasController.edit);
+    app.post('/workspaces/:workspaceId/quota', billingQuotasController.update);
+    app.get('/workspaces/:workspaceId/bills/:year/:month', billsController.show);
+
+    app.get('/', (req: Request, res: Response) => res.redirect('/workspaces'));
+
+    // 404
+    app.get('*', (req: Request, res: Response) => notFound(res));
 };

@@ -8,4 +8,4 @@ export const signToken = (data: any, subject?: string) => jwt.sign(data, secret,
   subject,
 });
 
-export const verifyToken = <T>(token: string) => jwt.verify(token, secret) as T;
+export const verifyJwt = <T>(token: string) => jwt.verify(token, secret) as T;
