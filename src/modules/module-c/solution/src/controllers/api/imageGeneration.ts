@@ -2,8 +2,18 @@ import {Request, Response} from "express";
 import fetch from "node-fetch";
 import downloadFile from "../../services/download";
 import {serviceUnavailable} from "../../utils/service";
+import {ServiceUsage} from "../../entities/ServiceUsage";
+import {Service} from "../../entities/Service";
+import {ApiToken} from "../../entities/ApiToken";
 
 const DREAMWEAVER_BASE_URL = process.env.DREAMWEAVER_BASE_URL || 'http://127.0.0.1:9002'
+
+const jobs: {
+    [jobId: string]: {
+        start: Date,
+        savedUsage: boolean,
+    }
+} = {};
 
 async function generate(req: Request, res: Response) {
     try {
@@ -32,6 +42,8 @@ async function generate(req: Request, res: Response) {
         }
 
         const responseJson = await response.json();
+
+        jobs[responseJson.job_id] = {start: new Date(), savedUsage: false};
 
         res.json({
             job_id: responseJson.job_id,
@@ -92,6 +104,15 @@ async function getResult(req: Request, res: Response) {
         });
         return;
     }
+    if (!jobs[jobId]) {
+        res.status(404).json({
+            "type": "/problem/types/404",
+            "title": "Bad Request",
+            "status": 404,
+            "detail": "The requested job was not found."
+        });
+        return;
+    }
 
     try {
         const response = await fetch(`${DREAMWEAVER_BASE_URL}/result/${jobId}`);
@@ -100,11 +121,22 @@ async function getResult(req: Request, res: Response) {
                 "type": "/problem/types/404",
                 "title": "Bad Request",
                 "status": 404,
-                "detail": "The requested job was not found."
+                "detail": "The requested job was not found or is not finished."
             });
             return;
         }
         const responseJson = await response.json();
+
+        if (!jobs[jobId].savedUsage) {
+            const durationInMs = (new Date(responseJson.finished_at)).getTime() - jobs[jobId].start.getTime();
+            const serviceUsage = new ServiceUsage();
+            serviceUsage.durationInMs = durationInMs;
+            serviceUsage.service = await Service.findOneOrFail({where: {name: "DreamWeaver"}});
+            serviceUsage.apiToken = await ApiToken.findOneOrFail({where: {token: req.header('X-API-TOKEN')}})
+            serviceUsage.usageStartedAt = jobs[jobId].start;
+            await serviceUsage.save();
+            jobs[jobId].savedUsage = true;
+        }
 
         const filepath = await downloadFile(responseJson.image_url);
         const imageUrl = `${req.protocol}://${req.get('host')}/files/${filepath}`;
