@@ -1,0 +1,128 @@
+version: '3.7'
+services:
+  competitor-01-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9011:9001"
+      - "9012:9002"
+      - "9013:9003"
+  competitor-02-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9021:9001"
+      - "9022:9002"
+      - "9023:9003"
+  competitor-03-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9031:9001"
+      - "9032:9002"
+      - "9033:9003"
+  competitor-04-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9041:9001"
+      - "9042:9002"
+      - "9043:9003"
+  competitor-05-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9051:9001"
+      - "9052:9002"
+      - "9053:9003"
+  competitor-06-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9061:9001"
+      - "9062:9002"
+      - "9063:9003"
+  competitor-07-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9071:9001"
+      - "9072:9002"
+      - "9073:9003"
+  competitor-08-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9081:9001"
+      - "9082:9002"
+      - "9083:9003"
+  competitor-09-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9091:9001"
+      - "9092:9002"
+      - "9093:9003"
+  competitor-10-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9101:9001"
+      - "9102:9002"
+      - "9103:9003"
+  competitor-11-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9111:9001"
+      - "9112:9002"
+      - "9113:9003"
+  competitor-12-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9121:9001"
+      - "9122:9002"
+      - "9123:9003"
+  competitor-13-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9131:9001"
+      - "9132:9002"
+      - "9133:9003"
+  competitor-14-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9141:9001"
+      - "9142:9002"
+      - "9143:9003"
+  competitor-15-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9151:9001"
+      - "9152:9002"
+      - "9153:9003"
+  competitor-16-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9161:9001"
+      - "9162:9002"
+      - "9163:9003"
+  competitor-17-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9171:9001"
+      - "9172:9002"
+      - "9173:9003"
+  competitor-18-ai-services:
+    image: ai-services
+    restart: on-failure
+    ports:
+      - "9181:9001"
+      - "9182:9002"
+      - "9183:9003"
