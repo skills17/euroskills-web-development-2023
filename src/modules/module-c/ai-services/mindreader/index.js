@@ -125,18 +125,23 @@ app.post("/recognize", (req, res) => {
             buffers.push(data);
         }).on('close', () => {
             if (receivedData) {
-                const parser = exif.create(Buffer.concat(buffers));
-                const metadata = parser.parse();
-                if (metadata && metadata.tags && metadata.tags.ImageDescription) {
-                    if (metadata.tags.ImageDescription === 'test_error') {
-                        res.status(500).json({error: "Test error. You just entered something which provokes a test error."});
+                try {
+                    const parser = exif.create(Buffer.concat(buffers));
+                    const metadata = parser.parse();
+                    if (metadata && metadata.tags && metadata.tags.ImageDescription) {
+                        if (metadata.tags.ImageDescription === 'test_error') {
+                            res.status(500).json({error: "Test error. You just entered something which provokes a test error."});
+                            return;
+                        }
+                        responseMock = metadata && metadata.tags && getResponseMock(metadata.tags.ImageDescription);
+                        res.json(FILENAME_RESPONSE_MOCKS[responseMock] || FILENAME_RESPONSE_MOCKS.default);
                         return;
                     }
-                    responseMock = metadata && metadata.tags && getResponseMock(metadata.tags.ImageDescription);
-                    res.json(FILENAME_RESPONSE_MOCKS[responseMock] || FILENAME_RESPONSE_MOCKS.default);
-                    return;
+                    res.json(FILENAME_RESPONSE_MOCKS.default);
+                } catch (error) {
+                    console.error('Error:', error);
+                    res.status(500).json({error: "Invalid file format. Cannot open."});
                 }
-                res.json(FILENAME_RESPONSE_MOCKS.default);
             }
         });
     });
