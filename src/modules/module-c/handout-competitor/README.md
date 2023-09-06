@@ -6,7 +6,12 @@ To solve this task, you are provided with a working solution of module B.
 
 You can access this solution at the following URL:
 
-http://TODO
+`https://sol-b-{your_module_c_hash}.skill17.com`
+
+You can log in using these users:
+- Username: `demo1`<br>Password: `skills2023d1`
+- Username: `demo2`<br>Password: `skills2023d2`
+
 
 Your database has been updated to use the latest schema of the provided solution.
 In case of any issues, you can re-import it using the file [`database/euroskills2023.sql`](database/euroskills2023.sql).
@@ -26,11 +31,11 @@ For this task, you will need access to the three AI services' REST API.
 
 Here are the respective base URLs:
 
-| Service      | Base URL          |
-|--------------|-------------------|
-| ChatterBlast | http://TODO:9001/ |
-| DreamWeaver  | http://TODO:9002/ |
-| MindReader   | http://TODO:9003/ |
+| Service      | Base URL                                     |
+|--------------|----------------------------------------------|
+| ChatterBlast | https://ai1-{your_module_c_hash}.skill17.com |
+| DreamWeaver  | https://ai2-{your_module_c_hash}.skill17.com |
+| MindReader   | https://ai3-{your_module_c_hash}.skill17.com |
 
 ### Error Handling
 
