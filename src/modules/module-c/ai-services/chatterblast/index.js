@@ -57,9 +57,9 @@ app.post("/conversation/:conversationId", (req, res) => {
         return;
     }
 
-    if (!prompt) {
+    if (!prompt || typeof prompt !== 'string') {
         res.status(400).json({
-            error: "Request body cannot be empty.",
+            error: "Request body cannot be empty or is not Content-Type text/plain.",
             body: req.body,
         });
         return;

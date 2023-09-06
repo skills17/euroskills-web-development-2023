@@ -44,7 +44,7 @@ paths:
         '400':
           description: Bad request
           content:
-            plain/text:
+            text/plain:
               schema:
                 type: string
 

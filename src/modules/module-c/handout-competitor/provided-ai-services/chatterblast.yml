@@ -36,7 +36,7 @@ paths:
         '400':
           description: Bad request
           content:
-            plain/text:
+            text/plain:
               schema:
                 type: string
 
@@ -53,7 +53,7 @@ paths:
       requestBody:
         required: true
         content:
-          plain/text:
+          text/plain:
             schema:
               type: string
       responses:
@@ -62,7 +62,7 @@ paths:
         '400':
           description: Bad request
           content:
-            plain/text:
+            text/plain:
               schema:
                 type: string
     get:
@@ -84,7 +84,7 @@ paths:
         '400':
           description: Bad request
           content:
-            plain/text:
+            text/plain:
               schema:
                 type: string
 
