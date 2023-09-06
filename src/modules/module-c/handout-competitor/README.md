@@ -8,6 +8,12 @@ You can access the files at the following URL:
 
 https://gitlab.skill17.com/test-project/handout
 
+## OpenAPI
+
+You can import the spec into Postman to test your API by importing the __folder__ `ai-api` as a collection.
+
+The same works for trying the AI services by importing the __folder__ `ai-services` as a collection.
+
 ## AI Services
 
 For this task, you will need access to the three AI services' REST API.
@@ -27,11 +33,11 @@ response with status code `500`.
 
 Here are the respective instructions for each service:
 
-| Service      | Base URL                                     |
-|--------------|----------------------------------------------|
-| Chatterblast | Submit `test_error` as conversation ID       |
-| Dreamweaver  | Submit `test_error` as a prompt              |
-| Mindreader   | Submit a file with filename `test_error.png` |
+| Service      | Base URL                                         |
+|--------------|--------------------------------------------------|
+| Chatterblast | Submit `test_error` as conversation ID or prompt |
+| Dreamweaver  | Submit `test_error` as a prompt                  |
+| Mindreader   | Submit a file with filename `test_error.png`     |
 
 ### Inputs
 

@@ -47,7 +47,7 @@ app.post("/conversation/:conversationId", (req, res) => {
         return;
     }
 
-    if (conversationId === "test_error") {
+    if (conversationId === "test_error" || prompt === "test_error") {
         res.status(500).json({error: "Test error. You just entered something which provokes a test error."});
         return;
     }

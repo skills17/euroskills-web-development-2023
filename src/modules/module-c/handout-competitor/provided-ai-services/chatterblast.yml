@@ -20,7 +20,7 @@ servers:
 security: [ ]
 
 paths:
-  /createConversation:
+  /conversation:
     post:
       summary: Create a new conversation
       operationId: createConversation
