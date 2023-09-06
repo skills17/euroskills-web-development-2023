@@ -2,17 +2,23 @@
 
 ## Previous Solution
 
-To solve this task, you are provided with a solution of module B.
+To solve this task, you are provided with a working solution of module B.
 
-You can access the files at the following URL:
+You can access this solution at the following URL:
 
-https://gitlab.skill17.com/test-project/handout
+http://TODO
+
+Your database has been updated to use the latest schema of the provided solution.
+In case of any issues, you can re-import it using the file [`database/euroskills2023.sql`](database/euroskills2023.sql).
+
+You can add tables and add data to any tables as you wish. Please do not modify existing tables, as this would break the
+provided solution of module B.
 
 ## OpenAPI
 
 You can import the spec into Postman to test your API by importing the __folder__ `ai-api` as a collection.
 
-The same works for trying the AI services by importing the __folder__ `ai-services` as a collection.
+The same works for trying the AI services by importing the __folder__ `provided-ai-services` as a collection.
 
 ## AI Services
 
@@ -22,9 +28,9 @@ Here are the respective base URLs:
 
 | Service      | Base URL          |
 |--------------|-------------------|
-| Chatterblast | http://TODO:9001/ |
-| Dreamweaver  | http://TODO:9002/ |
-| Mindreader   | http://TODO:9003/ |
+| ChatterBlast | http://TODO:9001/ |
+| DreamWeaver  | http://TODO:9002/ |
+| MindReader   | http://TODO:9003/ |
 
 ### Error Handling
 
@@ -46,8 +52,8 @@ the input data. To trigger the services to return a specific response, you can s
 
 Here are the respective instructions for each service:
 
-| Service      | Inputs                                                                                                            |
-|--------------|-------------------------------------------------------------------------------------------------------------------|
-| Chatterblast | Try `lorem ipsum` for a long response. There are a lot of other prompts which will give you a half-decent answer. |
-| Dreamweaver  | Try `applause`, `cat`, `gdansk`, `opening`, `podium`                                                              |
-| Mindreader   | Try uploading any of the images in `mindreader-images/`                                                           |
+| Service      | Inputs                                                                                                                                                                   |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Chatterblast | Try `lorem ipsum` for a long response. Try `hello` for a short response. There are a lot of other prompts which will give you a half-decent answer.                      |
+| Dreamweaver  | Try `applause`, `cat`, `gdansk`, `opening`, `podium`                                                                                                                     |
+| Mindreader   | Try uploading any of the images in [`mindreader-images/`](mindreader-images) . The image [test_error.jpg](mindreader-images/test_error.jpg) will provoke a server error. |
