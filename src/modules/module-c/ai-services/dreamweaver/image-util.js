@@ -40,7 +40,7 @@ function getZoomInImageUrl(baseUrl, image, progress) {
 }
 
 function getZoomOutImageUrl(baseUrl, image, progress) {
-    return getImageUrl(baseUrl, `zoom-out/${image}-${progress}.png`)
+    return getImageUrl(baseUrl, `zoom-out/${image}-zoomout.png`)
 }
 
 /**

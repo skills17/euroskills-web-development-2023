@@ -47,6 +47,11 @@ app.post("/conversation/:conversationId", (req, res) => {
         return;
     }
 
+    if (!conversationResponses[conversationId]) {
+        res.status(400).json({error: "Conversation does not exist."});
+        return;
+    }
+
     if (conversationId === "test_error" || prompt === "test_error") {
         res.status(500).json({error: "Test error. You just entered something which provokes a test error."});
         return;

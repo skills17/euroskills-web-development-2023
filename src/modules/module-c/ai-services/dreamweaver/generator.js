@@ -15,6 +15,9 @@ function getCommandImageUrl(baseUrl, prompt, progress, commandType) {
     if (commandType === 'zoom-in') {
         return getZoomInImageUrl(baseUrl, determineImage(prompt), progress);
     }
+    if (commandType === 'zoom-out') {
+        return getZoomOutImageUrl(baseUrl, determineImage(prompt), progress);
+    }
     return getCroppedImageUrl(baseUrl, determineImage(prompt), progress);
 }
 
