@@ -4,6 +4,7 @@ import * as crypto from "crypto";
 import {ServiceUsage} from "../../entities/ServiceUsage";
 import {Service} from "../../entities/Service";
 import {ApiToken} from "../../entities/ApiToken";
+import {serviceUnavailable} from "../../utils/service";
 
 const CHATTERBLAST_BASE_URL = process.env.CHATTERBLAST_BASE_URL || 'http://127.0.0.1:9001'
 
@@ -87,13 +88,7 @@ async function startConversation(req: Request, res: Response) {
         });
 
         if (creationResponse.status !== 201) {
-            res.status(503).send({
-                "type": "/problem/types/503",
-                "title": "Service Unavailable",
-                "status": 503,
-                "detail": "The service is currently unavailable."
-            });
-            return;
+            return serviceUnavailable(req, res);
         }
 
         conversations[conversationId] = {
@@ -109,24 +104,13 @@ async function startConversation(req: Request, res: Response) {
         });
 
         if (postPromptResponse.status !== 200) {
-            res.status(503).send({
-                "type": "/problem/types/503",
-                "title": "Service Unavailable",
-                "status": 503,
-                "detail": "The service is currently unavailable."
-            });
-            return;
+            return serviceUnavailable(req, res);
         }
 
         res.json(await readResponse(req.header('X-API-TOKEN'), conversationId));
     } catch (error) {
         console.error('Error:', error);
-        res.status(503).send({
-            "type": "/problem/types/503",
-            "title": "Service Unavailable",
-            "status": 503,
-            "detail": "The service is currently unavailable."
-        });
+        return serviceUnavailable(req, res);
     }
 }
 
@@ -162,13 +146,7 @@ async function continueConversation(req: Request, res: Response) {
     });
 
     if (postPromptResponse.status !== 200) {
-        res.status(503).send({
-            "type": "/problem/types/503",
-            "title": "Service Unavailable",
-            "status": 503,
-            "detail": "The service is currently unavailable."
-        });
-        return;
+        return serviceUnavailable(req, res);
     }
 
     res.json(await readResponse(req.header('X-API-TOKEN'), conversationId));
@@ -177,10 +155,10 @@ async function continueConversation(req: Request, res: Response) {
 async function getResponse(req: Request, res: Response) {
     const conversationId = req.params.conversationId;
     if (!conversations[conversationId]) {
-        res.status(400).json({
-            "type": "/problem/types/400",
-            "title": "Bad Request",
-            "status": 400,
+        res.status(404).json({
+            "type": "/problem/types/404",
+            "title": "Not Found",
+            "status": 404,
             "detail": "The conversation does not exist.",
         });
         return;

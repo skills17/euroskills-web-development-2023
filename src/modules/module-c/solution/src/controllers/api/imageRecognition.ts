@@ -5,6 +5,7 @@ import fetch from "node-fetch";
 import {ServiceUsage} from "../../entities/ServiceUsage";
 import {Service} from "../../entities/Service";
 import {ApiToken} from "../../entities/ApiToken";
+import {serviceUnavailable} from "../../utils/service";
 
 const MINDREADER_BASE_URL = process.env.MINDREADER_BASE_URL || 'http://127.0.0.1:9003'
 
@@ -34,13 +35,7 @@ async function recognize(req: Request, res: Response) {
         await serviceUsage.save();
 
         if (response.status !== 200) {
-            res.status(503).send({
-                "type": "/problem/types/503",
-                "title": "Service Unavailable",
-                "status": 503,
-                "detail": "The service is currently unavailable."
-            });
-            return;
+            return serviceUnavailable(req, res);
         }
 
         // Parse the response from the external endpoint
@@ -60,12 +55,7 @@ async function recognize(req: Request, res: Response) {
         });
     } catch (error) {
         console.error('Error:', error);
-        res.status(503).send({
-            "type": "/problem/types/503",
-            "title": "Service Unavailable",
-            "status": 503,
-            "detail": "The service is currently unavailable."
-        });
+        return serviceUnavailable(req, res);
     }
 }
 

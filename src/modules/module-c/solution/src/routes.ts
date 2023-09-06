@@ -10,6 +10,7 @@ import billsController from './controllers/frontend/bills';
 import apiChatController from './controllers/api/chat';
 import apiImageGenerationController from './controllers/api/imageGeneration';
 import apiImageRecognitionController from './controllers/api/imageRecognition';
+import fileController from './controllers/files';
 import {tokenAuth, userAuth} from './middlewares/authentication';
 import validWorkspace from './middlewares/validWorkspace';
 import {notFound} from './utils/views';
@@ -30,8 +31,8 @@ export const setupRoutes = (app: Express) => {
     app.get('/api/chat/conversation/:conversationId', apiChatController.getResponse);
 
     app.post('/api/imagegeneration/generate', apiImageGenerationController.generate);
-    app.get('/api/imagegeneration/status/:jobID', apiImageGenerationController.getJobStatus);
-    app.get('/api/imagegeneration/result/:jobID', apiImageGenerationController.getResult);
+    app.get('/api/imagegeneration/status/:jobId', apiImageGenerationController.getJobStatus);
+    app.get('/api/imagegeneration/result/:jobId', apiImageGenerationController.getResult);
     app.post('/api/imagegeneration/upscale', apiImageGenerationController.upscale);
     app.post('/api/imagegeneration/zoom/in', apiImageGenerationController.zoomIn);
     app.post('/api/imagegeneration/zoom/out', apiImageGenerationController.zoomOut);
@@ -39,12 +40,10 @@ export const setupRoutes = (app: Express) => {
     app.post('/api/imagerecognition/recognize', upload.single('image'), apiImageRecognitionController.recognize);
 
     // views
-    app.use(unless('/api', userAuth));
+    app.use(unless(['/api', '/files'], userAuth));
 
     app.get('/login', loginController.get);
     app.post('/login', loginController.post);
-
-    app.use('/logout', userAuth);
     app.get('/logout', logoutController.get);
 
     app.get('/workspaces', workspaceController.index);
@@ -64,6 +63,9 @@ export const setupRoutes = (app: Express) => {
     app.get('/workspaces/:workspaceId/bills/:year/:month', billsController.show);
 
     app.get('/', (req: Request, res: Response) => res.redirect('/workspaces'));
+
+    // files
+    app.get('/files/*', fileController.file)
 
     // 404
     app.get('*', (req: Request, res: Response) => notFound(res));
