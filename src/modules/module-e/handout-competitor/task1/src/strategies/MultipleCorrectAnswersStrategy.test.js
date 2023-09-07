@@ -2,4 +2,6 @@ const {
     MultipleCorrectAnswersStrategy,
 } = require("./MultipleCorrectAnswersStrategy");
 
-describe("MultipleCorrectAnswersStrategy", () => {});
+describe("MultipleCorrectAnswersStrategy", () => {
+    // TODO write tests
+});

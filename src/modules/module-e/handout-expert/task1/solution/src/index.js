@@ -10,6 +10,8 @@ const {
     MultipleCorrectAnswersStrategy,
 } = require("./strategies/MultipleCorrectAnswersStrategy");
 
+// Note: This file must not to be covered by tests.
+
 const QUESTIONS = [
     new Question(
         "Which generative AI technique is commonly used for generating realistic human faces?",

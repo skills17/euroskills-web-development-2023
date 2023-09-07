@@ -1,3 +1,5 @@
 const { MultipleChoiceStrategy } = require("./MultipleChoiceStrategy");
 
-describe("MultipleChoiceStrategy", () => {});
+describe("MultipleChoiceStrategy", () => {
+    // TODO write tests
+});

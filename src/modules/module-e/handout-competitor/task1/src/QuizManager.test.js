@@ -1,2 +1,5 @@
 const { QuizManager } = require("./QuizManager");
-describe("QuizManager", () => {});
+
+describe("QuizManager", () => {
+    // TODO write tests
+});
