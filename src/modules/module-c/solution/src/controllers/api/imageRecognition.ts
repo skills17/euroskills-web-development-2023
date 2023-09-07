@@ -8,6 +8,7 @@ import {ApiToken} from "../../entities/ApiToken";
 import {serviceUnavailable} from "../../utils/service";
 
 const MINDREADER_BASE_URL = process.env.MINDREADER_BASE_URL || 'http://127.0.0.1:9003'
+console.log('MINDREADER_BASE_URL', MINDREADER_BASE_URL)
 
 async function recognize(req: Request, res: Response) {
 
@@ -27,16 +28,19 @@ async function recognize(req: Request, res: Response) {
             },
         });
 
+        if (response.status !== 200) {
+            console.log('req url', `${MINDREADER_BASE_URL}/generate`)
+            console.log('response.status', response.status)
+            console.log('response.body', `${JSON.stringify(response.body)}`)
+            return serviceUnavailable(req, res);
+        }
+
         const serviceUsage = new ServiceUsage();
         serviceUsage.durationInMs = new Date().getTime() - start.getTime();
         serviceUsage.service = await Service.findOneOrFail({where: {name: "MindReader"}});
         serviceUsage.apiToken = await ApiToken.findOneOrFail({where: {token: req.header('X-API-TOKEN')}})
         serviceUsage.usageStartedAt = start;
         await serviceUsage.save();
-
-        if (response.status !== 200) {
-            return serviceUnavailable(req, res);
-        }
 
         // Parse the response from the external endpoint
         const parsedData = await response.json();

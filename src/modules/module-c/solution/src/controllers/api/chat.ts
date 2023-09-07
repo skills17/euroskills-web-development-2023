@@ -7,6 +7,7 @@ import {ApiToken} from "../../entities/ApiToken";
 import {serviceUnavailable} from "../../utils/service";
 
 const CHATTERBLAST_BASE_URL = process.env.CHATTERBLAST_BASE_URL || 'http://127.0.0.1:9001'
+console.log('CHATTERBLAST_BASE_URL', CHATTERBLAST_BASE_URL)
 
 const regex = /^(.*)<EOF>Took (\d+)ms$/;
 

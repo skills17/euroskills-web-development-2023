@@ -7,6 +7,7 @@ import {Service} from "../../entities/Service";
 import {ApiToken} from "../../entities/ApiToken";
 
 const DREAMWEAVER_BASE_URL = process.env.DREAMWEAVER_BASE_URL || 'http://127.0.0.1:9002'
+console.log('DREAMWEAVER_BASE_URL', DREAMWEAVER_BASE_URL)
 
 const jobs: {
     [jobId: string]: {
@@ -37,7 +38,11 @@ async function generate(req: Request, res: Response) {
             }),
         });
 
+
         if (response.status !== 201) {
+            console.log('req url', `${DREAMWEAVER_BASE_URL}/generate`)
+            console.log('response.status', response.status)
+            console.log('response.body', `${JSON.stringify(response.body)}`)
             return serviceUnavailable(req, res);
         }
 
