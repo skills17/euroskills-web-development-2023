@@ -11,7 +11,7 @@ A specification of the API is provided to you at:
 
 Because PWAs do not work with file URLs, a simple HTTP server is provided to you.
 
-Simply rung the following commands **inside this folder** to start the frontend server:
+Run the following commands **inside this folder** to start the frontend server:
 ```bash
 npm set registry http://registry.skill17.com:5000
 npm install
