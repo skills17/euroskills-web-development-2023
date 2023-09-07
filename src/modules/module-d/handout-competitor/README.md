@@ -12,6 +12,12 @@ The API endpoint is:
 
 `https://sol-c-{your_module_d_hash}.skill17.com/api`
 
+The API documentation is available at:
+
+[`https://api-doc.skill17.com`](https://api-doc.skill17.com)
+
+After setting your Module D hash in the server variables and configuring the Authentication, you can use the "try it out" feature of swagger to perform API requests.
+
 You can log in using these users:
 - Username: `demo1`<br>Password: `skills2023d1`
 - Username: `demo2`<br>Password: `skills2023d2`
