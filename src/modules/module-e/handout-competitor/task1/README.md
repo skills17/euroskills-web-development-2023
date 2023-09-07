@@ -1,10 +1,18 @@
 # Handout Module E - Task 1
 
+## Install
+
+Please run the following command once **inside this folder** to install the required packages:
+```bash
+npm set registry http://registry.skill17.com:5000
+npm install
+```
+
 ## Running the project
 
 To run the project and check the implementation, execute the following command in a terminal on your local machine **inside this folder**:
 ```bash
-docker run --rm -it -v ./src:/app/src <TODO-IMAGE-NAME> start
+npm start
 ```
 
 ## Running the tests
@@ -12,25 +20,25 @@ docker run --rm -it -v ./src:/app/src <TODO-IMAGE-NAME> start
 To run the Jest tests once, execute the following command in a terminal on your local machine **inside this folder**:
 ```bash
 # Run all tests:
-docker run --rm -it -v ./src:/app/src <TODO-IMAGE-NAME> test
+npm test
 
 # Run only a single file:
-docker run --rm -it -v ./src:/app/src <TODO-IMAGE-NAME> test -- -i ./src/InputReader.test.js
+npm test -- -i ./src/InputReader.test.js
 
 # Run only tests that match the provided name:
-docker run --rm -it -v ./src:/app/src <TODO-IMAGE-NAME> test -- -t test-name
+npm test -- -t test-name
 ```
 
 To run the Jest tests in watch mode, execute the following command in a terminal on your local machine **inside this folder**:
 ```bash
-docker run --rm -it -v ./src:/app/src -v ./coverage:/app/coverage <TODO-IMAGE-NAME> test:watch
+npm test:watch
 ```
 After each save of a source or test file, the tests will be rerun automatically.
 See the `Watch Usage` section which gets printed out after starting the command for possibilities to filter tests.
 
 To generate a coverage report for a single run, execute the following command in a terminal on your local machine **inside this folder**:
 ```bash
-docker run --rm -it -v ./src:/app/src -v ./coverage:/app/coverage <TODO-IMAGE-NAME> test:coverage
+npm test:coverage
 ```
 
 ## Test coverage
