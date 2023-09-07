@@ -1,24 +1,21 @@
 # Handout Module E - Task 2
 
-## Starting the API
+The News API is deployed for you at the following location:
 
-To start the API, run the following command in a terminal on your local machine:
-```bash
-docker run --rm -it -p 3000:3000 <TODO-IMAGE-NAME>
-```
+`https://news-api-{your_module_e_hash}.skill17.com`
 
-After that, the API is available at [http://localhost:3000](http://localhost:3000), and, for example, the list of news is reachable at [http://localhost:3000/api/news](http://localhost:3000/api/news).
-A specification of the API is provided to you in the [api-spec.html](./api-spec.html) and [api-spec.yaml](./api-spec.yaml) files.
-
-You can start and stop this container as you wish to test the caching behavior of the web app in case the API cannot be reached.
+A specification of the API is provided to you at:
+[`https://api-doc.skill17.com`](https://api-doc.skill17.com)
 
 ## Starting the frontend server
 
 Because PWAs do not work with file URLs, a simple HTTP server is provided to you.
 
-Open a terminal on your local machine **inside this folder** and run the following command:
+Run the following commands **inside this folder** to start the frontend server:
 ```bash
-docker run --rm -it -p 8080:8080 -v ./src:/app/src <TODO-IMAGE-NAME>
+npm set registry http://registry.skill17.com:5000
+npm install
+npm start
 ```
 
 Your web app is then available at [http://localhost:8080](http://localhost:8080).
