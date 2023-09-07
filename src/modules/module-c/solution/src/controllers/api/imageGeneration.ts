@@ -183,6 +183,7 @@ async function triggerResourceAction(req: Request, res: Response, action: 'upsca
         }
 
         const json = await response.json();
+        jobs[json.job_id] = {start: new Date(), savedUsage: false};
         res.json(json);
     } catch (error) {
         console.error(error);

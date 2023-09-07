@@ -9,8 +9,6 @@ import {serviceUnavailable} from "../../utils/service";
 const CHATTERBLAST_BASE_URL = process.env.CHATTERBLAST_BASE_URL || 'http://127.0.0.1:9001'
 console.log('CHATTERBLAST_BASE_URL', CHATTERBLAST_BASE_URL)
 
-const regex = /^(.*)<EOF>Took (\d+)ms$/;
-
 const conversations: {
     [conversationId: string]: {
         lastPromptTimestamp: Date,
@@ -21,12 +19,14 @@ const conversations: {
 } = {};
 
 function parseResponse(textResponse: string): { isFinal: boolean, durationInMs: number, text: string } {
-    const match = textResponse.match(regex);
-    if (match) {
+    const responseParts = textResponse.split('<EOF>');
+    if (responseParts.length > 1) {
+        const words = textResponse.split(' ');
+        const durationInMs = parseInt(words[words.length - 1].replace('ms', ''));
         return {
             isFinal: true,
-            durationInMs: parseInt(match[2]),
-            text: match[1],
+            durationInMs,
+            text: responseParts[0],
         }
     }
 
