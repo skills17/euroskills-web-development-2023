@@ -82,7 +82,11 @@
       {% if workspace.billingQuota %}
         <tr>
           <th>Remaining amount available</th>
-          <td>$ {{ (workspace.billingQuota.limit - costsCurrentMonth) | round(2) }}</td>
+          <td>$ {{ (workspace.billingQuota.limit - costsCurrentMonth) | round(2) }}
+            {% if (workspace.billingQuota.limit - costsCurrentMonth < 0) %}
+              <span class="badge rounded-pill text-bg-danger">Exceeded</span>
+            {% endif %}
+          </td>
         </tr>
         <tr>
           <th>Days left until reset</th>
