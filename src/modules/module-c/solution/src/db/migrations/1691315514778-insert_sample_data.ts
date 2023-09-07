@@ -5,6 +5,7 @@ import { Service } from '../../entities/Service';
 import { Workspace } from '../../entities/Workspace';
 import { ApiToken } from '../../entities/ApiToken';
 import { ServiceUsage } from '../../entities/ServiceUsage';
+import { BillingQuota } from '../../entities/BillingQuota';
 
 export class InsertSampleData1691315514778 implements MigrationInterface {
     name = 'InsertSampleData1691315514778'
@@ -46,21 +47,21 @@ export class InsertSampleData1691315514778 implements MigrationInterface {
         await demo2.save();
 
         const service1 = new Service();
-        service1.name = 'Service #1';
+        service1.name = 'ChatterBlast';
         service1.costPerMs = 0.0015;
         service1.createdAt = new Date('2023-06-26 10:00:00');
         service1.updatedAt = service1.createdAt;
         await service1.save();
 
         const service2 = new Service();
-        service2.name = 'Service #2';
+        service2.name = 'DreamWeaver';
         service2.costPerMs = 0.005;
         service2.createdAt = new Date('2023-06-26 11:00:00');
         service2.updatedAt = service2.createdAt;
         await service2.save();
 
         const service3 = new Service();
-        service3.name = 'Service #3';
+        service3.name = 'MindReader';
         service3.costPerMs = 0.01;
         service3.createdAt = new Date('2023-06-26 12:00:00');
         service3.updatedAt = service3.createdAt;
@@ -81,6 +82,13 @@ export class InsertSampleData1691315514778 implements MigrationInterface {
         workspace2.updatedAt = workspace2.createdAt;
         await workspace2.save();
 
+        const workspace3 = new Workspace();
+        workspace3.title = 'Quota Exceeded Test';
+        workspace3.user = demo1;
+        workspace3.createdAt = new Date('2023-06-28 12:55:05');
+        workspace3.updatedAt = workspace3.createdAt;
+        await workspace3.save();
+
         const devToken = new ApiToken();
         devToken.name = 'development';
         devToken.token = '13508a659a2dbab0a825622c43aef5b5133f85502bfdeae0b6';
@@ -97,12 +105,33 @@ export class InsertSampleData1691315514778 implements MigrationInterface {
         prodToken.updatedAt = prodToken.createdAt;
         await prodToken.save();
 
+        const testToken = new ApiToken();
+        testToken.name = 'test';
+        testToken.token = 'b8ef2feea8a2bf982d637b5ff4be4771d2ef46f3564c5ecd7b';
+        testToken.workspace = workspace3;
+        testToken.createdAt = new Date('2023-06-28 18:44:51');
+        testToken.updatedAt = testToken.createdAt;
+        await testToken.save();
+
+        const billingQuota = new BillingQuota();
+        billingQuota.limit = 9;
+        billingQuota.workspace = workspace3;
+        billingQuota.createdAt = new Date('2023-06-28 12:57:05');
+        billingQuota.updatedAt = billingQuota.createdAt;
+        await billingQuota.save();
+
         await this.generateServiceUsage(service1, prodToken, 2023, 7, 1502);
         await this.generateServiceUsage(service2, prodToken, 2023, 7, 705);
         await this.generateServiceUsage(service1, devToken, 2023, 7, 406);
         await this.generateServiceUsage(service1, prodToken, 2023, 8, 1039);
         await this.generateServiceUsage(service2, prodToken, 2023, 8, 501);
         await this.generateServiceUsage(service1, devToken, 2023, 8, 162);
+        await this.generateServiceUsage(service1, prodToken, 2023, 9, 1500);
+        await this.generateServiceUsage(service2, prodToken, 2023, 9, 800);
+        await this.generateServiceUsage(service1, devToken, 2023, 9, 500);
+        await this.generateServiceUsage(service1, testToken, 2023, 9, 1800);
+        await this.generateServiceUsage(service2, testToken, 2023, 9, 900);
+        await this.generateServiceUsage(service3, testToken, 2023, 9, 200);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
