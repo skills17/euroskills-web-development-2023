@@ -1,5 +1,7 @@
 const { Question } = require("./Question");
 
 describe("Question", () => {
-    // TODO write tests
+    test("TODO", () => {
+        // TODO write tests
+    });
 });

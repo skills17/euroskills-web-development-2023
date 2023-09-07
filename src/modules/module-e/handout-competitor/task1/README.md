@@ -20,25 +20,30 @@ npm start
 To run the Jest tests once, execute the following command in a terminal on your local machine **inside this folder**:
 ```bash
 # Run all tests:
-npm test
+npm run test
 
 # Run only a single file:
-npm test -- -i ./src/InputReader.test.js
+npm run test -- -i ./src/InputReader.test.js
 
 # Run only tests that match the provided name:
-npm test -- -t test-name
+npm run test -- -t test-name
 ```
 
 To run the Jest tests in watch mode, execute the following command in a terminal on your local machine **inside this folder**:
 ```bash
-npm test:watch
+npm run test:watch
 ```
 After each save of a source or test file, the tests will be rerun automatically.
 See the `Watch Usage` section which gets printed out after starting the command for possibilities to filter tests.
 
 To generate a coverage report for a single run, execute the following command in a terminal on your local machine **inside this folder**:
 ```bash
-npm test:coverage
+npm run test:coverage
+```
+
+To generate a mutation report for a single run, execute the following command in a terminal on your local machine **inside this folder**:
+```bash
+npm run test:mutation
 ```
 
 ## Test coverage

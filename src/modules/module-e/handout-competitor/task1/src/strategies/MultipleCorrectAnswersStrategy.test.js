@@ -3,5 +3,7 @@ const {
 } = require("./MultipleCorrectAnswersStrategy");
 
 describe("MultipleCorrectAnswersStrategy", () => {
-    // TODO write tests
+    test("TODO", () => {
+        // TODO write tests
+    });
 });

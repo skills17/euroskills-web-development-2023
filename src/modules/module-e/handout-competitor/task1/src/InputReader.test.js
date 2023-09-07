@@ -1,5 +1,7 @@
 const { InputReader } = require("./InputReader");
 
 describe("InputReader", () => {
-    // TODO write tests
+    test("TODO", () => {
+        // TODO write tests
+    });
 });
