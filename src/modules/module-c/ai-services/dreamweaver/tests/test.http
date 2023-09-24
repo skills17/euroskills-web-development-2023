@@ -1,0 +1,57 @@
+### generate
+POST {{BASE_URL}}/generate
+Content-Type: application/json
+
+{
+    "text_prompt": "_qwer"
+}
+
+> {%
+    client.global.set("job_id", response.body.job_id);
+%}
+
+### get job status
+GET {{BASE_URL}}/status/{{job_id}}
+
+### get result
+GET {{BASE_URL}}/result/{{job_id}}
+
+> {%
+    client.global.set("resource_id", response.body.resource_id);
+%}
+
+### upscale
+POST {{BASE_URL}}/upscale
+Content-Type: application/json
+
+{
+    "resource_id": "{{resource_id}}"
+}
+
+> {%
+    client.global.set("job_id", response.body.job_id);
+%}
+
+### zoom-in
+POST {{BASE_URL}}/zoom/in
+Content-Type: application/json
+
+{
+    "resource_id": "{{resource_id}}"
+}
+
+> {%
+    client.global.set("job_id", response.body.job_id);
+%}
+
+### zoom-out
+POST {{BASE_URL}}/zoom/out
+Content-Type: application/json
+
+{
+    "resource_id": "{{resource_id}}"
+}
+
+> {%
+    client.global.set("job_id", response.body.job_id);
+%}

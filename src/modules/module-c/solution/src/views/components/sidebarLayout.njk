@@ -1,0 +1,55 @@
+{% extends 'components/layout.njk' %}
+
+{% block content %}
+  <!-- Sidebar Start -->
+  <aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div>
+      <div class="brand-logo d-flex align-items-center justify-content-between">
+        <img src="/assets/icons/api-dashboard.svg" width="221" alt="" />
+      </div>
+      <!-- Sidebar navigation-->
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+        <ul id="sidebarnav">
+          <li class="nav-small-cap mt-2">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Application</span>
+          </li>
+          <li class="sidebar-item selected">
+            <a class="sidebar-link" href="/workspaces" aria-expanded="false">
+              <span>
+                <i class="ti ti-layout-dashboard"></i>
+              </span>
+              <span class="hide-menu">Workspaces</span>
+            </a>
+          </li>
+          <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Auth</span>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="/logout" aria-expanded="false">
+              <span>
+                <i class="ti ti-logout"></i>
+              </span>
+              <span class="hide-menu">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+  </aside>
+  <!--  Sidebar End -->
+  <!--  Main wrapper -->
+  <div class="body-wrapper">
+    <div class="container-fluid">
+      <div class="container-fluid">
+        {% block main %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+  <!--  Main wrapper End -->
+{% endblock %}

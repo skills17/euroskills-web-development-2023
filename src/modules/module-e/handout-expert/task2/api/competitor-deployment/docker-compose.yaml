@@ -1,0 +1,92 @@
+version: '3.7'
+services:
+  competitor-01-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13010:3000"
+  competitor-02-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13020:3000"
+  competitor-03-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13030:3000"
+  competitor-04-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13040:3000"
+  competitor-05-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13050:3000"
+  competitor-06-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13060:3000"
+  competitor-07-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13070:3000"
+  competitor-08-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13080:3000"
+  competitor-09-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13090:3000"
+  competitor-10-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13100:3000"
+  competitor-11-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13110:3000"
+  competitor-12-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13120:3000"
+  competitor-13-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13130:3000"
+  competitor-14-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13140:3000"
+  competitor-15-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13150:3000"
+  competitor-16-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13160:3000"
+  competitor-17-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13170:3000"
+  competitor-18-news-api:
+    image: module-e-news-api
+    restart: on-failure
+    ports:
+      - "13180:3000"

@@ -1,0 +1,14 @@
+{
+  "name": "ai-news",
+  "version": "1.0.0",
+  "description": "AI News",
+  "scripts": {
+    "start": "http-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}

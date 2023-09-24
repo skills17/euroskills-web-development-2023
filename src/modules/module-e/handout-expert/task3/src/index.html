@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Module E Task 3 Solution</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+  </head>
+  <body>
+	<script src="./LimitedTextarea.js"></script>
+	<script src="./ConfirmationModal.js"></script>
+	<script src="./CountDown.js"></script>
+
+    <div>
+        <h1>LimitedTextarea</h1>
+        <limited-textarea maxchars="250"></limited-textarea>
+    </div>
+
+    <div>
+        <h1>ConfirmationModal</h1>
+        <confirmation-modal label="Accept">
+            <h2>This is my modal</h2>
+            And this is some content.<br/>
+            I can be <b style="color: green">any</b> HTML.
+        </confirmation-modal>
+    </div>
+
+    <div>
+        <h1>CountDown</h1>
+        <count-down message="Done" class="fifteen-sec-countdown"></count-down>
+        <count-down date="2024-01-01T00:00:00Z" message="Happy new year!"></count-down>
+    </div>
+
+    <script>
+        document.querySelector('limited-textarea').addEventListener('change', (event) => {
+            console.log('LimitedTextarea change:', event.detail);
+        });
+        document.querySelector('confirmation-modal').addEventListener('confirm', () => {
+            console.log('Modal closed');
+        });
+        document.querySelector('.fifteen-sec-countdown').setAttribute('date', new Date(new Date().getTime() + 15 * 1000).toISOString());
+    </script>
+  </body>
+</html>

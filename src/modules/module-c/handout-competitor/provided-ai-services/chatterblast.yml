@@ -1,0 +1,100 @@
+# Chatterblast
+# --------------------------------------------------------------------------------
+# Commands:
+# - Lint: npx @redocly/cli lint chatterblast.yml
+# - Generate HTML: npx @redocly/cli build-docs chatterblast.yml -o chatterblast.html
+
+openapi: 3.0.0
+info:
+  title: Chatterblast API
+  description: The Chatterblast API provides a chatbot service.
+  version: 1.0.0
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+
+servers:
+  - url: 'http://localhost:4001'
+    description: Local Chatterblast server
+
+security: [ ]
+
+paths:
+  /conversation:
+    post:
+      summary: Create a new conversation
+      operationId: createConversation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversationCreateInput'
+      responses:
+        '201':
+          description: Created conversation
+        '400':
+          description: Bad request
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /conversation/{conversation_id}:
+    post:
+      summary: Send a prompt to a conversation
+      operationId: promptConversation
+      parameters:
+        - name: conversation_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+          content:
+            text/plain:
+              schema:
+                type: string
+    get:
+      summary: Get partial conversation response
+      operationId: getResponse
+      parameters:
+        - name: conversation_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad request
+          content:
+            text/plain:
+              schema:
+                type: string
+
+components:
+  schemas:
+    ConversationCreateInput:
+      type: object
+      properties:
+        conversationId:
+          type: string
+          description: The unique conversation ID used to identify the conversation
+      required:
+        - conversationId

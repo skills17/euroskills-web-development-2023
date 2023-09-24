@@ -1,0 +1,15 @@
+{
+    "background_color": "green",
+    "description": "AI News",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "icon/ai-news.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "name": "AI News",
+    "short_name": "AI News",
+    "start_url": "/index.html"
+}

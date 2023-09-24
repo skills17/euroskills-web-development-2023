@@ -1,0 +1,49 @@
+{
+  "name": "euroskills2023-module-c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "predev": "npm install",
+    "dev": "nodemon src/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "build": "tsc --build",
+    "start": "node build"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "date-fns": "^2.30.0",
+    "express": "^4.18.2",
+    "form-data": "^4.0.0",
+    "jsonwebtoken": "^9.0.1",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.5.2",
+    "node-fetch": "^2.7.0",
+    "nunjucks": "^3.2.4",
+    "pluralize": "^8.0.0",
+    "reflect-metadata": "^0.1.13",
+    "snake-case": "^3.0.4",
+    "typeorm": "^0.3.17",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.14",
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/multer": "^1.4.7",
+    "@types/node": "^20.4.6",
+    "@types/node-fetch": "^2.6.4",
+    "@types/nunjucks": "^3.2.3",
+    "@types/pluralize": "^0.0.30",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}

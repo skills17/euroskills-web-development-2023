@@ -1,0 +1,34 @@
+{% extends 'components/sidebarLayout.njk' %}
+
+{% set title = 'Create Workspace' %}
+
+{% block main %}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title fw-semibold mb-4  d-flex justify-content-between align-items-center">
+      Create Workspace
+    </h5>
+    <form method="post">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control {{ 'is-invalid' if errors.title }}" id="title" name="title" required value="{{ values.title }}">
+        {% if errors.title %}
+          <div class="invalid-feedback">
+            {{ errors.title }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="mb-4">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control {{ 'is-invalid' if errors.description }}" id="description" name="description" value="{{ values.description }}">
+        {% if errors.description %}
+          <div class="invalid-feedback">
+            {{ errors.description }}
+          </div>
+        {% endif %}
+      </div>
+      <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Create</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

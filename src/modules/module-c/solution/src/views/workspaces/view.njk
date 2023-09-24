@@ -1,0 +1,141 @@
+{% extends 'components/sidebarLayout.njk' %}
+
+{% set title = 'Workspace ' + workspace.title %}
+
+{% block main %}
+<h2 class="mb-4 d-flex justify-content-between align-items-center">
+  Workspace '{{ workspace.title }}'
+  <a href="/workspaces/{{ workspace.id }}/edit" class="btn btn-outline-primary btn-sm">Edit Workspace <i class="ti ti-edit ms-1"></i></a>
+</h2>
+
+{% if action === 'workspaceUpdated' %}
+  <div class="alert alert-success">
+    The workspace has been updated.
+  </div>
+{% endif %}
+
+<!-- API Tokens -->
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title fw-semibold mb-4 d-flex justify-content-between align-items-center">
+      API Tokens
+      <a href="/workspaces/{{ workspace.id }}/tokens/create" class="btn btn-outline-primary btn-sm">Create new Token <i class="ti ti-plus ms-1"></i></a>
+    </h4>
+    {% if workspace.apiTokens.length === 0 %}
+      This workspace does not have any API Tokens yet.
+    {% else %}
+      {% if action === 'tokenRevoked' %}
+        <div class="alert alert-success">
+          The token has been revoked.
+        </div>
+      {% endif %}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th class="text-end">Revocation status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for apiToken in workspace.apiTokens %}
+            <tr>
+              <td class="align-middle">{{ apiToken.name }}</td>
+              <td class="align-middle text-end">
+                {% if apiToken.revokedAt %}
+                  <span class="badge rounded-pill text-bg-danger">Revoked at {{ apiToken.revokedAt | dateTime }}</span>
+                {% else %}
+                  <span class="badge rounded-pill text-bg-success">Active</span>
+                {% endif %}
+              </td>
+              <td class="align-middle text-end">
+                {% if not apiToken.revokedAt %}
+                  <form action="/workspaces/{{ workspace.id }}/tokens/{{ apiToken.id }}/revoke" method="post">
+                    <button type="submit" class="btn btn-outline-primary">Revoke <i class="ti ti-circle-minus ms-1"></i></button>
+                  </form>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Billing Quota -->
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title fw-semibold mb-4 d-flex justify-content-between align-items-center">
+      Billing Quota
+    </h4>
+    {% if action === 'quotaUpdated' %}
+      <div class="alert alert-success">
+        Billing quota has been updated.
+      </div>
+    {% endif %}
+    <table class="table">
+      <tr>
+        <th>Costs in current month</th>
+        <td>$ {{ costsCurrentMonth | round(2) }}</td>
+      </tr>
+      {% if workspace.billingQuota %}
+        <tr>
+          <th>Remaining amount available</th>
+          <td>$ {{ (workspace.billingQuota.limit - costsCurrentMonth) | round(2) }}
+            {% if (workspace.billingQuota.limit - costsCurrentMonth < 0) %}
+              <span class="badge rounded-pill text-bg-danger ms-2">Exceeded</span>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <th>Days left until reset</th>
+          <td>{{ daysLeftCurrentMonth }}</td>
+        </tr>
+      {% endif %}
+      <tr>
+        <th>Billing quota</th>
+        <td>
+          {% if workspace.billingQuota %}
+            $ {{ workspace.billingQuota.limit }}<br />
+            <a href="/workspaces/{{ workspace.id }}/quota" class="btn btn-link px-0">Edit billing quota <i class="ti ti-arrow-right me-1"></i></a>
+          {% else %}
+            No billing quota set<br />
+            <a href="/workspaces/{{ workspace.id }}/quota" class="btn btn-link px-0">Set a billing quota <i class="ti ti-arrow-right me-1"></i></a>
+          {% endif %}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Bills -->
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title fw-semibold mb-4 d-flex justify-content-between align-items-center">
+      Bills
+    </h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for bill in bills %}
+          <tr>
+            <td class="align-middle">{{ bill | date('MMMM yyyy') }}</td>
+            <td class="align-middle text-end">
+              <a href="/workspaces/{{ workspace.id }}/bills/{{ bill.getFullYear() }}/{{ bill.getMonth() + 1 }}" class="btn btn-outline-primary">
+                Show <i class="ti ti-arrow-right ms-1"></i>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

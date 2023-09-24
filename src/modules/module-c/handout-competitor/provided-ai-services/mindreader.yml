@@ -1,0 +1,81 @@
+# MindReader
+# --------------------------------------------------------------------------------
+# Commands:
+# - Lint: npx @redocly/cli lint mindreader.yml
+# - Generate HTML: npx @redocly/cli build-docs mindreader.yml -o mindreader.html
+
+openapi: 3.0.0
+info:
+  title: MindReader API
+  description: The MindReader API provides a image object recognition service.
+  version: 1.0.0
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+
+servers:
+  - url: 'http://localhost:4003'
+    description: Local MindReader server
+
+security: [ ]
+
+paths:
+  /recognize:
+    post:
+      summary: Recognize objects in an image
+      operationId: recognize
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageRecognitionSuccessResponse'
+        '400':
+          description: Bad request
+          content:
+            text/plain:
+              schema:
+                type: string
+
+components:
+  schemas:
+    ImageRecognitionSuccessResponse:
+      type: object
+      properties:
+        objects:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              probability:
+                type: number
+                format: float
+                description: Probability of the object being in the image 0-1
+              bounding_box:
+                type: object
+                properties:
+                  top:
+                    type: number
+                    format: integer
+                  left:
+                    type: number
+                    format: integer
+                  bottom:
+                    type: number
+                    format: integer
+                  right:
+                    type: number
+                    format: integer

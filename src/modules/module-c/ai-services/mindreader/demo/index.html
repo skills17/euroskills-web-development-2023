@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+
+construction:
+<div id="construction" style="position: relative; width: 1024px; height: 1024px"><img src="images/construction.jpg"
+                                                                                      alt=""></div>
+convention:
+<div id="convention" style="position: relative; width: 1024px; height: 1024px"><img src="images/convention.jpg"
+                                                                                    alt=""></div>
+countryside:
+<div id="countryside" style="position: relative; width: 1024px; height: 1024px"><img src="images/countryside.jpg"
+                                                                                     alt=""></div>
+electronics:
+<div id="electronics" style="position: relative; width: 1024px; height: 1024px"><img src="images/electronics.jpg"
+                                                                                     alt=""></div>
+street:
+<div id="street" style="position: relative; width: 1024px; height: 1024px"><img src="images/street.jpg" alt=""></div>
+default:
+<div id="default">nope</div>
+
+<script>
+    const images = [
+        'construction',
+        'convention',
+        'countryside',
+        'electronics',
+        'street',
+        'default'
+    ];
+
+    const imgToBuffer = async (url) => new Promise((resolve, reject) => {
+        fetch(url).then((res) => resolve(res.arrayBuffer())).catch(reject);
+    });
+
+    images.forEach(async image => {
+        const formData = new FormData();
+        formData.append(
+            'image',
+            new Blob([image === 'default' ? [] : await imgToBuffer(document.querySelector(`#${image} > img`).getAttribute('src'))],
+                {type: "image/jpeg"}),
+            `${image}.jpg`
+        );
+        const response = await (await fetch('http://localhost:3000/recognize', {
+              method: 'POST',
+              body: formData
+          })).json();
+
+        response.objects.forEach(obj => {
+            const objDiv = document.createElement('div');
+            objDiv.style.position = `absolute`;
+            objDiv.style.top = `${obj.bounding_box.top}px`;
+            objDiv.style.left = `${obj.bounding_box.left}px`;
+            objDiv.style.bottom = `${1024 - obj.bounding_box.bottom}px`;
+            objDiv.style.width = `${obj.bounding_box.right - obj.bounding_box.left}px`;
+            objDiv.style.background = `#ff000066`;
+            objDiv.innerHTML = `${obj.label}<br>Probability: ${obj.probability * 100}%`;
+
+            document.getElementById(image).appendChild(objDiv);
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+### create conversation
+POST {{BASE_URL}}/conversation
+Content-Type: application/json
+
+{"conversationId": "foobar"}
+
+### post prompt
+POST {{BASE_URL}}/conversation/foobar
+Content-Type: text/plain
+
+lorem ipsum
+
+### get response
+GET {{BASE_URL}}/conversation/foobar

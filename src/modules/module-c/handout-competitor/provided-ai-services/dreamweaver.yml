@@ -1,0 +1,199 @@
+# DreamWeaver
+# --------------------------------------------------------------------------------
+# Commands:
+# - Lint: npx @redocly/cli lint dreamweaver.yml
+# - Generate HTML: npx @redocly/cli build-docs dreamweaver.yml -o dreamweaver.html
+
+openapi: 3.0.0
+info:
+  title: DreamWeaver API
+  description: The DreamWeaver API provides image generation.
+  version: 1.0.0
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+
+servers:
+  - url: 'http://localhost:4002'
+    description: Local DreamWeaver server
+
+security: [ ]
+
+paths:
+  /generate:
+    post:
+      summary: Generate an image based on a text prompt
+      operationId: generate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text_prompt:
+                  type: string
+      responses:
+        '201':
+          $ref: '#/components/responses/ImageGenerationSuccessResponse'
+        '400':
+          description: Bad request
+          content:
+            text/plain:
+              schema:
+                type: string
+  /status/{job_id}:
+    get:
+      summary: Get the status and progress of a job
+      operationId: getJobStatus
+      parameters:
+        - in: path
+          name: job_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ImageGenerationStatusResponse'
+        '400':
+          description: Bad request
+          content:
+            text/plain:
+              schema:
+                type: string
+  /result/{job_id}:
+    get:
+      summary: Get the result of a finished job
+      operationId: getResult
+      parameters:
+        - in: path
+          name: job_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ImageGenerationResultResponse'
+        '400':
+          description: Bad request
+          content:
+            text/plain:
+              schema:
+                type: string
+  /upscale:
+    post:
+      summary: Upscale a generated image
+      operationId: upscale
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resource_id:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ImageGenerationSuccessResponse'
+        '400':
+          description: Bad request
+          content:
+            text/plain:
+              schema:
+                type: string
+  /zoom/in:
+    post:
+      summary: Zoom in on a generated image
+      operationId: zoomIn
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resource_id:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ImageGenerationSuccessResponse'
+        '400':
+          description: Bad request
+          content:
+            text/plain:
+              schema:
+                type: string
+  /zoom/out:
+    post:
+      summary: Zoom out on a generated image
+      operationId: zoomOut
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                resource_id:
+                  type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/ImageGenerationSuccessResponse'
+        '400':
+          description: Bad request
+          content:
+            text/plain:
+              schema:
+                type: string
+
+components:
+  responses:
+    ImageGenerationSuccessResponse:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              job_id:
+                type: string
+              started_at:
+                type: string
+                format: date-time
+                description: Started date
+                example: "2023-09-03TT08:30:00Z"
+    ImageGenerationStatusResponse:
+      description: Response containing status, progress, and image URL
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                description: Status of the job
+                enum: [ pending, finished ]
+              progress:
+                type: integer
+                description: Progress in percent points 0-100
+              image_url:
+                type: string
+                description: URL of a preliminarily generated image
+    ImageGenerationResultResponse:
+      description: Response containing resource ID and image URL
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              resource_id:
+                type: string
+              image_url:
+                type: string
+                description: URL of the final generated image
+              finished_at:
+                type: string
+                format: date-time
+                description: Finished date
+                example: "2023-09-03TT08:35:00Z"
